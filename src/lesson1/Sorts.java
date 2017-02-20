@@ -1,8 +1,6 @@
 package lesson1;
 
 import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Random;
 
 @SuppressWarnings("WeakerAccess")
 public class Sorts {
