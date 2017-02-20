@@ -69,4 +69,16 @@ public class SortsTest {
         assertSorted(arr, "MERGE SORT LONG");
 
     }
+
+    @Test
+    public void longHeapSort() {
+        int LENGTH = 65536;
+        int[] arr = new int[LENGTH];
+        for (int i=0; i<LENGTH; i++) {
+            arr[i] = r.nextInt();
+        }
+        Sorts.heapSort(arr);
+        assertSorted(arr, "HEAP SORT LONG");
+
+    }
 }
