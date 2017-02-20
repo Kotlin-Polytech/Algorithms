@@ -56,35 +56,4 @@ public class Sorts {
     public static void mergeSort(int[] elements) {
         mergeSort(elements, 0, elements.length);
     }
-
-    public static void main(String[] args) {
-        int[] arr = new int[] { 3, 7, 5, 9, 1, 6, 19, 13 };
-        int[] arr3 = Arrays.copyOf(arr, arr.length);
-        insertionSort(arr);
-        mergeSort(arr3);
-        System.out.println(Arrays.toString(arr));
-        System.out.println(Arrays.toString(arr3));
-        String[] arr2 = new String[] { "beta", "omega", "alpha", "", "!!!", "teta", "O" };
-        insertionSort(arr2);
-        System.out.println(Arrays.toString(arr2));
-        Random r = new Random(Calendar.getInstance().getTimeInMillis());
-        int LENGTH = 65536;
-        int[] arr4 = new int[LENGTH];
-        for (int i=0; i<LENGTH; i++) {
-            arr4[i] = r.nextInt();
-        }
-        int[] arr5 = Arrays.copyOf(arr4, arr4.length);
-        insertionSort(arr4);
-        mergeSort(arr5);
-        checkSort(arr4, "InsertionSort");
-        checkSort(arr5, "MergeSort");
-    }
-
-    private static void checkSort(int[] arr, String prefix) {
-        for (int i = 0; i< arr.length-1; i++) {
-            if (arr[i] > arr[i+1]) {
-                System.out.println(prefix + " ERROR: i = " + i + " a[i] = " + arr[i] + " a[i+1] = " + arr[i+1]);
-            }
-        }
-    }
 }
