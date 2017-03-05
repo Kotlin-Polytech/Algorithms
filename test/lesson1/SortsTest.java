@@ -55,7 +55,6 @@ public class SortsTest {
         }
         Sorts.insertionSort(arr);
         assertSorted(arr, "INSERTION SORT LONG");
-
     }
 
     @Test
@@ -67,7 +66,6 @@ public class SortsTest {
         }
         Sorts.mergeSort(arr);
         assertSorted(arr, "MERGE SORT LONG");
-
     }
 
     @Test
@@ -79,6 +77,23 @@ public class SortsTest {
         }
         Sorts.heapSort(arr);
         assertSorted(arr, "HEAP SORT LONG");
+    }
 
+    @Test
+    public void quickSort() {
+        int[] arr = new int[] { 3, 7, 5, 9, 1, 6, 19, 13 };
+        Sorts.quickSort(arr);
+        assertSorted(arr, "QUICK SORT");
+    }
+
+    @Test
+    public void longQuickSort() {
+        int LENGTH = 65536;
+        int[] arr = new int[LENGTH];
+        for (int i=0; i<LENGTH; i++) {
+            arr[i] = r.nextInt();
+        }
+        Sorts.quickSort(arr);
+        assertSorted(arr, "QUICK SORT LONG");
     }
 }
