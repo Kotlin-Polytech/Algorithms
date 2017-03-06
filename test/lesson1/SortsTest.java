@@ -2,6 +2,7 @@ package lesson1;
 
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Random;
 
@@ -95,5 +96,19 @@ public class SortsTest {
         }
         Sorts.quickSort(arr);
         assertSorted(arr, "QUICK SORT LONG");
+    }
+
+    @Test
+    public void longCountingSort() {
+        int LENGTH = 65536;
+        int LIMIT = 262144;
+        int[] arr = new int[LENGTH];
+        for (int i=0; i<LENGTH; i++) {
+            arr[i] = r.nextInt(LIMIT);
+        }
+        int[] result = Sorts.countingSort(arr, LIMIT - 1);
+        assertSorted(result, "COUNTING SORT LONG");
+        Sorts.quickSort(arr);
+        assertArrayEquals(arr, result);
     }
 }
