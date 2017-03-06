@@ -126,4 +126,19 @@ public class Sorts {
         quickSort(elements, 0, elements.length - 1);
     }
 
+    public static int[] countingSort(int[] elements, int limit) {
+        int[] count = new int[limit + 1];
+        for (int element: elements) {
+            count[element]++;
+        }
+        for (int j = 1; j <= limit; j++) {
+            count[j] += count[j - 1];
+        }
+        int[] out = new int[elements.length];
+        for (int j = elements.length - 1; j >= 0; j--) {
+            out[count[elements[j]] - 1] = elements[j];
+            count[elements[j]]--;
+        }
+        return out;
+    }
 }
