@@ -5,6 +5,14 @@ import java.util.Set;
 
 public interface Graph {
 
+    interface Vertex {
+        String getName();
+    }
+
+    interface Edge {
+        int getWeight();
+    }
+
     Set<Vertex> getVertices();
 
     default Set<Vertex> getNeighbors(Vertex v) {
