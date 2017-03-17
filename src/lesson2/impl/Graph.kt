@@ -1,20 +1,21 @@
 package lesson2.impl
 
-import lesson2.Edge
+import lesson2.Graph.Edge
 import lesson2.Graph
-import lesson2.Vertex
-
-data class VertexImpl(private val nameField: String) : Vertex {
-    override fun getName() = nameField
-}
-
-data class EdgeImpl(private val weightField: Int,
-                    val begin: Vertex,
-                    val end: Vertex) : Edge {
-    override fun getWeight() = weightField
-}
+import lesson2.Graph.Vertex
 
 class GraphBuilder {
+
+    data class VertexImpl(private val nameField: String) : Vertex {
+        override fun getName() = nameField
+    }
+
+    data class EdgeImpl(private val weightField: Int,
+                        val begin: Vertex,
+                        val end: Vertex) : Edge {
+        override fun getWeight() = weightField
+    }
+
     private val vertices = mutableSetOf<Vertex>()
 
     private val connections = mutableMapOf<Vertex, Set<EdgeImpl>>()
