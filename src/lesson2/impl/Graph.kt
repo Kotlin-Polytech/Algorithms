@@ -37,7 +37,7 @@ class GraphBuilder {
     }
 
     fun build(): Graph = object : Graph {
-        override fun getVertices(): Set<Vertex> = vertices.toSet()
+        override fun getVertices(): Set<Vertex> = this@GraphBuilder.vertices.toSet()
 
         override fun getConnections(v: Vertex): Map<Vertex, Edge> {
             val edges = connections[v] ?: emptySet()
