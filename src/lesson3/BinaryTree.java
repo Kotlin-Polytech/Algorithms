@@ -6,6 +6,7 @@ import java.util.AbstractSet;
 import java.util.Iterator;
 
 // Attention: comparable supported but comparator is not
+@SuppressWarnings("WeakerAccess")
 public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> {
 
     private static class Node<T> {
@@ -22,29 +23,72 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> {
 
     private Node<T> root = null;
 
+    private int size = 0;
+
     @Override
     public boolean add(T t) {
-        return false;
+        Node<T> closest = find(t);
+        int comparison = closest == null ? -1 : closest.value.compareTo(t);
+        if (comparison == 0) {
+            return false;
+        }
+        Node<T> newNode = new Node<>(t);
+        if (closest == null) {
+            root = newNode;
+        }
+        else if (comparison < 0) {
+            assert closest.left == null;
+            closest.left = newNode;
+        }
+        else {
+            assert closest.right == null;
+            closest.right = newNode;
+        }
+        size++;
+        return true;
     }
 
     @Override
     public boolean remove(Object o) {
-        return false;
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public boolean contains(Object o) {
-        return false;
+        @SuppressWarnings("unchecked")
+        T t = (T) o;
+        Node<T> closest = find(t);
+        return closest != null && t.compareTo(closest.value) == 0;
+    }
+
+    private Node<T> find(T value) {
+        if (root == null) return null;
+        return find(root, value);
+    }
+
+    private Node<T> find(Node<T> start, T value) {
+        int comparison = start.value.compareTo(value);
+        if (comparison == 0) {
+            return start;
+        }
+        else if (comparison < 0) {
+            if (start.left == null) return start;
+            return find(start.left, value);
+        }
+        else {
+            if (start.right == null) return start;
+            return find(start.right, value);
+        }
     }
 
     @NotNull
     @Override
     public Iterator<T> iterator() {
-        return null;
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public int size() {
-        return 0;
+        return size;
     }
 }
