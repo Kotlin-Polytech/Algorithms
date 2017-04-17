@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.AbstractSet;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 // Attention: comparable supported but comparator is not
 @SuppressWarnings("WeakerAccess")
@@ -81,10 +82,33 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> {
         }
     }
 
+    public class BinaryTreeIterator implements Iterator<T> {
+
+        private Node<T> current = null;
+
+        private BinaryTreeIterator() {}
+
+        private Node<T> findNext() {
+            throw new UnsupportedOperationException();
+        }
+
+        @Override
+        public boolean hasNext() {
+            return findNext() != null;
+        }
+
+        @Override
+        public T next() {
+            current = findNext();
+            if (current == null) throw new NoSuchElementException();
+            return current.value;
+        }
+    }
+
     @NotNull
     @Override
     public Iterator<T> iterator() {
-        throw new UnsupportedOperationException();
+        return new BinaryTreeIterator();
     }
 
     @Override
