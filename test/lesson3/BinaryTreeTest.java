@@ -26,6 +26,7 @@ public class BinaryTreeTest {
         tree.add(20);
         assertEquals(9, tree.size());
         assertTrue(tree.contains(8));
+        assertTrue(tree.checkInvariant());
     }
 
 }

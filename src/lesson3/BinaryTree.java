@@ -29,7 +29,7 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> {
     @Override
     public boolean add(T t) {
         Node<T> closest = find(t);
-        int comparison = closest == null ? -1 : closest.value.compareTo(t);
+        int comparison = closest == null ? -1 : t.compareTo(closest.value);
         if (comparison == 0) {
             return false;
         }
@@ -47,6 +47,17 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> {
         }
         size++;
         return true;
+    }
+
+    boolean checkInvariant() {
+        return root == null || checkInvariant(root);
+    }
+
+    private boolean checkInvariant(Node<T> node) {
+        Node<T> left = node.left;
+        if (left != null && (left.value.compareTo(node.value) >= 0 || !checkInvariant(left))) return false;
+        Node<T> right = node.right;
+        return right == null || right.value.compareTo(node.value) > 0 && checkInvariant(right);
     }
 
     @Override
@@ -68,7 +79,7 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> {
     }
 
     private Node<T> find(Node<T> start, T value) {
-        int comparison = start.value.compareTo(value);
+        int comparison = value.compareTo(start.value);
         if (comparison == 0) {
             return start;
         }
