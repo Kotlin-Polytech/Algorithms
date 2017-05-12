@@ -19,7 +19,7 @@ fun cutRod(n: Int, cost: (Int) -> Int): Cut = storage.getOrPut(n) {
     best
 }
 
-val cost = mapOf(1 to 1, 2 to 5, 3 to 9, 4 to 9, 5 to 10, 6 to 17, 7 to 17, 8 to 20, 9 to 24)
+private val cost = mapOf(1 to 1, 2 to 5, 3 to 9, 4 to 9, 5 to 10, 6 to 17, 7 to 17, 8 to 20, 9 to 24)
 
 fun main(args: Array<String>) {
     println(cutRod(20) { cost[it] ?: 0 })
