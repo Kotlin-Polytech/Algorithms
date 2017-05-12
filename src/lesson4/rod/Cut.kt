@@ -6,12 +6,10 @@ data class Cut(val cost: Int, val length: List<Int>) {
     constructor(cost: Int, vararg length: Int): this(cost, length.asList())
 }
 
-private val storage = hashMapOf(0 to Cut(0, emptyList()))
-
-fun cutRod(n: Int, cost: (Int) -> Int): Cut = storage.getOrPut(n) {
+fun cutRod(n: Int, storage: MutableMap<Int, Cut> = hashMapOf(), cost: (Int) -> Int): Cut = storage.getOrPut(n) {
     var best = Cut(cost(n), n)
     for (first in 1..n-1) {
-        val current = Cut(cost(first), first) + cutRod(n - first, cost)
+        val current = Cut(cost(first), first) + cutRod(n - first, storage, cost)
         if (current.cost > best.cost) {
             best = current
         }
