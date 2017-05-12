@@ -14,4 +14,11 @@ class CutTest {
         assertEquals(Cut(cost = 23, length = listOf(2, 3, 3)), cutRod(8) { cost[it] ?: 0 })
     }
 
+    private val cost2 = mapOf(1 to 1, 2 to 2, 3 to 4, 4 to 7)
+
+    @Test
+    fun cutRod2() {
+        assertEquals(Cut(cost = 15, length = listOf(1, 4, 4)), cutRod(9) { cost2[it] ?: 0 })
+        assertEquals(Cut(cost = 4, length = listOf(3)), cutRod(3) { cost2[it] ?: 0 })
+    }
 }
