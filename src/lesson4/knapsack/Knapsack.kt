@@ -17,18 +17,18 @@ data class Item(val cost: Int, val weight: Int)
 fun fillKnapsackDynamic(load: Int, items: List<Item>,
                         storage: HashMap<LoadCount, Fill> = hashMapOf()): Fill {
     if (load <= 0 || items.isEmpty()) return Fill(0, emptyList())
-    val itemsWithoutLast = items.subList(0, items.size - 1)
-    val fillWithoutLast = fillKnapsackDynamic(load, itemsWithoutLast, storage)
-    val last = items.last()
-    val bestFill =
-            if (last.weight > load) fillWithoutLast
-            else {
-                val fillWithLast = fillKnapsackDynamic(load - last.weight, itemsWithoutLast, storage) + Fill(last)
-                if (fillWithLast.cost > fillWithoutLast.cost) fillWithLast
-                else fillWithoutLast
-            }
-    storage[LoadCount(load, items.size)] = bestFill
-    return bestFill
+    val loadCount = LoadCount(load, items.size)
+    return storage.getOrPut(loadCount) {
+        val itemsWithoutLast = items.subList(0, items.size - 1)
+        val fillWithoutLast = fillKnapsackDynamic(load, itemsWithoutLast, storage)
+        val last = items.last()
+        if (last.weight > load) fillWithoutLast
+        else {
+            val fillWithLast = fillKnapsackDynamic(load - last.weight, itemsWithoutLast, storage) + Fill(last)
+            if (fillWithLast.cost > fillWithoutLast.cost) fillWithLast
+            else fillWithoutLast
+        }
+    }
 }
 
 private fun fillKnapsackGreedySorted(load: Int, items: List<Item>): Fill {
