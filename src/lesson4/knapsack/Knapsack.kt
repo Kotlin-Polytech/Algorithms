@@ -2,10 +2,10 @@ package lesson4.knapsack
 
 import java.util.*
 
-data class Fill(val cost: Int, val items: List<Item>) {
+data class Fill(val cost: Int, val items: Set<Item>) {
     operator fun plus(fill: Fill) = Fill(cost + fill.cost, items + fill.items)
 
-    constructor(cost: Int, vararg items: Item): this(cost, items.asList())
+    constructor(cost: Int, vararg items: Item): this(cost, items.toSet())
 
     constructor(item: Item): this(item.cost, item)
 }
@@ -16,7 +16,7 @@ data class Item(val cost: Int, val weight: Int)
 
 fun fillKnapsackDynamic(load: Int, items: List<Item>,
                         storage: HashMap<LoadCount, Fill> = hashMapOf()): Fill {
-    if (load <= 0 || items.isEmpty()) return Fill(0, emptyList())
+    if (load <= 0 || items.isEmpty()) return Fill(0, emptySet())
     val loadCount = LoadCount(load, items.size)
     return storage.getOrPut(loadCount) {
         val itemsWithoutLast = items.subList(0, items.size - 1)
@@ -32,7 +32,7 @@ fun fillKnapsackDynamic(load: Int, items: List<Item>,
 }
 
 private fun fillKnapsackGreedySorted(load: Int, items: List<Item>): Fill {
-    if (load <= 0 || items.isEmpty()) return Fill(0, emptyList())
+    if (load <= 0 || items.isEmpty()) return Fill(0, emptySet())
     val itemsWithoutLast = items.subList(0, items.size - 1)
     val last = items.last()
     if (last.weight > load) return fillKnapsackGreedySorted(load, itemsWithoutLast)
