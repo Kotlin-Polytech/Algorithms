@@ -1,14 +1,13 @@
 package lesson3;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-import java.util.AbstractSet;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 // Attention: comparable supported but comparator is not
 @SuppressWarnings("WeakerAccess")
-public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> {
+public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implements SortedSet<T> {
 
     private static class Node<T> {
         final T value;
@@ -125,5 +124,50 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> {
     @Override
     public int size() {
         return size;
+    }
+
+
+    @Nullable
+    @Override
+    public Comparator<? super T> comparator() {
+        return null;
+    }
+
+    @NotNull
+    @Override
+    public SortedSet<T> subSet(T fromElement, T toElement) {
+        throw new UnsupportedOperationException();
+    }
+
+    @NotNull
+    @Override
+    public SortedSet<T> headSet(T toElement) {
+        throw new UnsupportedOperationException();
+    }
+
+    @NotNull
+    @Override
+    public SortedSet<T> tailSet(T fromElement) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public T first() {
+        if (root == null) throw new NoSuchElementException();
+        Node<T> current = root;
+        while (current.left != null) {
+            current = current.left;
+        }
+        return current.value;
+    }
+
+    @Override
+    public T last() {
+        if (root == null) throw new NoSuchElementException();
+        Node<T> current = root;
+        while (current.right != null) {
+            current = current.right;
+        }
+        return current.value;
     }
 }
