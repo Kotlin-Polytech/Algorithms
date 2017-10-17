@@ -113,6 +113,11 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implemen
             if (current == null) throw new NoSuchElementException();
             return current.value;
         }
+
+        @Override
+        public void remove() {
+            throw new UnsupportedOperationException();
+        }
     }
 
     @NotNull
