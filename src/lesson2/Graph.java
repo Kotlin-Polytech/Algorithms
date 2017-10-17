@@ -1,11 +1,15 @@
 package lesson2;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import java.util.Map;
 import java.util.Set;
 
 public interface Graph {
 
     interface Vertex {
+        @NotNull
         String getName();
     }
 
@@ -13,11 +17,17 @@ public interface Graph {
         int getWeight();
     }
 
+    @NotNull
     Set<Vertex> getVertices();
 
-    default Set<Vertex> getNeighbors(Vertex v) {
+    @Nullable
+    Vertex get(String name);
+
+    @NotNull
+    default Set<Vertex> getNeighbors(@NotNull  Vertex v) {
         return getConnections(v).keySet();
     }
 
-    Map<Vertex, Edge> getConnections(Vertex v);
+    @NotNull
+    Map<Vertex, Edge> getConnections(@NotNull Vertex v);
 }
