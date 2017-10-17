@@ -14,7 +14,9 @@ public interface Graph {
     }
 
     interface Edge {
-        int getWeight();
+        default int getWeight() {
+            return 1;
+        }
     }
 
     @NotNull
