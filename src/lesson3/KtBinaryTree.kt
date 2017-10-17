@@ -1,6 +1,7 @@
 package lesson3
 
 import java.util.*
+import kotlin.NoSuchElementException
 
 // Attention: comparable supported but comparator is not
 class KtBinaryTree<T : Comparable<T>> : AbstractSet<T>(), SortedSet<T> {
@@ -10,11 +11,11 @@ class KtBinaryTree<T : Comparable<T>> : AbstractSet<T>(), SortedSet<T> {
     override var size = 0
         private set
 
-    private class Node<T> internal constructor(internal val value: T) {
+    private class Node<T>(val value: T) {
 
-        internal var left: Node<T>? = null
+        var left: Node<T>? = null
 
-        internal var right: Node<T>? = null
+        var right: Node<T>? = null
     }
 
     override fun add(element: T): Boolean {
@@ -82,8 +83,7 @@ class KtBinaryTree<T : Comparable<T>> : AbstractSet<T>(), SortedSet<T> {
 
         override fun next(): T {
             current = findNext()
-            if (current == null) throw NoSuchElementException()
-            return current!!.value
+            return (current ?: throw NoSuchElementException()).value
         }
 
         override fun remove() {
@@ -108,19 +108,17 @@ class KtBinaryTree<T : Comparable<T>> : AbstractSet<T>(), SortedSet<T> {
     }
 
     override fun first(): T {
-        if (root == null) throw NoSuchElementException()
-        var current = root
-        while (current!!.left != null) {
-            current = current.left
+        var current: Node<T> = root ?: throw NoSuchElementException()
+        while (current.left != null) {
+            current = current.left!!
         }
         return current.value
     }
 
     override fun last(): T {
-        if (root == null) throw NoSuchElementException()
-        var current = root
-        while (current!!.right != null) {
-            current = current.right
+        var current: Node<T> = root ?: throw NoSuchElementException()
+        while (current.right != null) {
+            current = current.right!!
         }
         return current.value
     }
