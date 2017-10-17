@@ -16,12 +16,12 @@ class GraphBuilder {
         override fun getWeight() = weightField
     }
 
-    private val vertices = mutableSetOf<Vertex>()
+    private val vertices = mutableMapOf<String, Vertex>()
 
     private val connections = mutableMapOf<Vertex, Set<EdgeImpl>>()
 
-    fun addVertex(v: Vertex) {
-        vertices.add(v)
+    private fun addVertex(v: Vertex) {
+        vertices[v.name] = v
     }
 
     fun addVertex(name: String): Vertex {
@@ -37,7 +37,9 @@ class GraphBuilder {
     }
 
     fun build(): Graph = object : Graph {
-        override fun getVertices(): Set<Vertex> = this@GraphBuilder.vertices.toSet()
+        override fun get(name: String): Vertex? = this@GraphBuilder.vertices[name]
+
+        override fun getVertices(): Set<Vertex> = this@GraphBuilder.vertices.values.toSet()
 
         override fun getConnections(v: Vertex): Map<Vertex, Edge> {
             val edges = connections[v] ?: emptySet()
