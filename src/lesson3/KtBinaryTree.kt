@@ -1,10 +1,10 @@
 package lesson3
 
-import java.util.*
+import java.util.SortedSet
 import kotlin.NoSuchElementException
 
 // Attention: comparable supported but comparator is not
-class KtBinaryTree<T : Comparable<T>> : AbstractSet<T>(), SortedSet<T> {
+class KtBinaryTree<T : Comparable<T>> : AbstractMutableSet<T>(), SortedSet<T> {
 
     private var root: Node<T>? = null
 
