@@ -32,4 +32,9 @@ public interface Graph {
 
     @NotNull
     Map<Vertex, Edge> getConnections(@NotNull Vertex v);
+
+    @Nullable
+    default Edge getConnection(@NotNull Vertex v1, @NotNull Vertex v2) {
+        return getConnections(v1).get(v2);
+    }
 }
