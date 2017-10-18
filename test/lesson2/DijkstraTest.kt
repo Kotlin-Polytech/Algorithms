@@ -5,7 +5,7 @@ import org.junit.Test
 
 import org.junit.Assert.*
 
-class DejkstraTest {
+class DijkstraTest {
 
     @Test
     fun test1() {
