@@ -19,5 +19,6 @@ class DejkstraTest {
         val pathMap = graph.shortestPath(graph["A"]!!)
         assertEquals(10, pathMap[graph["B"]!!]?.distance)
         assertEquals(15, pathMap[graph["C"]!!]?.distance)
+        assertEquals(listOf(graph["A"], graph["B"], graph["C"]), pathMap.unrollPath(graph["C"]!!))
     }
 }

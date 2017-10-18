@@ -39,3 +39,14 @@ fun Graph.shortestPath(from: Vertex): Map<Vertex, VertexInfo> {
     }
     return info
 }
+
+fun Map<Vertex, VertexInfo>.unrollPath(to: Vertex): List<Vertex> {
+    val result = mutableListOf<Vertex>()
+    var current: Vertex? = to
+    while (current != null) {
+        result += current
+        current = this[current]?.prev
+    }
+    result.reverse()
+    return result
+}
