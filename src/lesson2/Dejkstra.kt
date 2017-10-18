@@ -3,7 +3,7 @@ package lesson2
 import lesson2.Graph.Vertex
 import java.util.*
 
-private class VertexInfo(
+class VertexInfo(
         val vertex: Vertex,
         val distance: Int,
         val prev: Vertex?
@@ -13,7 +13,7 @@ private class VertexInfo(
     }
 }
 
-fun Graph.shortestPath(from: Vertex): Map<Vertex, Int> {
+fun Graph.shortestPath(from: Vertex): Map<Vertex, VertexInfo> {
     val info = mutableMapOf<Vertex, VertexInfo>()
     for (vertex in this.vertices) {
         info[vertex] = VertexInfo(vertex, Int.MAX_VALUE, null)
@@ -37,5 +37,5 @@ fun Graph.shortestPath(from: Vertex): Map<Vertex, Int> {
             }
         }
     }
-    return info.mapValues { it.value.distance }
+    return info
 }

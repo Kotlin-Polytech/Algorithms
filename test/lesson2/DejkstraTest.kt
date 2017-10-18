@@ -17,7 +17,7 @@ class DejkstraTest {
             addConnection(b, c, 5)
         }.build()
         val pathMap = graph.shortestPath(graph["A"]!!)
-        assertEquals(10, pathMap[graph["B"]!!])
-        assertEquals(15, pathMap[graph["C"]!!])
+        assertEquals(10, pathMap[graph["B"]!!]?.distance)
+        assertEquals(15, pathMap[graph["C"]!!]?.distance)
     }
 }
