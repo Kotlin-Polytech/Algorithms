@@ -8,6 +8,8 @@ class GraphBuilder {
 
     data class VertexImpl(private val nameField: String) : Vertex {
         override fun getName() = nameField
+
+        override fun toString() = name
     }
 
     data class EdgeImpl(private val weightField: Int,
