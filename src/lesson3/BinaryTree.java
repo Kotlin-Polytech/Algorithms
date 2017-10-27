@@ -94,24 +94,45 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implemen
 
     public class BinaryTreeIterator implements Iterator<T> {
 
-        private Node<T> current = null;
+        private Node<T> result;
+        private Node<T> current;
+        private int counter;
+        private boolean back;
+        private Deque<Node<T>> innerRoots;
 
-        private BinaryTreeIterator() {}
+        private BinaryTreeIterator() {
+            innerRoots = new ArrayDeque<>();
+            current = root;
+            counter = size;
+        }
 
         private Node<T> findNext() {
-            throw new UnsupportedOperationException();
+            result = current;
+            if (!back && current.left != null) {
+                innerRoots.add(current);
+                current = current.left;
+                return findNext();
+            } else if (current.right != null) {
+                current = current.right;
+                back = false;
+            } else {
+                current = innerRoots.pollLast();
+                back = true;
+            }
+            counter--;
+            return result;
         }
 
         @Override
         public boolean hasNext() {
-            return findNext() != null;
+            return counter != 0;
         }
 
         @Override
         public T next() {
-            current = findNext();
-            if (current == null) throw new NoSuchElementException();
-            return current.value;
+            findNext();
+            if (result == null) throw new NoSuchElementException();
+            return result.value;
         }
 
         @Override
