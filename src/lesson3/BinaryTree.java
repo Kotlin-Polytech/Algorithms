@@ -94,33 +94,66 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implemen
 
     public class BinaryTreeIterator implements Iterator<T> {
 
-        private Node<T> result;
-        private Node<T> current;
+        private Node<T> next;
         private int counter;
         private boolean back;
-        private Deque<Node<T>> innerRoots;
+        private Deque<Node<T>> roots;
 
         private BinaryTreeIterator() {
-            innerRoots = new ArrayDeque<>();
-            current = root;
+            roots = new ArrayDeque<>();
             counter = size;
+            next = root;
         }
 
         private Node<T> findNext() {
-            result = current;
-            if (!back && current.left != null) {
-                innerRoots.add(current);
-                current = current.left;
-                return findNext();
-            } else if (current.right != null) {
-                current = current.right;
-                back = false;
-            } else {
-                current = innerRoots.pollLast();
+            if (!back) {
+                if (next != root && roots.isEmpty()) {
+                    return next;
+                } else if (next.right == roots.peekLast()) {
+                    next = roots.pollLast();
+                    next = goLeft();
+                } else next = goLeft();
+            } else next = goBack();
+            counter--;
+            return next;
+        }
+
+        /**
+         * ПО ЗАВЕРШЕНИИ МЕТОДА:
+         * ЗАПОЛНЕН СПИСОК roots элементами, которые
+         * были на пути, в том числе добавлены и
+         * правые дети всех тех, кто был на пути
+         * После этого метода, нужно возвращаться обратно.
+         */
+        private Node<T> goLeft() {
+            Node<T> temp = next;
+            while (temp.left != null) {
+                if (temp.right != null) roots.add(temp.right);
+                roots.add(temp);
+                temp = temp.left;
                 back = true;
             }
-            counter--;
-            return result;
+            return temp;
+        }
+
+        /**
+         * Возвращает следующие элемент из roots, удаляя его
+         * При этом, если у этого следующего элемента окажется
+         * правый ребенок, то они поменяются местами.
+         * В самом начале идет проверка. Если текущий элемент
+         * является правым ребенком следующего элемента из roots,
+         * то этот следующий элемент отбрасывается.
+         */
+        private Node<T> goBack() {
+            if (next == roots.peekLast().right) roots.pollLast();
+            Node<T> temp = roots.pollLast();
+            if (temp.right == roots.peekLast()) {
+                Node<T> previos = roots.pollLast();
+                roots.add(temp);
+                roots.add(previos);
+                back = false;
+            }
+            return temp;
         }
 
         @Override
@@ -130,9 +163,9 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implemen
 
         @Override
         public T next() {
-            findNext();
-            if (result == null) throw new NoSuchElementException();
-            return result.value;
+            Node<T> it = findNext();
+            if (it == null) throw new NoSuchElementException();
+            return it.value;
         }
 
         @Override
