@@ -93,67 +93,27 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implemen
     }
 
     public class BinaryTreeIterator implements Iterator<T> {
-
-        private Node<T> next;
         private int counter;
-        private boolean back;
-        private Deque<Node<T>> roots;
+        private Stack<Pair<Node<T>, Node<T>>> roots;
+        private Node<T> parent;
 
         private BinaryTreeIterator() {
-            roots = new ArrayDeque<>();
+            roots = new Stack<>();
+            roots.push(new Pair<>(root, null));
             counter = size;
-            next = root;
         }
 
         private Node<T> findNext() {
-            if (!back) {
-                if (next != root && roots.isEmpty()) {
-                    return next;
-                } else if (next.right == roots.peekLast()) {
-                    next = roots.pollLast();
-                    next = goLeft();
-                } else next = goLeft();
-            } else next = goBack();
+            parent = roots.peek().getValue();
+            Node<T> next = roots.pop().getKey();
+            if (next.right != null) {
+                roots.push(new Pair<>(next.right, next));
+            }
+            if (next.left != null) {
+                roots.push(new Pair<>(next.left, next));
+            }
             counter--;
             return next;
-        }
-
-        /**
-         * ПО ЗАВЕРШЕНИИ МЕТОДА:
-         * ЗАПОЛНЕН СПИСОК roots элементами, которые
-         * были на пути, в том числе добавлены и
-         * правые дети всех тех, кто был на пути
-         * После этого метода, нужно возвращаться обратно.
-         */
-        private Node<T> goLeft() {
-            Node<T> temp = next;
-            while (temp.left != null) {
-                if (temp.right != null) roots.add(temp.right);
-                roots.add(temp);
-                temp = temp.left;
-                back = true;
-            }
-            return temp;
-        }
-
-        /**
-         * Возвращает следующие элемент из roots, удаляя его
-         * При этом, если у этого следующего элемента окажется
-         * правый ребенок, то они поменяются местами.
-         * В самом начале идет проверка. Если текущий элемент
-         * является правым ребенком следующего элемента из roots,
-         * то этот следующий элемент отбрасывается.
-         */
-        private Node<T> goBack() {
-            if (next == roots.peekLast().right) roots.pollLast();
-            Node<T> temp = roots.pollLast();
-            if (temp.right == roots.peekLast()) {
-                Node<T> previos = roots.pollLast();
-                roots.add(temp);
-                roots.add(previos);
-                back = false;
-            }
-            return temp;
         }
 
         @Override
