@@ -91,7 +91,7 @@ class ComputerPlayer(private val board: Board) {
             val evaluation = -bestTurn(
                     depth = depth - 1,
                     lowerBound = -upperBound,
-                    upperBound = -lowerBound
+                    upperBound = -lower
             ).evaluation
             board.takeTurnBack(turn)
             if (evaluation > lower) {
