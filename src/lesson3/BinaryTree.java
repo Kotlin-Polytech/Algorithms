@@ -96,6 +96,7 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implemen
         private int counter;
         private Stack<Pair<Node<T>, Node<T>>> roots;
         private Node<T> parent;
+        private Node<T> next;
 
         private BinaryTreeIterator() {
             roots = new Stack<>();
@@ -113,6 +114,7 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implemen
                 roots.push(new Pair<>(next.left, next));
             }
             counter--;
+            this.next = next;
             return next;
         }
 
@@ -130,7 +132,43 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implemen
 
         @Override
         public void remove() {
-            throw new UnsupportedOperationException();
+            //Если удаляем лист
+            if (next.left == next.right) {
+                if (parent.left == next) parent.left = null;
+                else parent.right = null;
+            }
+            //Если удаляем узел с одним дочерним элементом
+            else if (next.left == null || next.right == null) {
+                if (next.left != null) {
+                    if (parent.left == next) parent.left = next.left;
+                    else parent.right = next.left;
+                } else {
+                    if (parent.left == next) parent.left = next.right;
+                    else parent.right = next.right;
+                }
+            }
+            //Если удаляем узел с двумя дочерними элементами
+            else {
+                Pair<Node<T>, Node<T>> min = findMin(next.right);
+                if (parent != null) {
+                    if (parent.left == next) {
+                        parent.left = min.getKey();
+                    } else parent.right = min.getKey();
+                } else root = min.getKey();
+
+                min.getKey().left = next.left;
+                min.getValue().left = null;
+            }
+            size--;
+        }
+
+        private Pair<Node<T>, Node<T>> findMin(Node<T> node) {
+            Node<T> parent = this.next;
+            while (node.left != null) {
+                parent = node;
+                node = node.left;
+            }
+            return new Pair<>(node, parent);
         }
     }
 
