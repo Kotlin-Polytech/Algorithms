@@ -134,17 +134,24 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implemen
         public void remove() {
             //Если удаляем лист
             if (next.left == next.right) {
-                if (parent.left == next) parent.left = null;
-                else parent.right = null;
+                if (parent != null) {
+                    if (parent.left == next) parent.left = null;
+                    else parent.right = null;
+                } else root = null;
             }
             //Если удаляем узел с одним дочерним элементом
             else if (next.left == null || next.right == null) {
-                if (next.left != null) {
-                    if (parent.left == next) parent.left = next.left;
-                    else parent.right = next.left;
+                if (parent != null) {
+                    if (next.left != null) {
+                        if (parent.left == next) parent.left = next.left;
+                        else parent.right = next.left;
+                    } else {
+                        if (parent.left == next) parent.left = next.right;
+                        else parent.right = next.right;
+                    }
                 } else {
-                    if (parent.left == next) parent.left = next.right;
-                    else parent.right = next.right;
+                    if (next.left != null) root = next.left;
+                    else root = next.right;
                 }
             }
             //Если удаляем узел с двумя дочерними элементами
