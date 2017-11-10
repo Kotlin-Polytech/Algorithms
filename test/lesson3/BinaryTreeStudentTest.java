@@ -22,7 +22,7 @@ public class BinaryTreeStudentTest {
         Collections.shuffle(list);
         binaryTree.addAll(list);
         binaryTree.iterator().forEachRemaining(testList::add);
-        sortLists();
+        Collections.sort(list);
         assertArrayEquals(list.toArray(), testList.toArray());
     }
 
@@ -35,7 +35,7 @@ public class BinaryTreeStudentTest {
             if (it == 1) iterator.remove();
             testList.add(it);
         }
-        sortLists();
+        Collections.sort(list);
         assertArrayEquals(testList.toArray(), list.toArray());
         assertFalse(binaryTree.contains(1));
         assertTrue(binaryTree.checkInvariant());
@@ -50,7 +50,7 @@ public class BinaryTreeStudentTest {
             if (it == 8) iterator.remove();
             testList.add(it);
         }
-        sortLists();
+        Collections.sort(list);
         assertArrayEquals(testList.toArray(), list.toArray());
         assertFalse(binaryTree.contains(8));
         assertTrue(binaryTree.checkInvariant());
@@ -84,10 +84,5 @@ public class BinaryTreeStudentTest {
         assertFalse(binaryTree.contains(list.get(randomIndex)));
         assertTrue(binaryTree.checkInvariant());
         assertTrue(binaryTree.size() == sizeBeforeRemoving - 1);
-    }
-
-    private void sortLists() {
-        Collections.sort(testList);
-        Collections.sort(list);
     }
 }
