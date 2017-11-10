@@ -7,7 +7,7 @@ import java.util.*;
 
 // Attention: comparable supported but comparator is not
 @SuppressWarnings("WeakerAccess")
-public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implements SortedSet<T> {
+public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implements CheckableSortedSet<T> {
 
     private static class Node<T> {
         final T value;
@@ -48,7 +48,7 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implemen
         return true;
     }
 
-    boolean checkInvariant() {
+    public boolean checkInvariant() {
         return root == null || checkInvariant(root);
     }
 

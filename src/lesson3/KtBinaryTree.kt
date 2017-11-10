@@ -4,7 +4,7 @@ import java.util.SortedSet
 import kotlin.NoSuchElementException
 
 // Attention: comparable supported but comparator is not
-class KtBinaryTree<T : Comparable<T>> : AbstractMutableSet<T>(), SortedSet<T> {
+class KtBinaryTree<T : Comparable<T>> : AbstractMutableSet<T>(), CheckableSortedSet<T> {
 
     private var root: Node<T>? = null
 
@@ -40,7 +40,7 @@ class KtBinaryTree<T : Comparable<T>> : AbstractMutableSet<T>(), SortedSet<T> {
         return true
     }
 
-    internal fun checkInvariant(): Boolean =
+    override fun checkInvariant(): Boolean =
             root?.let { checkInvariant(it) } ?: true
 
     private fun checkInvariant(node: Node<T>): Boolean {
