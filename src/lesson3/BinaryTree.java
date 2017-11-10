@@ -61,7 +61,66 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implemen
 
     @Override
     public boolean remove(Object o) {
-        throw new UnsupportedOperationException();
+        if (o == null) return false;
+        @SuppressWarnings("unchecked")
+        Node<T> it = find((T) o);
+        Node<T> parent = findParent(it);
+        //Если удаляем лист
+        if (it.left == it.right) {
+            if (parent != null) {
+                if (parent.left == it) parent.left = null;
+                else parent.right = null;
+            } else root = null;
+        }
+        //Если удаляем узел с одним дочерним элементом
+        else if (it.left == null || it.right == null) {
+            if (parent != null) {
+                if (it.left != null) {
+                    if (parent.left == it) parent.left = it.left;
+                    else parent.right = it.left;
+                } else {
+                    if (parent.left == it) parent.left = it.right;
+                    else parent.right = it.right;
+                }
+            } else {
+                if (it.left != null) root = it.left;
+                else root = it.right;
+            }
+        }
+        //Если удаляем узел с двумя дочерними элементами
+        else {
+            Pair<Node<T>, Node<T>> min = findMin(it.right, parent);
+            if (parent != null) {
+                if (parent.left == it) {
+                    parent.left = min.getKey();
+                } else parent.right = min.getKey();
+            } else root = min.getKey();
+
+            min.getKey().left = it.left;
+        }
+        size--;
+        return true;
+    }
+
+    private Pair<Node<T>, Node<T>> findMin(Node<T> node, Node<T> parent) {
+        while (node.left != null) {
+            parent = node;
+            node = node.left;
+        }
+        return new Pair<>(node, parent);
+    }
+
+    private Node<T> findParent(Node<T> node) {
+        if (node == null) throw new IllegalArgumentException();
+        if (node == root) return null;
+        Node<T> parent = root;
+        while (parent.left != node && parent.right != node) {
+            int compression = node.value.compareTo(parent.value);
+            if (compression < 0) parent = parent.left;
+            else parent = parent.right;
+        }
+        if (parent == root) return null;
+        return parent;
     }
 
     @Override
@@ -93,29 +152,33 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implemen
     }
 
     public class BinaryTreeIterator implements Iterator<T> {
-        private int counter;
-        private Stack<Pair<Node<T>, Node<T>>> roots;
-        private Node<T> parent;
+        private Node<T> current;
         private Node<T> next;
+        private int counter;
+        private boolean back;
+        private Deque<Node<T>> innerRoots;
 
         private BinaryTreeIterator() {
-            roots = new Stack<>();
-            roots.push(new Pair<>(root, null));
+            innerRoots = new ArrayDeque<>();
+            next = root;
             counter = size;
         }
 
         private Node<T> findNext() {
-            parent = roots.peek().getValue();
-            Node<T> next = roots.pop().getKey();
-            if (next.right != null) {
-                roots.push(new Pair<>(next.right, next));
-            }
-            if (next.left != null) {
-                roots.push(new Pair<>(next.left, next));
+            current = next;
+            if (!back && next.left != null) {
+                innerRoots.add(next);
+                next = next.left;
+                return findNext();
+            } else if (next.right != null) {
+                next = next.right;
+                back = false;
+            } else {
+                next = innerRoots.pollLast();
+                back = true;
             }
             counter--;
-            this.next = next;
-            return next;
+            return current;
         }
 
         @Override
@@ -132,50 +195,7 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implemen
 
         @Override
         public void remove() {
-            //Если удаляем лист
-            if (next.left == next.right) {
-                if (parent != null) {
-                    if (parent.left == next) parent.left = null;
-                    else parent.right = null;
-                } else root = null;
-            }
-            //Если удаляем узел с одним дочерним элементом
-            else if (next.left == null || next.right == null) {
-                if (parent != null) {
-                    if (next.left != null) {
-                        if (parent.left == next) parent.left = next.left;
-                        else parent.right = next.left;
-                    } else {
-                        if (parent.left == next) parent.left = next.right;
-                        else parent.right = next.right;
-                    }
-                } else {
-                    if (next.left != null) root = next.left;
-                    else root = next.right;
-                }
-            }
-            //Если удаляем узел с двумя дочерними элементами
-            else {
-                Pair<Node<T>, Node<T>> min = findMin(next.right);
-                if (parent != null) {
-                    if (parent.left == next) {
-                        parent.left = min.getKey();
-                    } else parent.right = min.getKey();
-                } else root = min.getKey();
-
-                min.getKey().left = next.left;
-                min.getValue().left = null;
-            }
-            size--;
-        }
-
-        private Pair<Node<T>, Node<T>> findMin(Node<T> node) {
-            Node<T> parent = this.next;
-            while (node.left != null) {
-                parent = node;
-                node = node.left;
-            }
-            return new Pair<>(node, parent);
+            BinaryTree.this.remove(current.value);
         }
     }
 
