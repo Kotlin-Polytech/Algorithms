@@ -61,7 +61,7 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implemen
 
     @Override
     public boolean remove(Object o) {
-        if (o == null) return false;
+        if (o == null || root == null) return false;
         @SuppressWarnings("unchecked")
         Node<T> it = find((T) o);
         Node<T> parent = findParent(it);
@@ -119,7 +119,6 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implemen
             if (compression < 0) parent = parent.left;
             else parent = parent.right;
         }
-        if (parent == root) return null;
         return parent;
     }
 
