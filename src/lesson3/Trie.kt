@@ -1,5 +1,7 @@
 package lesson3
 
+import java.util.*
+
 class Trie : AbstractMutableSet<String>(), MutableSet<String> {
     override var size: Int = 0
         private set
@@ -59,6 +61,64 @@ class Trie : AbstractMutableSet<String>(), MutableSet<String> {
     }
 
     override fun iterator(): MutableIterator<String> {
-        TODO("not implemented")
+        return TrieIterator(this)
+    }
+
+    private inner class TrieIterator(private val trie: Trie): MutableIterator<String>{
+        private val dequeue = ArrayDeque<Node>()
+        init {
+            dequeue.addLast(trie.root)
+        }
+        private val sb = StringBuilder()
+        private var currentChar: Char? = null
+        private var numberOfRemaining = trie.size
+
+        private fun findNext(): String {
+            val node = dequeue.last
+            val childrenIterator = node.children.iterator()
+            if (currentChar != null) {
+                while (childrenIterator.hasNext() && childrenIterator.next().key != currentChar) {}
+            }
+            if (childrenIterator.hasNext()) {
+                val next = childrenIterator.next()
+                return if (next.key != 0.toChar()) {
+                    currentChar = null
+                    sb.append(next.key)
+                    dequeue.addLast(next.value)
+                    findNext()
+                } else {
+                    currentChar = 0.toChar()
+                    sb.toString()
+                }
+            }
+            else {
+                dequeue.pollLast()
+                currentChar = sb.last()
+                sb.deleteCharAt(sb.lastIndex)
+                return findNext()
+            }
+        }
+
+        /**
+         * Returns the next element in the iteration.
+         */
+        override fun next(): String {
+            numberOfRemaining--
+            return findNext()
+        }
+
+        /**
+         * Returns `true` if the iteration has more elements.
+         */
+        override fun hasNext(): Boolean {
+            return numberOfRemaining != 0
+        }
+
+        /**
+         * Removes from the underlying collection the last element returned by this iterator.
+         */
+        override fun remove() {
+            trie.remove(sb.toString())
+        }
     }
 }

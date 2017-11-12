@@ -39,4 +39,47 @@ class TrieTest {
         assertEquals(0, trie.size)
         assertFalse("zyx" in trie)
     }
+
+    @Test
+    fun iteratorTest() {
+        val trie = Trie()
+        trie.add("Пластмассовый ")
+        trie.add("мир ")
+        trie.add("VVV")
+        trie.add("победил\n")
+        trie.add("Макет ")
+        trie.add("vvv")
+        trie.add("оказался ")
+        trie.add("сильней\n")
+
+        assertTrue("VVV" in trie)
+        assertTrue("vvv" in trie)
+
+        var iterator = trie.iterator()
+        while (iterator.hasNext()){
+            print(iterator.next())
+        }
+        iterator = trie.iterator()
+        while (iterator.hasNext()){
+            val str = iterator.next()
+            if (str == "vvv" || str == "VVV"){
+                iterator.remove()
+            }
+        }
+
+        assertFalse("VVV" in trie)
+        assertFalse("vvv" in trie)
+
+        iterator = trie.iterator()
+        while (iterator.hasNext()){
+            print(iterator.next())
+        }
+
+        assertTrue("Пластмассовый " in trie)
+        assertTrue("мир " in trie)
+        assertTrue("победил\n" in trie)
+        assertTrue("Макет " in trie)
+        assertTrue("оказался " in trie)
+        assertTrue("сильней\n" in trie)
+    }
 }
