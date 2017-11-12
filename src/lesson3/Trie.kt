@@ -65,16 +65,16 @@ class Trie : AbstractMutableSet<String>(), MutableSet<String> {
     }
 
     private inner class TrieIterator(private val trie: Trie): MutableIterator<String>{
-        private val dequeue = ArrayDeque<Node>()
+        private val deque = ArrayDeque<Node>()
         init {
-            dequeue.addLast(trie.root)
+            deque.addLast(trie.root)
         }
         private val sb = StringBuilder()
         private var currentChar: Char? = null
         private var numberOfRemaining = trie.size
 
         private fun findNext(): String {
-            val node = dequeue.last
+            val node = deque.last
             val childrenIterator = node.children.iterator()
             if (currentChar != null) {
                 while (childrenIterator.hasNext() && childrenIterator.next().key != currentChar) {}
@@ -84,7 +84,7 @@ class Trie : AbstractMutableSet<String>(), MutableSet<String> {
                 return if (next.key != 0.toChar()) {
                     currentChar = null
                     sb.append(next.key)
-                    dequeue.addLast(next.value)
+                    deque.addLast(next.value)
                     findNext()
                 } else {
                     currentChar = 0.toChar()
@@ -92,7 +92,7 @@ class Trie : AbstractMutableSet<String>(), MutableSet<String> {
                 }
             }
             else {
-                dequeue.pollLast()
+                deque.pollLast()
                 currentChar = sb.last()
                 sb.deleteCharAt(sb.lastIndex)
                 return findNext()
