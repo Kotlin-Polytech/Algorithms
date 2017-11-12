@@ -82,4 +82,11 @@ class TrieTest {
         assertTrue("оказался " in trie)
         assertTrue("сильней\n" in trie)
     }
+
+    @Test
+    fun iteratorTestForEmpty() {
+        val trie = Trie()
+        val iterator = trie.iterator()
+        assertFalse(iterator.hasNext())
+    }
 }
