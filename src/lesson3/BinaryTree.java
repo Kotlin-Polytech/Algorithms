@@ -158,6 +158,7 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implemen
                     } else
                         cur = cur.right;
                 }
+            else return null;
             return next;
         }
 
