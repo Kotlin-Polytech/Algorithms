@@ -89,14 +89,17 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implemen
         }
         //Если удаляем узел с двумя дочерними элементами
         else {
-            Pair<Node<T>, Node<T>> min = findMin(it.right, parent);
+            Pair<Node<T>, Node<T>> min = findMin(it.right, it);
             if (parent != null) {
                 if (parent.left == it) {
                     parent.left = min.getKey();
                 } else parent.right = min.getKey();
             } else root = min.getKey();
-
             min.getKey().left = it.left;
+            if (min.getValue() != it) {
+                min.getValue().left = min.getKey().right;
+                min.getKey().right = it.right;
+            }
         }
         size--;
         return true;
@@ -194,7 +197,12 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implemen
 
         @Override
         public void remove() {
+            boolean hasNext = next != null;
+            Pair<Node<T>, Node<T>> min = (hasNext) ? findMin(next, null) : null;
             BinaryTree.this.remove(current.value);
+            if (hasNext && current.left != null && current.right != null) {
+                innerRoots.add(min.getKey());
+            }
         }
     }
 
