@@ -14,6 +14,12 @@ public interface Graph {
     }
 
     interface Edge {
+        @NotNull
+        Vertex getBegin();
+
+        @NotNull
+        Vertex getEnd();
+
         default int getWeight() {
             return 1;
         }
