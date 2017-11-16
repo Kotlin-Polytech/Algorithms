@@ -39,4 +39,16 @@ class TrieTest {
         assertEquals(0, trie.size)
         assertFalse("zyx" in trie)
     }
+
+    @Test
+    fun rudeIteratorTest() {
+        val trie = Trie()
+        trie.add("abcdefg")
+        trie.add("zyx")
+        trie.add("zwv")
+        trie.add("zyt")
+        trie.add("abcde")
+
+        assertEquals(setOf("abcdefg", "zyx", "zwv", "zyt", "abcde"), trie)
+    }
 }
