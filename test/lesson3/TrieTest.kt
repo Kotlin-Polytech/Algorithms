@@ -3,6 +3,7 @@ package lesson3
 import org.junit.Test
 
 import org.junit.Assert.*
+import java.util.*
 
 class TrieTest {
 
@@ -88,5 +89,32 @@ class TrieTest {
         val trie = Trie()
         val iterator = trie.iterator()
         assertFalse(iterator.hasNext())
+    }
+
+    @Test
+    fun iteratorDeleteTest() {
+        val trie = Trie()
+        trie.add("Оооо, ")
+        trie.add("моя")
+        trie.add("оборона")
+        assertTrue("Оооо, " in trie)
+        assertTrue("моя" in trie)
+        assertTrue("оборона" in trie)
+        assertEquals(3, trie.size)
+        val iterator = trie.iterator()
+        try {
+            while (iterator.hasNext()) {
+                val next = iterator.next()
+                if (next == "Оооо, ") {
+                    iterator.remove()
+                }
+                if (next == "моя") {
+                    trie.remove("моя")
+                }
+            }
+            assert(false)
+        } catch (ex: ConcurrentModificationException){
+            assert(true)
+        }
     }
 }

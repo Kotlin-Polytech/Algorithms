@@ -1,6 +1,7 @@
 package lesson3
 
 import java.util.*
+import kotlin.NoSuchElementException
 
 class Trie : AbstractMutableSet<String>(), MutableSet<String> {
     override var size: Int = 0
@@ -71,6 +72,7 @@ class Trie : AbstractMutableSet<String>(), MutableSet<String> {
         }
         private val sb = StringBuilder()
         private var numberOfRemaining = trie.size
+        private var currentSize = trie.size
 
         private fun findNext(): String {
             val childrenIterator = deque.last
@@ -94,8 +96,14 @@ class Trie : AbstractMutableSet<String>(), MutableSet<String> {
          * Returns the next element in the iteration.
          */
         override fun next(): String {
-            numberOfRemaining--
-            return findNext()
+            if (!hasNext()){
+                throw NoSuchElementException()
+            } else if (currentSize != trie.size){
+                throw ConcurrentModificationException()
+            } else{
+                numberOfRemaining--
+                return findNext()
+            }
         }
 
         /**
@@ -109,7 +117,11 @@ class Trie : AbstractMutableSet<String>(), MutableSet<String> {
          * Removes from the underlying collection the last element returned by this iterator.
          */
         override fun remove() {
-            trie.remove(sb.toString())
+            if (trie.remove(sb.toString())){
+                currentSize--
+            } else {
+                throw IllegalStateException()
+            }
         }
     }
 }
