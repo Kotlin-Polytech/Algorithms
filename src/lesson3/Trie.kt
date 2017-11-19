@@ -62,17 +62,17 @@ class Trie : AbstractMutableSet<String>(), MutableSet<String> {
     }
 
     override fun iterator(): MutableIterator<String> {
-        return TrieIterator(this)
+        return TrieIterator()
     }
 
-    private inner class TrieIterator(private val trie: Trie): MutableIterator<String>{
-        private val deque = ArrayDeque<MutableIterator<MutableMap.MutableEntry<Char, Node>>>()
+    private inner class TrieIterator: MutableIterator<String>{
+        private val deque = ArrayDeque<Iterator<Map.Entry<Char, Node>>>()
         init {
-            deque.addLast(trie.root.children.iterator())
+            deque.addLast(root.children.iterator())
         }
         private val sb = StringBuilder()
-        private var numberOfRemaining = trie.size
-        private var currentSize = trie.size
+        private var numberOfRemaining = size
+        private var currentSize = size
 
         private fun findNext(): String {
             val childrenIterator = deque.last
@@ -98,7 +98,7 @@ class Trie : AbstractMutableSet<String>(), MutableSet<String> {
         override fun next(): String {
             if (!hasNext()){
                 throw NoSuchElementException()
-            } else if (currentSize != trie.size){
+            } else if (currentSize != size){
                 throw ConcurrentModificationException()
             } else{
                 numberOfRemaining--
@@ -117,7 +117,7 @@ class Trie : AbstractMutableSet<String>(), MutableSet<String> {
          * Removes from the underlying collection the last element returned by this iterator.
          */
         override fun remove() {
-            if (trie.remove(sb.toString())){
+            if (remove(sb.toString())){
                 currentSize--
             } else {
                 throw IllegalStateException()
