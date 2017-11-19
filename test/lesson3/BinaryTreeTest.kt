@@ -3,6 +3,7 @@ package lesson3
 import org.junit.Test
 
 import org.junit.Assert.*
+import java.util.*
 
 class BinaryTreeTest {
     @Test
@@ -60,6 +61,30 @@ class BinaryTreeTest {
         assertEquals(tree.contains(10), false)
         assertEquals(tree.remove(21), false) // удаление несуществующего узла
         assertEquals(true, tree.checkInvariant())
+    }
+
+    @Test
+    fun remove2() {
+        val rand = Random()
+        val list = mutableListOf<Int>()
+        for (i in 1..20) {
+            list.add(rand.nextInt(100))
+        }
+        val treeSet = TreeSet<Int>()
+        val binarySet = BinaryTree<Int>()
+        for (element in list) {
+            treeSet += element
+            binarySet += element
+        }
+        println(list)
+        val toRemove = list[rand.nextInt(list.size)]
+        treeSet.remove(toRemove)
+        binarySet.remove(toRemove)
+        assertEquals(treeSet.size, binarySet.size)
+        for (element in list) {
+            assertEquals(element != toRemove, element in binarySet)
+        }
+        assertTrue(binarySet.checkInvariant())
     }
 
     @Test

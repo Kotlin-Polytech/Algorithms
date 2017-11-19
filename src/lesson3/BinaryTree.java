@@ -70,43 +70,72 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implemen
         Node<T> node = find((T) o);
         iterator.current = node;
         if (node == null || node.value != o) return false;
-
-        Node<T> parent = node.parent;
-        if (node.left == null && node.right == null) {  //элемент-лист
-            if (parent.left == node) {
-                parent.left = null;
-            }
-            if (parent.right == node) {
-                parent.right = null;
-            }
-        } else if (node.left == null || node.right == null) {
-            if (node.left == null) {
+        try {
+            Node<T> parent = node.parent;
+            if (node.left == null && node.right == null) {  //элемент-лист
                 if (parent.left == node) {
-                    parent.left = node.right;
+                    parent.left = null;
+                }
+                if (parent.right == node) {
+                    parent.right = null;
+                }
+            } else if ((node.left == null || node.right == null)) {
+                if (node.left == null) {
+                    if (node != root) {
+                        if (parent.left == node) {
+                            parent.left = node.right;
+                        } else {
+                            parent.right = node.right;
+                            node.right.parent = parent;
+                        }
+                    } else {
+                        root = node.right;
+                        node.right = null;
+                    }
                 } else {
-                    parent.right = node.right;
-                    node.right.parent = parent;
+                    if (node != root) {
+                        if (parent.left == node)
+                            parent.left = node.left;
+                        else {
+                            parent.right = node.left;
+                            node.left.parent = parent;
+                        }
+                    } else {
+                        root = node.left;
+                        node.left = null;
+                    }
                 }
             } else {
-                if (parent.left == node)
-                    parent.left = node.left;
-                else {
-                    parent.right = node.left;
-                    node.left.parent = parent;
+                Node<T> successor = iterator.findNext();
+                if (node != root) {
+                    node.value = successor.value;
+
+                    if (successor.parent.left == successor) {
+                        successor.parent.left = successor.right;
+                        if (successor.right != null)
+                            successor.right.parent = successor.parent;
+                    } else {
+                        successor.parent.right = successor.right;
+                        if (successor.right != null)
+                            successor.right.parent = successor.parent;
+                    }
+                } else {
+                    root.value = successor.value;
+                    root.left = node.left;
+                    root.right = node.right;
+
+                    if (successor.parent.left == successor) {
+                        successor.parent.left = successor.right;
+                        if (successor.right != null)
+                            successor.right.parent = successor.parent;
+                    } else {
+                        successor.parent.right = successor.right;
+                        if (successor.right != null)
+                            successor.right.parent = successor.parent;
+                    }
                 }
             }
-        } else {
-            Node<T> successor = iterator.findNext();
-            node.value = successor.value;
-            if (successor.parent.left == successor) {
-                successor.parent.left = successor.right;
-                if (successor.right != null)
-                    successor.right.parent = successor.parent;
-            } else {
-                successor.parent.right = successor.right;
-                if (successor.right != null)
-                    successor.right.parent = successor.parent;
-            }
+        } catch (NullPointerException ignored) {
         }
         size--;
         return true;
