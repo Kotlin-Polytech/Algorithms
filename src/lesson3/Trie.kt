@@ -1,5 +1,8 @@
 package lesson3
 
+import java.util.*
+import kotlin.NoSuchElementException
+
 class Trie : AbstractMutableSet<String>(), MutableSet<String> {
     override var size: Int = 0
         private set
@@ -59,6 +62,66 @@ class Trie : AbstractMutableSet<String>(), MutableSet<String> {
     }
 
     override fun iterator(): MutableIterator<String> {
-        TODO("not implemented")
+        return TrieIterator()
+    }
+
+    private inner class TrieIterator: MutableIterator<String>{
+        private val deque = ArrayDeque<Iterator<Map.Entry<Char, Node>>>()
+        init {
+            deque.addLast(root.children.iterator())
+        }
+        private val sb = StringBuilder()
+        private var numberOfRemaining = size
+        private var currentSize = size
+
+        private fun findNext(): String {
+            val childrenIterator = deque.last
+            return if (childrenIterator.hasNext()) {
+                val next = childrenIterator.next()
+                if (next.key != 0.toChar()) {
+                    sb.append(next.key)
+                    deque.addLast(next.value.children.iterator())
+                    findNext()
+                } else {
+                    sb.toString()
+                }
+            } else {
+                deque.pollLast()
+                sb.deleteCharAt(sb.lastIndex)
+                findNext()
+            }
+        }
+
+        /**
+         * Returns the next element in the iteration.
+         */
+        override fun next(): String {
+            if (!hasNext()){
+                throw NoSuchElementException()
+            } else if (currentSize != size){
+                throw ConcurrentModificationException()
+            } else{
+                numberOfRemaining--
+                return findNext()
+            }
+        }
+
+        /**
+         * Returns `true` if the iteration has more elements.
+         */
+        override fun hasNext(): Boolean {
+            return numberOfRemaining != 0
+        }
+
+        /**
+         * Removes from the underlying collection the last element returned by this iterator.
+         */
+        override fun remove() {
+            if (remove(sb.toString())){
+                currentSize--
+            } else {
+                throw IllegalStateException()
+            }
+        }
     }
 }
