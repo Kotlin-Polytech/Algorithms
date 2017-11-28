@@ -8,7 +8,7 @@ class Path private constructor(
 ) : Comparable<Path> {
     override fun compareTo(other: Path) = length.compareTo(other.length)
 
-    fun isCycle(graph: Graph): Boolean =
+    fun isLoop(graph: Graph): Boolean =
             vertices.size == graph.vertices.size + 1 &&
             vertices.first() == vertices.last()
 
@@ -33,7 +33,7 @@ fun findVoyagingPath(
         if (next != g.vertices.first() && next in currentPath) continue
         val nextPath = Path(currentPath, g, next)
         if (best != null && best.length <= nextPath.length) continue
-        val cyclePath = if (nextPath.isCycle(g)) {
+        val cyclePath = if (nextPath.isLoop(g)) {
             nextPath
         }
         else {
