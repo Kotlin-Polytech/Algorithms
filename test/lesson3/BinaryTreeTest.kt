@@ -88,6 +88,23 @@ class BinaryTreeTest {
     }
 
     @Test
+    fun next() {
+        val rand = Random()
+        val binarySet = BinaryTree<Int>()
+        val treeSet = TreeSet<Int>()
+        for (i in 1..20) {
+            val element = (rand.nextInt(100))
+            binarySet += element
+            treeSet += element
+        }
+        val binaryIt = binarySet.iterator()
+        val treeIt = treeSet.iterator()
+        while (binaryIt.hasNext()) {
+            assertEquals(binaryIt.next(), treeIt.next())
+        }
+    }
+
+    @Test
     fun addKotlin() {
         val tree = KtBinaryTree<Int>()
         tree.add(10)

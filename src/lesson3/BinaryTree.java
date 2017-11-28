@@ -171,36 +171,54 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implemen
 
     public class BinaryTreeIterator implements Iterator<T> {
 
-        private Node<T> current;
-
+        private Node<T> current = null;
+        private int counter = 0;
         private Node<T> next;
 
         private BinaryTreeIterator() {}
 
+        private BinaryTreeIterator(Node<T> root) {
+            this.current = min(root);
+        }
+
+        private Node<T> min(Node<T> node) {
+            if (node.left == null) {
+                return node;
+            } else return min(node.left);
+        }
+
         private Node<T> findNext() {
             Node<T> cur = root;
-            if (current != null)
-                while (cur != null) {
-                    if (cur.value.compareTo(current.value) > 0) {
-                        next = cur;
-                        cur = cur.left;
-                    } else
-                        cur = cur.right;
+            Node<T> res = null;
+            while (cur != null) {
+                if (cur.value.compareTo(current.value) > 0) {
+                    res = cur;
+                    cur = cur.left;
+                } else {
+                    cur = cur.right;
                 }
-            else return null;
-            return next;
+            }
+            current = res;
+            counter++;
+            return res;
         }
+
 
         @Override
         public boolean hasNext() {
-            return findNext() != null;
+            return next != null;
         }
 
         @Override
         public T next() {
-            current = findNext();
-            if (current == null) throw new NoSuchElementException();
-            return current.value;
+            if (counter == 0) {
+                counter++;
+                return current.value;
+            } else {
+                next = findNext();
+                if (next == null) throw new NoSuchElementException();
+                return next.value;
+            }
         }
 
         @Override
@@ -212,7 +230,7 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implemen
     @NotNull
     @Override
     public Iterator<T> iterator() {
-        return new BinaryTreeIterator();
+        return new BinaryTreeIterator(root);
     }
 
     @Override
