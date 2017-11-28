@@ -27,7 +27,7 @@ class GeneticVoyagingPathSearcherTest {
             addConnection(b, d, 10)
             addConnection(c, e, 5)
         }.build()
-        val path = GeneticVoyagingPathSearcher(graph).findVoyagingPath(chromosomeNumber = 30, generationNumber = 20)
+        val path = GeneticVoyagingPathSearcher(graph, chromosomeNumber = 30, generationNumber = 20).findVoyagingPath()
         assertEquals(105, path.length)
         assertEquals(listOf(graph["A"], graph["D"], graph["B"], graph["C"], graph["E"], graph["F"], graph["A"]),
                 path.vertices)
@@ -47,7 +47,7 @@ class GeneticVoyagingPathSearcherTest {
                 }
             }
         }.build()
-        val path = GeneticVoyagingPathSearcher(graph).findVoyagingPath(chromosomeNumber = 100, generationNumber = 200)
+        val path = GeneticVoyagingPathSearcher(graph, chromosomeNumber = 100, generationNumber = 200).findVoyagingPath()
         println(path.length)
         println(path)
     }
