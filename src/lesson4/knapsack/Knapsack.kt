@@ -35,12 +35,14 @@ private fun fillKnapsackGreedySorted(load: Int, items: List<Item>): Fill {
     if (load <= 0 || items.isEmpty()) return Fill(0, emptySet())
     val itemsWithoutLast = items.subList(0, items.size - 1)
     val last = items.last()
-    if (last.weight > load) return fillKnapsackGreedySorted(load, itemsWithoutLast)
-    else return fillKnapsackGreedySorted(load - last.weight, itemsWithoutLast) + Fill(last)
+    return when {
+        last.weight > load -> fillKnapsackGreedySorted(load, itemsWithoutLast)
+        else -> fillKnapsackGreedySorted(load - last.weight, itemsWithoutLast) + Fill(last)
+    }
 }
 
 fun fillKnapsackGreedy(load: Int, items: List<Item>): Fill {
-    val sorted = items.sortedWith(Comparator<Item> {
+    val sorted = items.sortedWith(Comparator {
         o1, o2 -> (o1.cost.toDouble() / o1.weight).compareTo(o2.cost.toDouble() / o2.weight)
     })
     return fillKnapsackGreedySorted(load, sorted)
