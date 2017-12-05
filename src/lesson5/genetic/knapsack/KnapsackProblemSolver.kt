@@ -33,14 +33,14 @@ class KnapsackProblemSolver(private val knapsack: List<Item>,
                             private val populations: Int,
                             private val seed: Long) {
 
-    constructor(knapsack: List<Item>, maxWeight: Int, seed: Long) :
-            this(knapsack, maxWeight, DEFAULT_POPULATION_SIZE, seed)
+    constructor(knapsack: List<Item>, load: Int, seed: Long) :
+            this(knapsack, load, DEFAULT_POPULATION_SIZE, seed)
 
-    constructor(knapsack: List<Item>, maxWeight: Int, populations: Int) :
-            this(knapsack, maxWeight, populations, Random().nextLong())
+    constructor(knapsack: List<Item>, load: Int, populations: Int) :
+            this(knapsack, load, populations, Random().nextLong())
 
-    constructor(knapsack: List<Item>, maxWeight: Int) :
-            this(knapsack, maxWeight, DEFAULT_POPULATION_SIZE, Random().nextLong())
+    constructor(knapsack: List<Item>, load: Int) :
+            this(knapsack, load, DEFAULT_POPULATION_SIZE, Random().nextLong())
 
     private var population: List<ChromosomeBool>
     private val chromosomeSize = knapsack.size
