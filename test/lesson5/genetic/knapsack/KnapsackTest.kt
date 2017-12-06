@@ -1,5 +1,6 @@
 package lesson5.genetic.knapsack
 
+import lesson4.knapsack.fillKnapsackGreedy
 import org.junit.Assert.*
 import org.junit.Test
 import java.util.*
@@ -99,21 +100,31 @@ class KnapsackTest {
     }
 
     /**
-    Создаем 200 вещей, ценность и масса которых не превышает 300 единиц
-    Для определенности используем seed = 10
-    Лучшее решение : Solution: 2039 points, 100 weight
-    При generations <~ 80 решения не находятся (вещи не помещаются в ранец)
-    из-за большого кол-ва вещей
+    Сравнение с "жадным" алгоритмом
+    При тестировании генетический алгоритм
+    давал лучший результат в большем кол-ве случаев.
      **/
     @Test
     fun test5() {
-        val load = 100
-        val list = generateRandomItems(Random(10), 300, 300, 200)
-        val knapsackProblemSolver = KnapsackProblemSolver(list, load, populations = 2000)
-        val solution = knapsackProblemSolver.findSolution(2000)
-        printSolution(solution)
+        println("\t\tGenetic \tGreedy")
+        var geneticWins = 0
+        var greedyWins = 0
+        for (i in 0..9) {
+            val load = 100
+            val list = generateRandomItems(Random(), 300, 300, 200)
+            val knapsackProblemSolver = KnapsackProblemSolver(list, load, populations = 600)
+            val solution1 = knapsackProblemSolver.findSolution(7000)
+            val geneticPoints = solution1.sumBy { it.cost }
+            print("\t\t$geneticPoints")
+            val newList = mutableListOf<lesson4.knapsack.Item>()
+            list.forEach { newList += lesson4.knapsack.Item(it.cost, it.weight) }
+            val greedyPoints = fillKnapsackGreedy(load, newList).cost
+            if (geneticPoints > greedyPoints) geneticWins++
+            else if (greedyPoints > geneticPoints) greedyWins++
+            println("\t\t$greedyPoints")
+        }
+        println("Wins:\t$geneticWins\t\t\t$greedyWins")
     }
-
 
     private fun generateRandomItems(random: Random, maxCost: Int, maxWeight: Int, size: Int): List<Item> {
         val list = mutableListOf<Item>()
