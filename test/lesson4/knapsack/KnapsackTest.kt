@@ -55,4 +55,26 @@ class KnapsackTest {
         ), fillKnapsackGreedy(13, items2))
     }
 
+    private val items3 = listOf(
+            Item(cost = 2, weight = 1),
+            Item(cost = 5, weight = 3),
+            Item(cost = 10, weight = 5),
+            Item(cost = 15, weight = 7)
+    )
+
+    @Test
+    fun fillKnapsackDynamic3() {
+        assertEquals(Fill(20,
+                Item(cost = 5, weight = 3),
+                Item(cost = 15, weight = 7)
+        ), fillKnapsackDynamic(10, items3))
+    }
+
+    @Test
+    fun fillKnapsackGreedy3() {
+        assertEquals(Fill(17,
+                Item(cost = 2, weight = 1),
+                Item(cost = 15, weight = 7)
+        ), fillKnapsackGreedy(10, items3))
+    }
 }
