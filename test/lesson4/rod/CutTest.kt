@@ -21,4 +21,9 @@ class CutTest {
         assertEquals(Cut(cost = 15, length = listOf(1, 4, 4)), cutRod(9) { cost2[it] ?: 0 })
         assertEquals(Cut(cost = 4, length = listOf(3)), cutRod(3) { cost2[it] ?: 0 })
     }
+
+    @Test
+    fun cutRod3() {
+        assertEquals(Cut(cost = 17, length = listOf(1, 4)), cutRod(5) { listOf(0, 3, 5, 10, 14, 16)[it] })
+    }
 }
