@@ -11,8 +11,11 @@ class ChromosomeBool(val genes: BooleanArray) {
 
     fun crossover(another: ChromosomeBool): ChromosomeBool {
         assert(another.size == size)
-        val del = size / 2
-        return ChromosomeBool((this.genes.sliceArray(0 until del) + another.genes.sliceArray(del until size)))
+        val genes = mutableListOf<Boolean>()
+        for (i in 0 until size) {
+            genes += if ((i % 2) == 0) this.genes[i] else another.genes[i]
+        }
+        return ChromosomeBool(genes.toBooleanArray())
     }
 
     fun crossoverPair(another: ChromosomeBool) = Pair(this.crossover(another), another.crossover(this))
@@ -92,7 +95,17 @@ class KnapsackProblemSolver(private val knapsack: List<Item>,
         return offSprings.toList()
     }
 
-    private fun mutation() = population.forEach { if (random.nextDouble() <= MUTATION_PROBABILITY) it.mutate(random) }
+    private fun mutation() {
+        population = population.sortedBy { -it.evolution() }
+        val from = population.size / 2
+        val bound = 1 + (chromosomeSize * 0.1).toInt()
+        population.forEachIndexed { index, it ->
+            if (index > from) {
+                for (i in 0..random.nextInt(bound))
+                    if (random.nextDouble() <= MUTATION_PROBABILITY) it.mutate(random)
+            }
+        }
+    }
 
     fun findSolution(generations: Int): List<Item> {
         for (i in 0..generations) {
