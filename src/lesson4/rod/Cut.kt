@@ -8,7 +8,7 @@ data class Cut(val cost: Int, val length: List<Int>) {
 
 fun cutRod(n: Int, storage: MutableMap<Int, Cut> = hashMapOf(), cost: (Int) -> Int): Cut = storage.getOrPut(n) {
     var best = Cut(cost(n), n)
-    for (first in 1..n-1) {
+    for (first in 1 until n) {
         val current = Cut(cost(first), first) + cutRod(n - first, storage, cost)
         if (current.cost > best.cost) {
             best = current
