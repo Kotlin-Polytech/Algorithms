@@ -3,9 +3,10 @@ package lesson4.knapsack
 import org.junit.Test
 
 import org.junit.Assert.*
+import java.util.*
 
 class KnapsackTest {
-    private val items = listOf(
+    private var items = listOf(
             Item(cost = 8, weight = 10),
             Item(cost = 5, weight = 12),
             Item(cost = 6, weight = 8),
@@ -76,5 +77,25 @@ class KnapsackTest {
                 Item(cost = 2, weight = 1),
                 Item(cost = 15, weight = 7)
         ), fillKnapsackGreedy(10, items3))
+    }
+
+    @Test
+    fun fillKnapsackGreedyBigTest() {
+        for (i in 0..9) {
+            val items = mutableListOf<Item>()
+            val random = Random()
+            for (j in 0 until 10000) {
+                items += Item(1 + random.nextInt(10000), 300 + random.nextInt(600))
+            }
+            try {
+                val fillGreedy = fillKnapsackGreedy(1000, items)
+                System.out.println("Жадный набрал = " + fillGreedy.cost)
+                val weight = fillGreedy.items.sumBy { it.weight }
+                println("Вес: $weight")
+            } catch (e: StackOverflowError) {
+                println("Жадный выбыл")
+                throw AssertionError(e)
+            }
+        }
     }
 }

@@ -31,14 +31,12 @@ fun fillKnapsackDynamic(load: Int, items: List<Item>,
     }
 }
 
-private fun fillKnapsackGreedySorted(load: Int, items: List<Item>): Fill {
-    if (load <= 0 || items.isEmpty()) return Fill(0, emptySet())
+private tailrec fun fillKnapsackGreedySorted(load: Int, items: List<Item>, baseFill: Fill = Fill(0)): Fill {
+    if (load <= 0 || items.isEmpty()) return baseFill
     val itemsWithoutLast = items.subList(0, items.size - 1)
     val last = items.last()
-    return when {
-        last.weight > load -> fillKnapsackGreedySorted(load, itemsWithoutLast)
-        else -> fillKnapsackGreedySorted(load - last.weight, itemsWithoutLast) + Fill(last)
-    }
+    return fillKnapsackGreedySorted(if (last.weight > load) load else load - last.weight, itemsWithoutLast,
+            if (last.weight > load) baseFill else baseFill + Fill(last))
 }
 
 fun fillKnapsackGreedy(load: Int, items: List<Item>): Fill {
