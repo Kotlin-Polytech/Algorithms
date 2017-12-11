@@ -38,7 +38,7 @@ class GeneticVoyagingPathSearcher(
             }
             val evaluatedChromosomes = (chromosomes + crossBreedsAfterMutation)
                     .sortedBy { it.evaluation() }
-            chromosomes = evaluatedChromosomes.subList(0, size)
+            chromosomes = evaluatedChromosomes.subList(0, chromosomeNumber)
         }
         val visitingOrder = chromosomes.first().visitingOrder
         return visitingOrder.buildPath()
