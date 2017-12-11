@@ -52,4 +52,22 @@ class GeneticVoyagingPathSearcherTest {
         println(path)
     }
 
+    @Test
+    fun findRandomVoyagingPathWithSmallChromosomeNumber() {
+        val random = Random()
+        val graph = GraphBuilder().apply {
+            val vertices = mutableListOf<Graph.Vertex>()
+            for (i in 0..99) {
+                vertices += addVertex(i.toString())
+            }
+            for (i in 0..99) {
+                for (j in i + 1..99) {
+                    addConnection(vertices[i], vertices[j], 1 + random.nextInt(100))
+                }
+            }
+        }.build()
+        val path = GeneticVoyagingPathSearcher(graph, chromosomeNumber = 30, generationNumber = 200).findVoyagingPath()
+        println(path.length)
+        println(path)
+    }
 }
