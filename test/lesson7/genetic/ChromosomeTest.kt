@@ -1,4 +1,4 @@
-package lesson5.genetic
+package lesson7.genetic
 
 import org.junit.Test
 

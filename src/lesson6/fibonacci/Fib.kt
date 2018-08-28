@@ -1,4 +1,4 @@
-package lesson4.fibonacci
+package lesson6.fibonacci
 
 private val storage = hashMapOf(0 to 0L, 1 to 1L)
 

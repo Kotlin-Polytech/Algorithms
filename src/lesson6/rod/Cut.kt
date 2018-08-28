@@ -1,4 +1,4 @@
-package lesson4.rod
+package lesson6.rod
 
 data class Cut(val cost: Int, val length: List<Int>) {
     operator fun plus(cut: Cut) = Cut(cost + cut.cost, length + cut.length)

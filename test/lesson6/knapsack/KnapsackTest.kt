@@ -1,4 +1,4 @@
-package lesson4.knapsack
+package lesson6.knapsack
 
 import org.junit.Test
 

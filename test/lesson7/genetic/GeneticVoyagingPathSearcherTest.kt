@@ -1,4 +1,4 @@
-package lesson5.genetic
+package lesson7.genetic
 
 import lesson2.Graph
 import lesson2.impl.GraphBuilder

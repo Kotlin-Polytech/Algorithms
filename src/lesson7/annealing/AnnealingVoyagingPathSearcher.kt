@@ -1,8 +1,8 @@
-package lesson5.annealing
+package lesson7.annealing
 
 import lesson2.Graph
 import lesson2.Path
-import lesson5.AbstractVoyagingPathSearcher
+import lesson7.AbstractVoyagingPathSearcher
 import java.util.*
 
 class AnnealingVoyagingPathSearcher(

@@ -1,4 +1,4 @@
-package lesson4.fibonacci
+package lesson6.fibonacci
 
 import org.junit.Test
 

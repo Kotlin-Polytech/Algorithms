@@ -1,4 +1,4 @@
-package lesson5
+package lesson7
 
 import lesson2.Graph
 import lesson2.Path

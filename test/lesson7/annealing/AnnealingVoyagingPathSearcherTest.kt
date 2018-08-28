@@ -1,8 +1,8 @@
-package lesson5.annealing
+package lesson7.annealing
 
 import lesson2.Graph
 import lesson2.impl.GraphBuilder
-import lesson5.genetic.GeneticVoyagingPathSearcher
+import lesson7.genetic.GeneticVoyagingPathSearcher
 import org.junit.Test
 
 import org.junit.Assert.*

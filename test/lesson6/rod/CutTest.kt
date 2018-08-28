@@ -1,4 +1,4 @@
-package lesson4.rod
+package lesson6.rod
 
 import org.junit.Test
 
