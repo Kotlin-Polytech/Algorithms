@@ -6,9 +6,13 @@ buildscript {
         maven {
             url 'http://dl.bintray.com/vorpal-research/kotlin-maven'
         }
+        maven {
+            url 'https://dl.bintray.com/kotlin/kotlin-dev'
+        }
     }
     dependencies {
         classpath 'org.jetbrains.research:kfirst-runner-gradle-plugin:0.1.17.1'
+        classpath "org.jetbrains.intellij.plugins:inspection-plugin:0.2.0"
     }
 }
 
@@ -17,6 +21,8 @@ plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.2.61'
 }
 
+apply plugin: 'org.jetbrains.intellij.inspections'
+
 group 'ru.spbstu'
 version '0.0.1-SNAPSHOT'
 
@@ -24,6 +30,12 @@ sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
+}
+
+inspections {
+    idea.version "ideaIC:2018.1"
+    plugins.kotlin.version "1.2.60"
+    inheritFromIdea = true
 }
 
 dependencies {
