@@ -1,7 +1,7 @@
 package lesson7
 
-import lesson2.Graph
-import lesson2.Path
+import lesson5.Graph
+import lesson5.Path
 import java.util.*
 
 abstract class AbstractVoyagingPathSearcher(val g: Graph) {

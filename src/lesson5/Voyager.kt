@@ -1,6 +1,6 @@
-package lesson2
+package lesson5
 
-import lesson2.Graph.Vertex
+import lesson5.Graph.Vertex
 
 class Path private constructor(
         val vertices: List<Vertex>,

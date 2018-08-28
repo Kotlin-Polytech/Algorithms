@@ -1,8 +1,8 @@
-package lesson2.fourinrow.swing;
+package lesson5.fourinrow.swing;
 
-import lesson2.fourinrow.core.Board;
-import lesson2.fourinrow.core.Cell;
-import lesson2.fourinrow.core.Chip;
+import lesson5.fourinrow.core.Board;
+import lesson5.fourinrow.core.Cell;
+import lesson5.fourinrow.core.Chip;
 
 import javax.swing.*;
 import java.awt.*;

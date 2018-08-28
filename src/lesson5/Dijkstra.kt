@@ -1,6 +1,6 @@
-package lesson2
+package lesson5
 
-import lesson2.Graph.Vertex
+import lesson5.Graph.Vertex
 import java.util.*
 
 class VertexInfo(

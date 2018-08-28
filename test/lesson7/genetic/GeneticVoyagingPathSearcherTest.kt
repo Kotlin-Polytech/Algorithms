@@ -1,7 +1,7 @@
 package lesson7.genetic
 
-import lesson2.Graph
-import lesson2.impl.GraphBuilder
+import lesson5.Graph
+import lesson5.impl.GraphBuilder
 import org.junit.Test
 
 import org.junit.Assert.*

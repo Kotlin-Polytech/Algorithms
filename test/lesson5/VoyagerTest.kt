@@ -1,6 +1,6 @@
-package lesson2
+package lesson5
 
-import lesson2.impl.GraphBuilder
+import lesson5.impl.GraphBuilder
 import org.junit.Test
 
 import org.junit.Assert.*

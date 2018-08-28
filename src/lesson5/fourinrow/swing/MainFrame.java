@@ -1,4 +1,4 @@
-package lesson2.fourinrow.swing;
+package lesson5.fourinrow.swing;
 
 import javax.swing.*;
 import java.awt.*;

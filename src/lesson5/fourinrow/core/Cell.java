@@ -1,4 +1,4 @@
-package lesson2.fourinrow.core;
+package lesson5.fourinrow.core;
 
 public final class Cell {
     private final int x;

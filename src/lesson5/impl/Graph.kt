@@ -1,8 +1,8 @@
-package lesson2.impl
+package lesson5.impl
 
-import lesson2.Graph.Edge
-import lesson2.Graph
-import lesson2.Graph.Vertex
+import lesson5.Graph.Edge
+import lesson5.Graph
+import lesson5.Graph.Vertex
 
 class GraphBuilder {
 
