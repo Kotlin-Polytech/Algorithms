@@ -59,8 +59,10 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implemen
         return right == null || right.value.compareTo(node.value) > 0 && checkInvariant(right);
     }
 
+    /** Средняя */
     @Override
     public boolean remove(Object o) {
+        // TODO
         throw new UnsupportedOperationException();
     }
 
@@ -98,7 +100,9 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implemen
 
         private BinaryTreeIterator() {}
 
+        /** Средняя */
         private Node<T> findNext() {
+            // TODO
             throw new UnsupportedOperationException();
         }
 
@@ -114,8 +118,10 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implemen
             return current.value;
         }
 
+        /** Сложная */
         @Override
         public void remove() {
+            // TODO
             throw new UnsupportedOperationException();
         }
     }
@@ -138,21 +144,27 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implemen
         return null;
     }
 
+    /** Сложная */
     @NotNull
     @Override
     public SortedSet<T> subSet(T fromElement, T toElement) {
+        // TODO
         throw new UnsupportedOperationException();
     }
 
+    /** Сложная */
     @NotNull
     @Override
     public SortedSet<T> headSet(T toElement) {
+        // TODO
         throw new UnsupportedOperationException();
     }
 
+    /** Сложная */
     @NotNull
     @Override
     public SortedSet<T> tailSet(T fromElement) {
+        // TODO
         throw new UnsupportedOperationException();
     }
 

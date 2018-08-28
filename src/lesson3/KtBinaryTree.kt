@@ -50,8 +50,9 @@ class KtBinaryTree<T : Comparable<T>> : AbstractMutableSet<T>(), SortedSet<T> {
         return right == null || right.value > node.value && checkInvariant(right)
     }
 
+    /** Средняя */
     override fun remove(element: T): Boolean {
-        throw UnsupportedOperationException()
+        TODO()
     }
 
     override operator fun contains(element: T): Boolean {
@@ -75,8 +76,9 @@ class KtBinaryTree<T : Comparable<T>> : AbstractMutableSet<T>(), SortedSet<T> {
 
         private var current: Node<T>? = null
 
+        /** Средняя */
         private fun findNext(): Node<T>? {
-            throw UnsupportedOperationException()
+            TODO()
         }
 
         override fun hasNext(): Boolean = findNext() != null
@@ -86,8 +88,9 @@ class KtBinaryTree<T : Comparable<T>> : AbstractMutableSet<T>(), SortedSet<T> {
             return (current ?: throw NoSuchElementException()).value
         }
 
+        /** Сложная */
         override fun remove() {
-            throw UnsupportedOperationException()
+            TODO()
         }
     }
 
@@ -95,16 +98,19 @@ class KtBinaryTree<T : Comparable<T>> : AbstractMutableSet<T>(), SortedSet<T> {
 
     override fun comparator(): Comparator<in T>? = null
 
+    /** Сложная */
     override fun subSet(fromElement: T, toElement: T): SortedSet<T> {
-        throw UnsupportedOperationException()
+        TODO()
     }
 
+    /** Сложная */
     override fun headSet(toElement: T): SortedSet<T> {
-        throw UnsupportedOperationException()
+        TODO()
     }
 
+    /** Сложная */
     override fun tailSet(fromElement: T): SortedSet<T> {
-        throw UnsupportedOperationException()
+        TODO()
     }
 
     override fun first(): T {

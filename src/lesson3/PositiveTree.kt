@@ -6,24 +6,29 @@ import java.util.SortedSet
 class PositiveSortedSet(private val delegate: SortedSet<Int>) : AbstractMutableSet<Int>(), SortedSet<Int> {
     override fun comparator(): Comparator<in Int>? = delegate.comparator()
 
+    /** Простая */
     override fun subSet(fromElement: Int?, toElement: Int?): SortedSet<Int> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        TODO()
     }
 
+    /** Простая */
     override fun headSet(toElement: Int?): SortedSet<Int> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        TODO()
     }
 
+    /** Простая */
     override fun tailSet(fromElement: Int?): SortedSet<Int> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        TODO()
     }
 
+    /** Простая */
     override fun last(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        TODO()
     }
 
+    /** Простая */
     override fun first(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        TODO()
     }
 
     override fun add(element: Int): Boolean {
