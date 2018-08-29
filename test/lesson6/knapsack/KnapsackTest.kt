@@ -1,8 +1,6 @@
 package lesson6.knapsack
 
-import org.junit.Test
-
-import org.junit.Assert.*
+import kotlin.test.*
 import java.util.*
 
 class KnapsackTest {

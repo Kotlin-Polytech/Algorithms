@@ -1,8 +1,6 @@
 package lesson6.fibonacci
 
-import org.junit.Test
-
-import org.junit.Assert.*
+import kotlin.test.*
 
 class FibTest {
     @Test

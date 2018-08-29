@@ -1,9 +1,7 @@
 package lesson5
 
 import lesson5.impl.GraphBuilder
-import org.junit.Test
-
-import org.junit.Assert.*
+import kotlin.test.*
 
 class DijkstraTest {
 

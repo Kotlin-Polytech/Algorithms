@@ -1,8 +1,6 @@
 package lesson3
 
-import org.junit.Test
-
-import org.junit.Assert.*
+import kotlin.test.*
 
 class TrieTest {
 

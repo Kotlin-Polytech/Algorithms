@@ -3,9 +3,7 @@ package lesson7.annealing
 import lesson5.Graph
 import lesson5.impl.GraphBuilder
 import lesson7.genetic.GeneticVoyagingPathSearcher
-import org.junit.Test
-
-import org.junit.Assert.*
+import kotlin.test.*
 import java.util.*
 
 class AnnealingVoyagingPathSearcherTest {

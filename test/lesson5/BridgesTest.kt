@@ -1,8 +1,7 @@
 package lesson5
 
 import lesson5.impl.GraphBuilder
-import org.junit.Assert.*
-import org.junit.Test
+import kotlin.test.*
 
 class BridgesTest {
     @Test

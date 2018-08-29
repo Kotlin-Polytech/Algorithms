@@ -1,7 +1,6 @@
 package lesson3
 
-import org.junit.Assert.*
-import org.junit.Test
+import kotlin.test.*
 import java.util.TreeSet
 
 class PositiveSortedSetTest {

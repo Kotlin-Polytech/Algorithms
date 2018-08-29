@@ -2,9 +2,7 @@ package lesson7.genetic
 
 import lesson5.Graph
 import lesson5.impl.GraphBuilder
-import org.junit.Test
-
-import org.junit.Assert.*
+import kotlin.test.*
 import java.util.*
 
 class GeneticVoyagingPathSearcherTest {
