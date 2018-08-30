@@ -50,6 +50,22 @@ class TaskTests {
         }
     }
 
+    @Test
+    fun sortAddresses() {
+        try {
+            sortAddresses("input/addr_in1.txt", "temp.txt")
+            assertFileContent("temp.txt",
+                    """
+                    Железнодорожная 3 - Петров Иван
+                    Железнодорожная 7 - Иванов Алексей, Иванов Михаил
+                    Садовая 5 - Сидоров Петр, Сидорова Мария
+                """.trimIndent()
+            )
+        } finally {
+            File("temp.txt").delete()
+        }
+    }
+
     private fun generateTemperatures(size: Int) {
         val random = Random()
         val temperatures = mutableListOf<Int>()
