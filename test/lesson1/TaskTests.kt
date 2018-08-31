@@ -5,15 +5,8 @@ import java.io.File
 import java.util.*
 import kotlin.math.abs
 import kotlin.test.Test
-import kotlin.test.assertEquals
 
-class TaskTests {
-
-    private fun assertFileContent(name: String, expectedContent: String) {
-        val file = File(name)
-        val content = file.readLines().joinToString("\n")
-        assertEquals(expectedContent.trim(), content.trim())
-    }
+class TaskTests : AbstractFileTests() {
 
     @Test
     fun sortTimes() {
