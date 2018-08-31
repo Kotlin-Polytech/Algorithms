@@ -3,7 +3,6 @@ package lesson2
 import java.io.BufferedWriter
 import java.io.File
 import java.util.*
-import kotlin.math.abs
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
