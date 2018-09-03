@@ -144,7 +144,7 @@ fun sortSequence(inputName: String, outputName: String) {
  *
  * Результат: second = [1 3 4 9 9 13 15 20 23 28]
  */
-fun <T : Comparable<T>> mergeArrays(first: List<T>, second: Array<T?>) {
+fun <T : Comparable<T>> mergeArrays(first: Array<T>, second: Array<T?>) {
     TODO()
 }
 

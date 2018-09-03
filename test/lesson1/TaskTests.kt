@@ -1,5 +1,6 @@
 package lesson1
 
+import org.junit.Assert.assertArrayEquals
 import java.io.BufferedWriter
 import java.io.File
 import java.util.*
@@ -136,5 +137,12 @@ class TaskTests : AbstractFileTests() {
         } finally {
             File("temp.txt").delete()
         }
+    }
+
+    @Test
+    fun mergeArrays() {
+        val result = arrayOf(null, null, null, null, null, 1, 3, 9, 13, 18, 23)
+        mergeArrays(arrayOf(4, 9, 15, 20, 23), result)
+        assertArrayEquals(arrayOf(1, 3, 4, 9, 9, 13, 15, 18, 20, 23, 23), result)
     }
 }
