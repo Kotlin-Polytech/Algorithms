@@ -118,4 +118,23 @@ class TaskTests : AbstractFileTests() {
         testGeneratedTemperatures(10)
         testGeneratedTemperatures(5000)
     }
+
+    @Test
+    fun sortSequence() {
+        try {
+            sortSequence("input/seq_in1.txt", "temp.txt")
+            assertFileContent("temp.txt",
+                    """
+                        1
+                        3
+                        3
+                        1
+                        2
+                        2
+                        2
+                    """.trimIndent())
+        } finally {
+            File("temp.txt").delete()
+        }
+    }
 }
