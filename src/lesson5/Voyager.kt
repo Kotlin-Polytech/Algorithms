@@ -10,15 +10,15 @@ class Path private constructor(
 
     fun isLoop(graph: Graph): Boolean =
             vertices.size == graph.vertices.size + 1 &&
-            vertices.first() == vertices.last()
+                    vertices.first() == vertices.last()
 
     operator fun contains(v: Vertex) = v in vertices
 
-    constructor(first: Vertex): this(listOf(first), 0)
+    constructor(first: Vertex) : this(listOf(first), 0)
 
-    constructor(previous: Path, g: Graph, next: Vertex):
+    constructor(previous: Path, g: Graph, next: Vertex) :
             this(previous.vertices + next,
-                 previous.length + g.getConnection(previous.vertices.last(), next)!!.weight)
+                    previous.length + g.getConnection(previous.vertices.last(), next)!!.weight)
 
     override fun toString() = "<$vertices of length $length>"
 }
@@ -35,8 +35,7 @@ fun findVoyagingPath(
         if (best != null && best.length <= nextPath.length) continue
         val cyclePath = if (nextPath.isLoop(g)) {
             nextPath
-        }
-        else {
+        } else {
             findVoyagingPath(g, nextPath, best) ?: continue
         }
         if (best == null || best.length > cyclePath.length) {

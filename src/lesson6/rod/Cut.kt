@@ -3,7 +3,7 @@ package lesson6.rod
 data class Cut(val cost: Int, val length: List<Int>) {
     operator fun plus(cut: Cut) = Cut(cost + cut.cost, length + cut.length)
 
-    constructor(cost: Int, vararg length: Int): this(cost, length.asList())
+    constructor(cost: Int, vararg length: Int) : this(cost, length.asList())
 }
 
 fun cutRod(n: Int, storage: MutableMap<Int, Cut> = hashMapOf(), cost: (Int) -> Int): Cut = storage.getOrPut(n) {

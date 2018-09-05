@@ -1,4 +1,5 @@
 @file:Suppress("UNUSED_PARAMETER")
+
 package lesson2
 
 // TODO: здесь будут задачи на построение алгоритмов

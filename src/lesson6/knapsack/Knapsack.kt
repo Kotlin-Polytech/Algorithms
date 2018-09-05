@@ -5,9 +5,9 @@ import java.util.*
 data class Fill(val cost: Int, val items: Set<Item>) {
     operator fun plus(fill: Fill) = Fill(cost + fill.cost, items + fill.items)
 
-    constructor(cost: Int, vararg items: Item): this(cost, items.toSet())
+    constructor(cost: Int, vararg items: Item) : this(cost, items.toSet())
 
-    constructor(item: Item): this(item.cost, item)
+    constructor(item: Item) : this(item.cost, item)
 }
 
 data class LoadCount(val load: Int, val count: Int)
@@ -40,8 +40,8 @@ private tailrec fun fillKnapsackGreedySorted(load: Int, items: List<Item>, baseF
 }
 
 fun fillKnapsackGreedy(load: Int, items: List<Item>): Fill {
-    val sorted = items.sortedWith(Comparator {
-        o1, o2 -> (o1.cost.toDouble() / o1.weight).compareTo(o2.cost.toDouble() / o2.weight)
+    val sorted = items.sortedWith(Comparator { o1, o2 ->
+        (o1.cost.toDouble() / o1.weight).compareTo(o2.cost.toDouble() / o2.weight)
     })
     return fillKnapsackGreedySorted(load, sorted)
 }

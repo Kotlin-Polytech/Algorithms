@@ -3,7 +3,7 @@ package lesson7.genetic
 import java.util.*
 
 internal class Chromosome(val visitingOrder: List<Int>) {
-    constructor(size: Int, random: Random):
+    constructor(size: Int, random: Random) :
             this((0 until size).toMutableList().apply { Collections.shuffle(this, random) })
 
     fun mutate(random: Random): Chromosome =
@@ -36,7 +36,7 @@ internal class Chromosome(val visitingOrder: List<Int>) {
                             do {
                                 randomNumber = random.nextInt(visitingOrder.size)
                             } while (randomNumber in result ||
-                                     visitingOrder.indexOf(randomNumber) == other.visitingOrder.indexOf(randomNumber))
+                                    visitingOrder.indexOf(randomNumber) == other.visitingOrder.indexOf(randomNumber))
                             randomNumber
                         }
                     }

@@ -44,8 +44,7 @@ class AnnealingVoyagingPathSearcher(
 
             if (newEvaluation < evaluation) {
                 state = newState
-            }
-            else if (random.nextDouble() <
+            } else if (random.nextDouble() <
                     transitionProbability(newEvaluation - evaluation,
                             startTemperature.toDouble() / i)) {
                 state = newState

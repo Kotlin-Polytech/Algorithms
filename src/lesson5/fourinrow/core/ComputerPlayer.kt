@@ -21,7 +21,7 @@ class ComputerPlayer(private val board: Board) {
     private fun evaluation(side: Chip = Chip.YELLOW): Int {
         if (side == Chip.RED) return -evaluation(Chip.YELLOW)
         var result = random.nextInt(5) - 2
-        with (board) {
+        with(board) {
             for (x in 0 until width) {
                 for (y in 0 until height) {
                     val start = Cell(x, y)
@@ -59,14 +59,15 @@ class ComputerPlayer(private val board: Board) {
         when (board.winner()) {
             board.turn -> return EvaluatedTurn(null, 10000 + depth)
             board.turn.opposite() -> return EvaluatedTurn(null, -10000 - depth)
-            else -> {}
+            else -> {
+            }
         }
         if (!board.hasFreeCells()) return EvaluatedTurn(null, 0)
         if (depth <= 0) return EvaluatedTurn(null, evaluation(board.turn))
         var result = EvaluatedTurn(null, -1000000)
         for (turn in 0 until board.width) {
             if (board.makeTurn(turn) == null) continue
-            val evaluation = -bestTurnMinMax( depth - 1).evaluation
+            val evaluation = -bestTurnMinMax(depth - 1).evaluation
             board.takeTurnBack(turn)
             if (evaluation > result.evaluation) {
                 result = EvaluatedTurn(turn, evaluation)
@@ -80,7 +81,8 @@ class ComputerPlayer(private val board: Board) {
         when (board.winner()) {
             board.turn -> return EvaluatedTurn(null, 10000 + depth)
             board.turn.opposite() -> return EvaluatedTurn(null, -10000 - depth)
-            else -> {}
+            else -> {
+            }
         }
         if (!board.hasFreeCells()) return EvaluatedTurn(null, 0)
         if (depth <= 0) return EvaluatedTurn(null, evaluation(board.turn))

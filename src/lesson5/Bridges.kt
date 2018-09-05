@@ -9,7 +9,7 @@ private class BridgeTraverser(val graph: Graph) {
     var traverseIndex = 0
 
     class Info(var inIndex: Int, var bridgeIndex: Int) {
-        constructor(index: Int): this(index, index)
+        constructor(index: Int) : this(index, index)
     }
 
     val verticesInfo = mutableMapOf<Graph.Vertex, Info>()
@@ -34,8 +34,7 @@ private class BridgeTraverser(val graph: Graph) {
             if (next in visitedVertices) {
                 val nextInfo = verticesInfo[next]!!
                 currentInfo.bridgeIndex = minOf(currentInfo.bridgeIndex, nextInfo.inIndex)
-            }
-            else {
+            } else {
                 traverse(next, current)
                 val nextInfo = verticesInfo[next]!!
                 currentInfo.bridgeIndex = minOf(currentInfo.bridgeIndex, nextInfo.bridgeIndex)

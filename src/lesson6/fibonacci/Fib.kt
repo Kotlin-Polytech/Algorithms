@@ -2,9 +2,9 @@ package lesson6.fibonacci
 
 private val storage = hashMapOf(0 to 0L, 1 to 1L)
 
-fun fib(n: Int): Long = storage.getOrPut(n) { fib(n-1) + fib(n-2) }
+fun fib(n: Int): Long = storage.getOrPut(n) { fib(n - 1) + fib(n - 2) }
 
-fun fib2(n: Int): Long = if (n < 2) n.toLong() else fib2(n-1) + fib2(n-2)
+fun fib2(n: Int): Long = if (n < 2) n.toLong() else fib2(n - 1) + fib2(n - 2)
 
 fun main(args: Array<String>) {
     println(fib(4))

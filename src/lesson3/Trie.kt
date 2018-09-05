@@ -35,8 +35,7 @@ class Trie : AbstractMutableSet<String>(), MutableSet<String> {
             val child = current.children[char]
             if (child != null) {
                 current = child
-            }
-            else {
+            } else {
                 modified = true
                 val newChild = Node()
                 current.children[char] = newChild

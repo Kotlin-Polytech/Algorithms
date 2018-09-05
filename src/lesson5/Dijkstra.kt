@@ -18,7 +18,7 @@ fun Graph.shortestPath(from: Vertex): Map<Vertex, VertexInfo> {
     for (vertex in this.vertices) {
         info[vertex] = VertexInfo(vertex, Int.MAX_VALUE, null)
     }
-    val fromInfo = VertexInfo(from,0, null)
+    val fromInfo = VertexInfo(from, 0, null)
     val queue = PriorityQueue<VertexInfo>()
     queue.add(fromInfo)
     info[from] = fromInfo
