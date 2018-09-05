@@ -46,6 +46,7 @@ class TaskTests : AbstractFileTests() {
 
     @Test
     fun sortAddresses() {
+        // TODO: large test
         try {
             sortAddresses("input/addr_in1.txt", "temp.txt")
             assertFileContent("temp.txt",
@@ -122,6 +123,7 @@ class TaskTests : AbstractFileTests() {
 
     @Test
     fun sortSequence() {
+        // TODO: large test
         try {
             sortSequence("input/seq_in1.txt", "temp.txt")
             assertFileContent("temp.txt",
