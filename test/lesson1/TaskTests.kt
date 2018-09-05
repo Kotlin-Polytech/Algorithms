@@ -137,6 +137,23 @@ class TaskTests : AbstractFileTests() {
         } finally {
             File("temp.txt").delete()
         }
+        try {
+            sortSequence("input/seq_in2.txt", "temp.txt")
+            assertFileContent("temp.txt",
+                    """
+                        25
+                        39
+                        25
+                        39
+                        25
+                        39
+                        12
+                        12
+                        12
+                    """.trimIndent())
+        } finally {
+            File("temp.txt").delete()
+        }
     }
 
     @Test
