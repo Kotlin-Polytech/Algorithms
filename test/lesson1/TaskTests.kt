@@ -156,6 +156,55 @@ class TaskTests : AbstractFileTests() {
         } finally {
             File("temp.txt").delete()
         }
+
+        fun BufferedWriter.writeNumbers(numbers: List<Int>) {
+            for (n in numbers) {
+                write("$n")
+                newLine()
+            }
+            close()
+        }
+
+        fun generateSequence(totalSize: Int, answerSize: Int) {
+            val random = Random()
+            val numbers = mutableListOf<Int>()
+
+            val answer = 100000 + random.nextInt(100000)
+            val count = mutableMapOf<Int, Int>()
+            for (i in 1..totalSize - answerSize) {
+                var next: Int
+                var nextCount: Int
+                do {
+                    next = random.nextInt(answer - 1) + 1
+                    nextCount = count[next] ?: 0
+                } while (nextCount >= answerSize - 1)
+                numbers += next
+                count[next] = nextCount + 1
+            }
+            for (i in totalSize - answerSize + 1..totalSize) {
+                numbers += answer
+            }
+            File("temp_sequence_expected.txt").bufferedWriter().writeNumbers(numbers)
+            for (i in totalSize - answerSize until totalSize) {
+                numbers.removeAt(totalSize - answerSize)
+            }
+            for (i in totalSize - answerSize until totalSize) {
+                val toInsert = random.nextInt(totalSize - answerSize)
+                numbers.add(toInsert, answer)
+
+            }
+            File("temp_sequence.txt").bufferedWriter().writeNumbers(numbers)
+        }
+
+        try {
+            generateSequence(500000, 200)
+            sortSequence("temp_sequence.txt", "temp.txt")
+            assertFileContent("temp.txt", File("temp_sequence_expected.txt").readLines().joinToString("\n"))
+        } finally {
+            File("temp_sequence_expected.txt").delete()
+            File("temp_sequence.txt").delete()
+            File("temp.txt").delete()
+        }
     }
 
     @Test
