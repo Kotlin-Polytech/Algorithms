@@ -28,3 +28,15 @@ package lesson2
 fun optimizeBuyAndSell(inputName: String): Pair<Int, Int> {
     TODO()
 }
+
+fun josephTask(menNumber: Int, choiceInterval: Int): Int {
+    TODO()
+}
+
+fun longestCommonSubstring(first: String, second: String): String {
+    TODO()
+}
+
+fun calcPrimesNumber(limit: Int): Int {
+    TODO()
+}
