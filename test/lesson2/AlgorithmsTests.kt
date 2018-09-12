@@ -61,4 +61,12 @@ class AlgorithmsTests {
             File("temp_prices.txt").delete()
         }
     }
+
+    @Test
+    fun josephTask() {
+        assertEquals(1, josephTask(menNumber = 1, choiceInterval = 1))
+        assertEquals(2, josephTask(menNumber = 2, choiceInterval = 1))
+        assertEquals(100000000, josephTask(menNumber = 100000000, choiceInterval = 1))
+        assertEquals(3, josephTask(menNumber = 8, choiceInterval = 5))
+    }
 }
