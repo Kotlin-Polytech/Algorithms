@@ -88,4 +88,10 @@ class AlgorithmsTests {
         assertEquals(1000, calcPrimesNumber(7920))
         assertEquals(79498, calcPrimesNumber(1000000))
     }
+
+    @Test
+    fun baldaSearcher() {
+        assertEquals(setOf("ТРАВА", "КРАН", "АКВА", "НАРТЫ"),
+                baldaSearcher("input/balda_in1.txt", setOf("ТРАВА", "КРАН", "АКВА", "НАРТЫ", "РАК")))
+    }
 }
