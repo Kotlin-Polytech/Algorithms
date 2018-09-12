@@ -28,6 +28,9 @@ public interface Graph {
     @NotNull
     Set<Vertex> getVertices();
 
+    @NotNull
+    Set<Edge> getEdges();
+
     @Nullable
     Vertex get(String name);
 
