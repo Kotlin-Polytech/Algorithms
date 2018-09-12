@@ -69,4 +69,11 @@ class AlgorithmsTests {
         assertEquals(100000000, josephTask(menNumber = 100000000, choiceInterval = 1))
         assertEquals(3, josephTask(menNumber = 8, choiceInterval = 5))
     }
+
+    @Test
+    fun longestCommonSubstring() {
+        assertEquals("", longestCommonSubstring("мой мир", "я"))
+        assertEquals("зд", longestCommonSubstring("здравствуй мир", "мы здесь"))
+        assertEquals("СЕРВАТОР", longestCommonSubstring("ОБСЕРВАТОРИЯ", "КОНСЕРВАТОРЫ"))
+    }
 }
