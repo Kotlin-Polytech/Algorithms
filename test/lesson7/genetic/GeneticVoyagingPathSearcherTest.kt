@@ -25,13 +25,21 @@ class GeneticVoyagingPathSearcherTest {
             addConnection(b, d, 10)
             addConnection(c, e, 5)
         }.build()
-        val path = GeneticVoyagingPathSearcher(graph, chromosomeNumber = 30, generationNumber = 20).findVoyagingPath()
+        val path = graph.findVoyagingPathGenetically(chromosomeNumber = 30, generationNumber = 20)
         assertEquals(105, path.length)
-        assertEquals(listOf(graph["A"], graph["D"], graph["B"], graph["C"], graph["E"], graph["F"], graph["A"]),
-                path.vertices)
+        val vertices = path.vertices
+        assertEquals(vertices.first(), vertices.last(), "Voyaging path $vertices must be loop!")
+        val withoutLast = vertices.dropLast(1)
+        val expected = listOf(graph["A"], graph["D"], graph["B"], graph["C"], graph["E"], graph["F"])
+        assertEquals(expected.size, withoutLast.size, "Voyaging path $vertices must travel through all vertices!")
+        expected.forEach {
+            assertTrue(it in vertices, "Voyaging path $vertices must travel through all vertices!")
+        }
     }
 
+    @Ignore
     @Test
+    // This test is too long to run in continuous build
     fun findRandomVoyagingPath() {
         val random = Random()
         val graph = GraphBuilder().apply {
@@ -45,12 +53,15 @@ class GeneticVoyagingPathSearcherTest {
                 }
             }
         }.build()
-        val path = GeneticVoyagingPathSearcher(graph, chromosomeNumber = 100, generationNumber = 200).findVoyagingPath()
+        val path = graph.findVoyagingPathGenetically(chromosomeNumber = 100, generationNumber = 200)
+        // We just check that some path is found
         println(path.length)
         println(path)
     }
 
+    @Ignore
     @Test
+    // This test is too long to run in continuous build
     fun findRandomVoyagingPathWithSmallChromosomeNumber() {
         val random = Random()
         val graph = GraphBuilder().apply {
@@ -64,7 +75,8 @@ class GeneticVoyagingPathSearcherTest {
                 }
             }
         }.build()
-        val path = GeneticVoyagingPathSearcher(graph, chromosomeNumber = 30, generationNumber = 200).findVoyagingPath()
+        val path = graph.findVoyagingPathGenetically(chromosomeNumber = 30, generationNumber = 200)
+        // We just check that some path is found
         println(path.length)
         println(path)
     }

@@ -44,3 +44,9 @@ class GeneticVoyagingPathSearcher(
         return visitingOrder.buildPath()
     }
 }
+
+fun Graph.findVoyagingPathGenetically(
+        chromosomeNumber: Int,
+        generationNumber: Int,
+        @Suppress("UNUSED_PARAMETER") vararg otherParams: Any
+) = GeneticVoyagingPathSearcher(this, chromosomeNumber, generationNumber).findVoyagingPath()
