@@ -10,7 +10,7 @@ class ChromosomeTest {
 
     @Test
     fun mutate() {
-        for (i in 1..10000) {
+        for (i in 1..5000) {
             val chromosome = Chromosome(defaultSize, random)
             val other = chromosome.mutate(random)
             assertEquals(defaultSize, other.visitingOrder.size)
@@ -23,7 +23,7 @@ class ChromosomeTest {
 
     @Test
     fun crossBreed() {
-        for (i in 1..10000) {
+        for (i in 1..2000) {
             val first = Chromosome(defaultSize, random)
             val second = Chromosome(defaultSize, random)
             val third = first.crossBreed(second, random)
