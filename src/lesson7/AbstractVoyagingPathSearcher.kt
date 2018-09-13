@@ -4,9 +4,9 @@ import lesson5.Graph
 import lesson5.Path
 import java.util.*
 
-abstract class AbstractVoyagingPathSearcher(val g: Graph) {
+abstract class AbstractVoyagingPathSearcher(private val g: Graph) {
     protected val size = g.vertices.size
-    protected val vertexByIndex: MutableMap<Int, Graph.Vertex> = mutableMapOf()
+    private val vertexByIndex: MutableMap<Int, Graph.Vertex> = mutableMapOf()
     protected val random = Random()
 
     init {

@@ -3,7 +3,6 @@ package lesson7.annealing
 import lesson5.Graph
 import lesson5.Path
 import lesson7.AbstractVoyagingPathSearcher
-import java.util.*
 
 class AnnealingVoyagingPathSearcher(
         g: Graph,
@@ -35,7 +34,7 @@ class AnnealingVoyagingPathSearcher(
     }
 
     override fun findVoyagingPath(): Path {
-        var state: List<Int> = (0 until size).toMutableList().apply { Collections.shuffle(this) }
+        var state: List<Int> = (0 until size).toMutableList().apply { shuffle() }
         for (i in 1..iterationNumber) {
             val newState = state.generateNewState()
             assert(newState.size == size)

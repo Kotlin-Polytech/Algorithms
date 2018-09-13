@@ -4,7 +4,7 @@ import java.util.*
 
 internal class Chromosome(val visitingOrder: List<Int>) {
     constructor(size: Int, random: Random) :
-            this((0 until size).toMutableList().apply { Collections.shuffle(this, random) })
+            this((0 until size).toMutableList().apply { shuffle(random) })
 
     fun mutate(random: Random): Chromosome =
             Chromosome(visitingOrder.toMutableList().apply {
