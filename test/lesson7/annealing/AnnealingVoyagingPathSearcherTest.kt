@@ -2,7 +2,6 @@ package lesson7.annealing
 
 import lesson5.Graph
 import lesson5.impl.GraphBuilder
-import lesson7.genetic.GeneticVoyagingPathSearcher
 import kotlin.test.*
 import java.util.*
 
