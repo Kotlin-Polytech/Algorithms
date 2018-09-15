@@ -40,4 +40,33 @@ class TaskTests {
         val loop = graph.findLongestEulerLoop()
         loop.assert(true, graph)
     }
+
+    @Test
+    fun test() {
+        val graph = GraphBuilder().apply {
+            val a = addVertex("A")
+            val b = addVertex("B")
+            val c = addVertex("C")
+            val d = addVertex("D")
+            val e = addVertex("E")
+            val f = addVertex("F")
+            val g = addVertex("G")
+            val h = addVertex("H")
+            val i = addVertex("I")
+            val j = addVertex("J")
+            addConnection(a, b)
+            addConnection(a, c)
+            addConnection(b, d)
+            addConnection(c, e)
+            addConnection(c, f)
+            addConnection(b, g)
+            addConnection(d, i)
+            addConnection(g, h)
+            addConnection(h, j)
+        }.build()
+        val independent = graph.largestIndependentVertexSet()
+        assertEquals(setOf(graph["A"], graph["D"], graph["E"], graph["F"], graph["G"], graph["J"]),
+                independent)
+
+    }
 }
