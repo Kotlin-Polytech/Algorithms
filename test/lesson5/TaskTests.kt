@@ -70,7 +70,7 @@ class TaskTests {
     }
 
     @Test
-    fun test() {
+    fun minimumSpanningTree() {
         val graph = GraphBuilder().apply {
             val a = addVertex("A")
             val b = addVertex("B")
@@ -139,6 +139,48 @@ class TaskTests {
         val independent = graph.largestIndependentVertexSet()
         assertEquals(setOf(graph["A"], graph["D"], graph["E"], graph["F"], graph["G"], graph["J"]),
                 independent)
+    }
 
+    @Test
+    fun test() {
+        val graph = GraphBuilder().apply {
+            val a = addVertex("A")
+            val b = addVertex("B")
+            val c = addVertex("C")
+            addConnection(a, b)
+            addConnection(b, c)
+            addConnection(a, c)
+        }.build()
+        val longestPath = graph.longestSimplePath()
+        assertEquals(2, longestPath.length)
+
+        val graph2 = GraphBuilder().apply {
+            val a = addVertex("A")
+            val b = addVertex("B")
+            val c = addVertex("C")
+            val d = addVertex("D")
+            val e = addVertex("E")
+            val f = addVertex("F")
+            val g = addVertex("G")
+            val h = addVertex("H")
+            val i = addVertex("I")
+            val j = addVertex("J")
+            val k = addVertex("K")
+            addConnection(a, b)
+            addConnection(b, c)
+            addConnection(c, d)
+            addConnection(a, e)
+            addConnection(d, k)
+            addConnection(e, j)
+            addConnection(j, k)
+            addConnection(b, f)
+            addConnection(c, i)
+            addConnection(f, i)
+            addConnection(b, g)
+            addConnection(g, h)
+            addConnection(h, c)
+        }.build()
+        val longestPath2 = graph2.longestSimplePath()
+        assertEquals(10, longestPath2.length)
     }
 }
