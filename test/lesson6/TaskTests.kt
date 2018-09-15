@@ -24,4 +24,10 @@ class TaskTests {
         assertEquals(listOf(2, 8, 9, 12), longestIncreasingSubSequence(listOf(2, 8, 5, 9, 12, 6)))
     }
 
+    @Test
+    fun shortestPathOnField() {
+        assertEquals(1, shortestPathOnField("input/field_in2.txt"))
+        assertEquals(12, shortestPathOnField("input/field_in1.txt"))
+    }
+
 }
