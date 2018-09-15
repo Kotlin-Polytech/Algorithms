@@ -70,7 +70,7 @@ class TaskTests {
     }
 
     @Test
-    fun test() {
+    fun largestIndependentVertexSet() {
         val graph = GraphBuilder().apply {
             val a = addVertex("A")
             val b = addVertex("B")
