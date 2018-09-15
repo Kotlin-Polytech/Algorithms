@@ -25,7 +25,7 @@ package lesson5
  * Справка: Эйлеров цикл -- это цикл, проходящий через все рёбра
  * связного графа ровно по одному разу
  */
-fun Graph.findLongestEulerLoop(): List<Graph.Edge> {
+fun Graph.findEulerLoop(): List<Graph.Edge> {
     TODO()
 }
 

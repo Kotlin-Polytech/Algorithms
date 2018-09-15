@@ -28,7 +28,7 @@ class TaskTests {
     }
 
     @Test
-    fun findLongestEulerLoop() {
+    fun findEulerLoop() {
         val graph = GraphBuilder().apply {
             val a = addVertex("A")
             val b = addVertex("B")
@@ -37,7 +37,7 @@ class TaskTests {
             addConnection(b, c)
             addConnection(a, c)
         }.build()
-        val loop = graph.findLongestEulerLoop()
+        val loop = graph.findEulerLoop()
         loop.assert(true, graph)
         val graph2 = GraphBuilder().apply {
             val a = addVertex("A")
@@ -65,7 +65,7 @@ class TaskTests {
             addConnection(g, h)
             addConnection(h, c)
         }.build()
-        val loop2 = graph2.findLongestEulerLoop()
+        val loop2 = graph2.findEulerLoop()
         loop2.assert(true, graph2)
     }
 
