@@ -70,6 +70,50 @@ class TaskTests {
     }
 
     @Test
+    fun test() {
+        val graph = GraphBuilder().apply {
+            val a = addVertex("A")
+            val b = addVertex("B")
+            val c = addVertex("C")
+            addConnection(a, b)
+            addConnection(b, c)
+            addConnection(a, c)
+        }.build()
+        val tree = graph.minimumSpanningTree()
+        assertEquals(2, tree.edges.size)
+        assertEquals(2, tree.findBridges().size)
+        val graph2 = GraphBuilder().apply {
+            val a = addVertex("A")
+            val b = addVertex("B")
+            val c = addVertex("C")
+            val d = addVertex("D")
+            val e = addVertex("E")
+            val f = addVertex("F")
+            val g = addVertex("G")
+            val h = addVertex("H")
+            val i = addVertex("I")
+            val j = addVertex("J")
+            val k = addVertex("K")
+            addConnection(a, b)
+            addConnection(b, c)
+            addConnection(c, d)
+            addConnection(a, e)
+            addConnection(d, k)
+            addConnection(e, j)
+            addConnection(j, k)
+            addConnection(b, f)
+            addConnection(c, i)
+            addConnection(f, i)
+            addConnection(b, g)
+            addConnection(g, h)
+            addConnection(h, c)
+        }.build()
+        val tree2 = graph2.minimumSpanningTree()
+        assertEquals(10, tree2.edges.size)
+        assertEquals(10, tree2.findBridges().size)
+    }
+
+    @Test
     fun largestIndependentVertexSet() {
         val graph = GraphBuilder().apply {
             val a = addVertex("A")
