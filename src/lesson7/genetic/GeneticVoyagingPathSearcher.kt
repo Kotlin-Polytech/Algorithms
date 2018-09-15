@@ -49,4 +49,4 @@ fun Graph.findVoyagingPathGenetically(
         chromosomeNumber: Int,
         generationNumber: Int,
         @Suppress("UNUSED_PARAMETER") vararg otherParams: Any
-) = GeneticVoyagingPathSearcher(this, chromosomeNumber, generationNumber).findVoyagingPath()
+): Path = GeneticVoyagingPathSearcher(this, chromosomeNumber, generationNumber).findVoyagingPath()

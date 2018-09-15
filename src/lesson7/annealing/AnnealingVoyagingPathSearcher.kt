@@ -57,4 +57,4 @@ fun Graph.findVoyagingPathAnnealing(
         startTemperature: Int,
         iterationNumber: Int,
         @Suppress("UNUSED_PARAMETER") vararg otherParams: Any
-) = AnnealingVoyagingPathSearcher(this, startTemperature, iterationNumber).findVoyagingPath()
+): Path = AnnealingVoyagingPathSearcher(this, startTemperature, iterationNumber).findVoyagingPath()
