@@ -12,7 +12,7 @@ package lesson6
  * Если общей подпоследовательности нет, вернуть пустую строку.
  * При сравнении подстрок, регистр символов *имеет* значение.
  */
-fun longestCommonSubsequence(first: String, second: String): String {
+fun longestCommonSubSequence(first: String, second: String): String {
     TODO()
 }
 

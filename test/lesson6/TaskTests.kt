@@ -6,10 +6,10 @@ import kotlin.test.assertEquals
 class TaskTests {
 
     @Test
-    fun longestCommonSubsequence() {
-        assertEquals("", longestCommonSubsequence("мой мир", "я"))
-        assertEquals("здс", longestCommonSubsequence("здравствуй мир", "мы здесь"))
-        assertEquals("emt ole", longestCommonSubsequence("nematode knowledge", "empty bottle"))
+    fun longestCommonSubSequence() {
+        assertEquals("", longestCommonSubSequence("мой мир", "я"))
+        assertEquals("здс", longestCommonSubSequence("здравствуй мир", "мы здесь"))
+        assertEquals("emt ole", longestCommonSubSequence("nematode knowledge", "empty bottle"))
     }
 
 }
