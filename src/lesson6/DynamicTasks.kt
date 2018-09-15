@@ -2,8 +2,6 @@
 
 package lesson6
 
-import lesson5.Graph
-
 /**
  * Наибольшая общая подпоследовательность.
  *
