@@ -3,7 +3,6 @@ package lesson2
 import java.io.BufferedWriter
 import java.io.File
 import java.util.*
-import kotlin.test.Test
 import kotlin.test.assertEquals
 
 abstract class AbstractAlgorithmsTests {
@@ -62,10 +61,10 @@ abstract class AbstractAlgorithmsTests {
     }
 
     fun josephTask(josephTask: (Int, Int) -> Int) {
-        assertEquals(1, josephTask(menNumber = 1, choiceInterval = 1))
-        assertEquals(2, josephTask(menNumber = 2, choiceInterval = 1))
-        assertEquals(100000000, josephTask(menNumber = 100000000, choiceInterval = 1))
-        assertEquals(3, josephTask(menNumber = 8, choiceInterval = 5))
+        assertEquals(1, josephTask(1, 1))
+        assertEquals(2, josephTask(2, 1))
+        assertEquals(100000000, josephTask(100000000, 1))
+        assertEquals(3, josephTask(8, 5))
     }
 
     fun longestCommonSubstring(longestCommonSubstring: (String, String) -> String) {
