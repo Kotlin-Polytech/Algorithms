@@ -1,16 +1,13 @@
 package lesson1
 
-import org.junit.Assert.assertArrayEquals
 import java.io.BufferedWriter
 import java.io.File
 import java.util.*
 import kotlin.math.abs
-import kotlin.test.Test
 
-class TaskTests : AbstractFileTests() {
+abstract class AbstractTaskTests : AbstractFileTests() {
 
-    @Test
-    fun sortTimes() {
+    protected fun sortTimes(sortTimes: (String, String) -> Unit) {
         try {
             sortTimes("input/time_in1.txt", "temp.txt")
             assertFileContent("temp.txt",
@@ -44,8 +41,7 @@ class TaskTests : AbstractFileTests() {
         }
     }
 
-    @Test
-    fun sortAddresses() {
+    protected fun sortAddresses(sortAddresses: (String, String) -> Unit) {
         // TODO: large test
         try {
             sortAddresses("input/addr_in1.txt", "temp.txt")
@@ -85,8 +81,7 @@ class TaskTests : AbstractFileTests() {
         File("temp_unsorted.txt").bufferedWriter().writeTemperatures()
     }
 
-    @Test
-    fun sortTemperatures() {
+    protected fun sortTemperatures(sortTemperatures: (String, String) -> Unit) {
         try {
             sortTemperatures("input/temp_in1.txt", "temp.txt")
             assertFileContent("temp.txt",
@@ -121,8 +116,7 @@ class TaskTests : AbstractFileTests() {
         testGeneratedTemperatures(5000)
     }
 
-    @Test
-    fun sortSequence() {
+    protected fun sortSequence(sortSequence: (String, String) -> Unit) {
         // TODO: large test
         try {
             sortSequence("input/seq_in1.txt", "temp.txt")
@@ -207,40 +201,21 @@ class TaskTests : AbstractFileTests() {
         }
     }
 
-    @Test
-    fun mergeArrays() {
-        val result = arrayOf(null, null, null, null, null, 1, 3, 9, 13, 18, 23)
-        mergeArrays(arrayOf(4, 9, 15, 20, 23), result)
-        assertArrayEquals(arrayOf(1, 3, 4, 9, 9, 13, 15, 18, 20, 23, 23), result)
-
-        fun generateArrays(firstSize: Int, secondSize: Int): Triple<Array<Int>, Array<Int?>, Array<Int?>> {
-            val random = Random()
-            val expectedResult = Array<Int?>(firstSize + secondSize) {
-                it * 10 + random.nextInt(10)
+    protected fun generateArrays(firstSize: Int, secondSize: Int): Triple<Array<Int>, Array<Int?>, Array<Int?>> {
+        val random = Random()
+        val expectedResult = Array<Int?>(firstSize + secondSize) {
+            it * 10 + random.nextInt(10)
+        }
+        val first = mutableListOf<Int>()
+        val second = mutableListOf<Int?>()
+        for (i in 1..firstSize) second.add(null)
+        for (element in expectedResult) {
+            if (first.size < firstSize && (random.nextBoolean() || second.size == firstSize + secondSize)) {
+                first += element!!
+            } else {
+                second += element
             }
-            val first = mutableListOf<Int>()
-            val second = mutableListOf<Int?>()
-            for (i in 1..firstSize) second.add(null)
-            for (element in expectedResult) {
-                if (first.size < firstSize && (random.nextBoolean() || second.size == firstSize + secondSize)) {
-                    first += element!!
-                } else {
-                    second += element
-                }
-            }
-            return Triple(first.toTypedArray(), second.toTypedArray(), expectedResult)
         }
-
-        run {
-            val (first, second, expectedResult) = generateArrays(20000, 20000)
-            mergeArrays(first, second)
-            assertArrayEquals(expectedResult, second)
-        }
-
-        run {
-            val (first, second, expectedResult) = generateArrays(500000, 500000)
-            mergeArrays(first, second)
-            assertArrayEquals(expectedResult, second)
-        }
+        return Triple(first.toTypedArray(), second.toTypedArray(), expectedResult)
     }
 }
