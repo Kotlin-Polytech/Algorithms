@@ -6,7 +6,7 @@ import java.util.*
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-class AlgorithmsTests {
+abstract class AbstractAlgorithmsTests {
 
     private val minPrice = 42
 
@@ -43,8 +43,7 @@ class AlgorithmsTests {
         return minIndex + 1 to maxIndex + 1
     }
 
-    @Test
-    fun optimizeBuyAndSell() {
+    fun optimizeBuyAndSell(optimizeBuyAndSell: (String) -> Pair<Int, Int>) {
         assertEquals(3 to 4, optimizeBuyAndSell("input/buysell_in1.txt"))
         assertEquals(8 to 12, optimizeBuyAndSell("input/buysell_in2.txt"))
         assertEquals(3 to 4, optimizeBuyAndSell("input/buysell_in3.txt"))
@@ -62,23 +61,20 @@ class AlgorithmsTests {
         }
     }
 
-    @Test
-    fun josephTask() {
+    fun josephTask(josephTask: (Int, Int) -> Int) {
         assertEquals(1, josephTask(menNumber = 1, choiceInterval = 1))
         assertEquals(2, josephTask(menNumber = 2, choiceInterval = 1))
         assertEquals(100000000, josephTask(menNumber = 100000000, choiceInterval = 1))
         assertEquals(3, josephTask(menNumber = 8, choiceInterval = 5))
     }
 
-    @Test
-    fun longestCommonSubstring() {
+    fun longestCommonSubstring(longestCommonSubstring: (String, String) -> String) {
         assertEquals("", longestCommonSubstring("мой мир", "я"))
         assertEquals("зд", longestCommonSubstring("здравствуй мир", "мы здесь"))
         assertEquals("СЕРВАТОР", longestCommonSubstring("ОБСЕРВАТОРИЯ", "КОНСЕРВАТОРЫ"))
     }
 
-    @Test
-    fun calcPrimesNumber() {
+    fun calcPrimesNumber(calcPrimesNumber: (Int) -> Int) {
         assertEquals(0, calcPrimesNumber(-1))
         assertEquals(0, calcPrimesNumber(1))
         assertEquals(1, calcPrimesNumber(2))
@@ -89,8 +85,7 @@ class AlgorithmsTests {
         assertEquals(79498, calcPrimesNumber(1000000))
     }
 
-    @Test
-    fun baldaSearcher() {
+    fun baldaSearcher(baldaSearcher: (String, Set<String>) -> Set<String>) {
         assertEquals(setOf("ТРАВА", "КРАН", "АКВА", "НАРТЫ"),
                 baldaSearcher("input/balda_in1.txt", setOf("ТРАВА", "КРАН", "АКВА", "НАРТЫ", "РАК")))
     }
