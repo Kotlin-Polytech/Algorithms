@@ -4,6 +4,7 @@ import kotlin.Pair;
 
 import java.util.Set;
 
+@SuppressWarnings("unused")
 public class JavaAlgorithms {
     /**
      * Во входном файле с именем inputName перечислены цены на акции компании в различные (возрастающие) моменты времени
