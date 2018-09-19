@@ -5,7 +5,7 @@ import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import kotlin.test.Test
 
-class TaskTests {
+class TaskTest {
 
     private fun Graph.Edge.isNeighbour(other: Graph.Edge): Boolean {
         return begin == other.begin || end == other.end || begin == other.end || end == other.begin

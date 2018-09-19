@@ -4,7 +4,7 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 
 // TODO: здесь будут тесты для задач и примеров 4-го урока
-class TableTests {
+class TableTest {
     @Test
     fun testSomeExample() {
         assertEquals(42, someExample())

@@ -3,7 +3,7 @@ package lesson6
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-class TaskTests {
+class TaskTest {
 
     @Test
     fun longestCommonSubSequence() {

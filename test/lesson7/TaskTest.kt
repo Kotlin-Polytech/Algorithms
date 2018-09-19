@@ -8,7 +8,7 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
-class TaskTests {
+class TaskTest {
 
     @Test
     fun fillKnapsackCompareWithGreedyTest() {

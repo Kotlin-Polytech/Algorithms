@@ -2,7 +2,7 @@ package lesson2
 
 import kotlin.test.Test
 
-class AlgorithmsTestsJava : AbstractAlgorithmsTests() {
+class AlgorithmsJavaTest : AbstractAlgorithmsTests() {
     @Test
     fun testOptimizeBuyAndSell() {
         optimizeBuyAndSell { JavaAlgorithms.optimizeBuyAndSell(it) }
