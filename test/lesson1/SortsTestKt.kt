@@ -1,24 +1,24 @@
 package lesson1
 
-import org.junit.Assert.assertArrayEquals
-import org.junit.Assert.assertTrue
-import org.junit.Test
+import org.junit.jupiter.api.Assertions.assertArrayEquals
+import kotlin.test.Test
 import java.util.*
+import kotlin.test.assertTrue
 
 class SortsTestKt {
     private val r = Random(Calendar.getInstance().timeInMillis)
 
     private fun assertSorted(arr: IntArray, prefix: String) {
         for (i in 0 until arr.size - 1) {
-            assertTrue(prefix + " ERROR: i = " + i + " a[i] = " + arr[i] + " a[i+1] = " + arr[i + 1],
-                    arr[i] <= arr[i + 1])
+            assertTrue(arr[i] <= arr[i + 1],
+                    prefix + " ERROR: i = " + i + " a[i] = " + arr[i] + " a[i+1] = " + arr[i + 1])
         }
     }
 
     private fun <T : Comparable<T>> assertSorted(arr: Array<T>, prefix: String) {
         for (i in 0 until arr.size - 1) {
-            assertTrue(prefix + " ERROR: i = " + i + " a[i] = " + arr[i] + " a[i+1] = " + arr[i + 1],
-                    arr[i] <= arr[i + 1])
+            assertTrue(arr[i] <= arr[i + 1],
+                    prefix + " ERROR: i = " + i + " a[i] = " + arr[i] + " a[i+1] = " + arr[i + 1])
         }
     }
 

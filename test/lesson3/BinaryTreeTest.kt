@@ -1,9 +1,10 @@
 package lesson3
 
-import org.junit.Test
-
-import org.junit.Assert.*
+import kotlin.test.Test
 import java.util.*
+import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
 class BinaryTreeTest {
     private fun testAdd(create: () -> CheckableSortedSet<Int>) {
@@ -62,11 +63,12 @@ class BinaryTreeTest {
             treeSet.remove(toRemove)
             binarySet.remove(toRemove)
             println("Removing $toRemove from $list")
-            assertEquals("After removal of $toRemove from $list", treeSet, binarySet)
+            assertEquals<SortedSet<*>>(treeSet, binarySet, "After removal of $toRemove from $list")
             assertEquals(treeSet.size, binarySet.size)
             for (element in list) {
                 val inn = element != toRemove
-                assertEquals("$element should be ${if (inn) "in" else "not in"} tree", inn, element in binarySet)
+                assertEquals(inn, element in binarySet,
+                        "$element should be ${if (inn) "in" else "not in"} tree")
             }
             assertTrue(binarySet.checkInvariant())
         }
@@ -139,11 +141,12 @@ class BinaryTreeTest {
                 }
             }
             println()
-            assertEquals("After removal of $toRemove from $list", treeSet, binarySet)
+            assertEquals<SortedSet<*>>(treeSet, binarySet, "After removal of $toRemove from $list")
             assertEquals(treeSet.size, binarySet.size)
             for (element in list) {
                 val inn = element != toRemove
-                assertEquals("$element should be ${if (inn) "in" else "not in"} tree", inn, element in binarySet)
+                assertEquals(inn, element in binarySet,
+                        "$element should be ${if (inn) "in" else "not in"} tree")
             }
             assertTrue(binarySet.checkInvariant())
         }

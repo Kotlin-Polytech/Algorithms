@@ -1,27 +1,28 @@
 package lesson1;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Calendar;
 import java.util.Random;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
+@SuppressWarnings("WeakerAccess")
 public class SortsTest {
 
     static private final Random r = new Random(Calendar.getInstance().getTimeInMillis());
 
     private static void assertSorted(int[] arr, String prefix) {
         for (int i = 0; i< arr.length-1; i++) {
-            assertTrue(prefix + " ERROR: i = " + i + " a[i] = " + arr[i] + " a[i+1] = " + arr[i+1],
-                       arr[i] <= arr[i+1]);
+            assertTrue(arr[i] <= arr[i+1],
+                       prefix + " ERROR: i = " + i + " a[i] = " + arr[i] + " a[i+1] = " + arr[i+1]);
         }
     }
 
     private static <T extends Comparable<T>> void assertSorted(T[] arr, String prefix) {
         for (int i = 0; i< arr.length-1; i++) {
-            assertTrue(prefix + " ERROR: i = " + i + " a[i] = " + arr[i] + " a[i+1] = " + arr[i+1],
-                       arr[i].compareTo(arr[i+1]) <= 0);
+            assertTrue(arr[i].compareTo(arr[i+1]) <= 0,
+                       prefix + " ERROR: i = " + i + " a[i] = " + arr[i] + " a[i+1] = " + arr[i+1]);
         }
     }
 

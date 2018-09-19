@@ -1,11 +1,11 @@
 package lesson3
 
-import org.junit.Before
+import org.junit.jupiter.api.BeforeEach
 import kotlin.test.Test
 
 class JavaHeadSetTest : AbstractHeadTailTest() {
 
-    @Before
+    @BeforeEach
     fun fillTree() {
         fillTree(BinaryTree<Int>())
     }
