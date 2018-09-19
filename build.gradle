@@ -31,6 +31,10 @@ compileTestKotlin {
 
 compileJava.options.encoding = 'UTF-8'
 
+test {
+    useJUnitPlatform()
+}
+
 sourceSets {
     main {
         java {
