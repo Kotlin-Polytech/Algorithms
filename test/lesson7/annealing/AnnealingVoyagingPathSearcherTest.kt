@@ -40,7 +40,9 @@ class AnnealingVoyagingPathSearcherTest {
         }
     }
 
+    @Ignore
     @Test
+    // This test is too long to run in continuous build
     fun findRandomVoyagingPath() {
         val random = Random()
         val graph = GraphBuilder().apply {
