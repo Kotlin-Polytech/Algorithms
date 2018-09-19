@@ -1,9 +1,9 @@
 package lesson5
 
 import lesson5.impl.GraphBuilder
-import org.junit.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
+import kotlin.test.Test
 
 class TaskTests {
 
