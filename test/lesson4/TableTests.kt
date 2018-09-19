@@ -1,7 +1,7 @@
 package lesson4
 
-import kotlin.test.Test
-import kotlin.test.assertEquals
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.Assertions.assertEquals
 
 // TODO: здесь будут тесты для задач и примеров 4-го урока
 class TableTests {

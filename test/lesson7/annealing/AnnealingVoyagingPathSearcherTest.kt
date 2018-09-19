@@ -2,13 +2,15 @@ package lesson7.annealing
 
 import lesson5.Graph
 import lesson5.impl.GraphBuilder
-import kotlin.test.*
+import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Disabled
+import org.junit.jupiter.api.Test
 import java.util.*
 
 class AnnealingVoyagingPathSearcherTest {
 
     // TODO: this test is very unstable. Do something about it
-    @Ignore
+    @Disabled
     @Test
     fun findVoyagingPath() {
         val graph = GraphBuilder().apply {

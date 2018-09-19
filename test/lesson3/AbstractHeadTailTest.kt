@@ -1,7 +1,7 @@
 package lesson3
 
 import java.util.SortedSet
-import kotlin.test.*
+import org.junit.jupiter.api.Assertions.assertEquals
 
 abstract class AbstractHeadTailTest {
     private lateinit var tree: SortedSet<Int>

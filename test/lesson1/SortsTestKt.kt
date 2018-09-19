@@ -1,9 +1,9 @@
 package lesson1
 
 import org.junit.jupiter.api.Assertions.assertArrayEquals
-import kotlin.test.Test
+import org.junit.jupiter.api.Test
 import java.util.*
-import kotlin.test.assertTrue
+import org.junit.jupiter.api.Assertions.assertTrue
 
 class SortsTestKt {
     private val r = Random(Calendar.getInstance().timeInMillis)

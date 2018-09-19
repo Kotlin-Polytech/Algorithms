@@ -1,7 +1,7 @@
 package lesson6
 
-import kotlin.test.Test
-import kotlin.test.assertEquals
+import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Test
 
 class TaskTests {
 
@@ -14,7 +14,7 @@ class TaskTests {
 
     @Test
     fun longestIncreasingSubSequence() {
-        assertEquals(listOf(), longestIncreasingSubSequence(listOf()))
+        assertEquals(listOf<Int>(), longestIncreasingSubSequence(listOf()))
         assertEquals(listOf(1), longestIncreasingSubSequence(listOf(1)))
         assertEquals(listOf(1, 2), longestIncreasingSubSequence(listOf(1, 2)))
         assertEquals(listOf(2, 1), longestIncreasingSubSequence(listOf(2)))

@@ -1,7 +1,7 @@
 package lesson3
 
 import org.junit.jupiter.api.BeforeEach
-import kotlin.test.Test
+import org.junit.jupiter.api.Test
 
 class KotlinHeadSetTest : AbstractHeadTailTest() {
 

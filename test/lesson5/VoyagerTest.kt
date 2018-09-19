@@ -1,7 +1,8 @@
 package lesson5
 
 import lesson5.impl.GraphBuilder
-import kotlin.test.*
+import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Test
 
 class VoyagerTest {
 

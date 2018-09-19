@@ -1,6 +1,7 @@
 package lesson6.knapsack
 
-import kotlin.test.*
+import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Test
 import java.util.*
 
 class KnapsackTest {

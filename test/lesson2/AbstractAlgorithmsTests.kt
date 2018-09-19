@@ -3,7 +3,7 @@ package lesson2
 import java.io.BufferedWriter
 import java.io.File
 import java.util.*
-import kotlin.test.assertEquals
+import org.junit.jupiter.api.Assertions.assertEquals
 
 abstract class AbstractAlgorithmsTests {
 

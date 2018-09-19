@@ -1,9 +1,8 @@
 package lesson5
 
 import lesson5.impl.GraphBuilder
-import kotlin.test.assertEquals
-import kotlin.test.assertTrue
-import kotlin.test.Test
+import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Test
 
 class TaskTests {
 

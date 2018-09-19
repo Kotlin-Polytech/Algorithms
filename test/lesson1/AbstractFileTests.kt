@@ -1,7 +1,7 @@
 package lesson1
 
 import java.io.File
-import kotlin.test.assertEquals
+import org.junit.jupiter.api.Assertions.assertEquals
 
 abstract class AbstractFileTests {
     protected fun assertFileContent(name: String, expectedContent: String) {

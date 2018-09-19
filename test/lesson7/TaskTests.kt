@@ -4,9 +4,8 @@ import lesson5.impl.GraphBuilder
 import lesson6.knapsack.Item
 import lesson6.knapsack.fillKnapsackGreedy
 import java.util.*
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertTrue
+import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Test
 
 class TaskTests {
 

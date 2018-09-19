@@ -1,6 +1,7 @@
 package lesson6.fibonacci
 
-import kotlin.test.*
+import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Test
 
 class FibTest {
     @Test

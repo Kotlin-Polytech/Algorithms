@@ -1,10 +1,10 @@
 package lesson3
 
-import kotlin.test.Test
+import org.junit.jupiter.api.Test
 import java.util.*
-import kotlin.test.assertEquals
-import kotlin.test.assertFalse
-import kotlin.test.assertTrue
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertFalse
+import org.junit.jupiter.api.Assertions.assertTrue
 
 class BinaryTreeTest {
     private fun testAdd(create: () -> CheckableSortedSet<Int>) {
@@ -63,7 +63,7 @@ class BinaryTreeTest {
             treeSet.remove(toRemove)
             binarySet.remove(toRemove)
             println("Removing $toRemove from $list")
-            assertEquals<SortedSet<*>>(treeSet, binarySet, "After removal of $toRemove from $list")
+            assertEquals(treeSet, binarySet, "After removal of $toRemove from $list")
             assertEquals(treeSet.size, binarySet.size)
             for (element in list) {
                 val inn = element != toRemove
@@ -141,7 +141,7 @@ class BinaryTreeTest {
                 }
             }
             println()
-            assertEquals<SortedSet<*>>(treeSet, binarySet, "After removal of $toRemove from $list")
+            assertEquals(treeSet, binarySet, "After removal of $toRemove from $list")
             assertEquals(treeSet.size, binarySet.size)
             for (element in list) {
                 val inn = element != toRemove

@@ -1,6 +1,7 @@
 package lesson3
 
-import kotlin.test.*
+import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Test
 import java.util.TreeSet
 
 class PositiveSortedSetTest {

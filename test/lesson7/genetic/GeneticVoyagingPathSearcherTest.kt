@@ -2,7 +2,9 @@ package lesson7.genetic
 
 import lesson5.Graph
 import lesson5.impl.GraphBuilder
-import kotlin.test.*
+import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Disabled
+import org.junit.jupiter.api.Test
 import java.util.*
 
 class GeneticVoyagingPathSearcherTest {
@@ -37,7 +39,7 @@ class GeneticVoyagingPathSearcherTest {
         }
     }
 
-    @Ignore
+    @Disabled
     @Test
     // This test is too long to run in continuous build
     fun findRandomVoyagingPath() {
@@ -59,7 +61,7 @@ class GeneticVoyagingPathSearcherTest {
         println(path)
     }
 
-    @Ignore
+    @Disabled
     @Test
     // This test is too long to run in continuous build
     fun findRandomVoyagingPathWithSmallChromosomeNumber() {
