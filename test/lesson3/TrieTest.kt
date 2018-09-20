@@ -1,10 +1,12 @@
 package lesson3
 
+import org.junit.jupiter.api.Tag
 import kotlin.test.*
 
 class TrieTest {
 
     @Test
+    @Tag("Example")
     fun generalTest() {
         val trie = Trie()
         trie.add("abcdefg")
@@ -39,6 +41,7 @@ class TrieTest {
     }
 
     @Test
+    @Tag("Hard")
     fun rudeIteratorTest() {
         val trie = Trie()
         trie.add("abcdefg")

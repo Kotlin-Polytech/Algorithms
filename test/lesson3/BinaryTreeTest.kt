@@ -1,5 +1,6 @@
 package lesson3
 
+import org.junit.jupiter.api.Tag
 import kotlin.test.Test
 import java.util.*
 import kotlin.test.assertEquals
@@ -33,11 +34,13 @@ class BinaryTreeTest {
     }
 
     @Test
+    @Tag("Example")
     fun testAddKotlin() {
         testAdd { createKotlinTree() }
     }
 
     @Test
+    @Tag("Example")
     fun testAddJava() {
         testAdd { createJavaTree() }
     }
@@ -75,11 +78,13 @@ class BinaryTreeTest {
     }
 
     @Test
+    @Tag("Normal")
     fun testRemoveKotlin() {
         testRemove { createKotlinTree() }
     }
 
     @Test
+    @Tag("Normal")
     fun testRemoveJava() {
         testRemove { createJavaTree() }
     }
@@ -107,11 +112,13 @@ class BinaryTreeTest {
     }
 
     @Test
+    @Tag("Normal")
     fun testIteratorKotlin() {
         testIterator { createKotlinTree() }
     }
 
     @Test
+    @Tag("Normal")
     fun testIteratorJava() {
         testIterator { createJavaTree() }
     }
@@ -153,11 +160,13 @@ class BinaryTreeTest {
     }
 
     @Test
+    @Tag("Hard")
     fun testIteratorRemoveKotlin() {
         testIteratorRemove { createKotlinTree() }
     }
 
     @Test
+    @Tag("Hard")
     fun testIteratorRemoveJava() {
         testIteratorRemove { createJavaTree() }
     }

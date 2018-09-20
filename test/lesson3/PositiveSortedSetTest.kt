@@ -1,10 +1,12 @@
 package lesson3
 
+import org.junit.jupiter.api.Tag
 import kotlin.test.*
 import java.util.TreeSet
 
 class PositiveSortedSetTest {
     @Test
+    @Tag("Example")
     fun basic() {
         val set = listOf(7, -4, 5, 9, -3, 4, 0, 99, -12).let {
             val tree = TreeSet<Int>()

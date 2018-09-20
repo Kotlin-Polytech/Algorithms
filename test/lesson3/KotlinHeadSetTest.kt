@@ -1,6 +1,7 @@
 package lesson3
 
 import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Tag
 import kotlin.test.Test
 
 class KotlinHeadSetTest : AbstractHeadTailTest() {
@@ -11,11 +12,13 @@ class KotlinHeadSetTest : AbstractHeadTailTest() {
     }
 
     @Test
+    @Tag("Hard")
     fun headSetTest() {
         doHeadSetTest()
     }
 
     @Test
+    @Tag("Hard")
     fun tailSetTest() {
         doTailSetTest()
     }

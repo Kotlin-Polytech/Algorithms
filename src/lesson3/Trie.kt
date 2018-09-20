@@ -57,6 +57,10 @@ class Trie : AbstractMutableSet<String>(), MutableSet<String> {
         return false
     }
 
+    /**
+     * Итератор для префиксного дерева
+     * Сложная
+     */
     override fun iterator(): MutableIterator<String> {
         TODO()
     }

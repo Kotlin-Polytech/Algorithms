@@ -59,7 +59,10 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implemen
         return right == null || right.value.compareTo(node.value) > 0 && checkInvariant(right);
     }
 
-    /** Средняя */
+    /**
+     * Удаление элемента в дереве
+     * Средняя
+     */
     @Override
     public boolean remove(Object o) {
         // TODO
@@ -100,7 +103,10 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implemen
 
         private BinaryTreeIterator() {}
 
-        /** Средняя */
+        /**
+         * Поиск следующего элемента
+         * Средняя
+         */
         private Node<T> findNext() {
             // TODO
             throw new UnsupportedOperationException();
@@ -118,7 +124,10 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implemen
             return current.value;
         }
 
-        /** Сложная */
+        /**
+         * Удаление следующего элемента
+         * Сложная
+         */
         @Override
         public void remove() {
             // TODO
@@ -144,7 +153,10 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implemen
         return null;
     }
 
-    /** Сложная */
+    /**
+     * Для этой задачи нет тестов, но её тоже можно решить и их написать
+     * Очень сложная
+     */
     @NotNull
     @Override
     public SortedSet<T> subSet(T fromElement, T toElement) {
@@ -152,7 +164,10 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implemen
         throw new UnsupportedOperationException();
     }
 
-    /** Сложная */
+    /**
+     * Найти множество всех элементов меньше заданного
+     * Сложная
+     */
     @NotNull
     @Override
     public SortedSet<T> headSet(T toElement) {
@@ -160,7 +175,10 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implemen
         throw new UnsupportedOperationException();
     }
 
-    /** Сложная */
+    /**
+     * Найти множество всех элементов больше или равных заданного
+     * Сложная
+     */
     @NotNull
     @Override
     public SortedSet<T> tailSet(T fromElement) {

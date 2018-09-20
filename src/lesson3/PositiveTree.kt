@@ -3,20 +3,24 @@ package lesson3
 import java.util.Comparator
 import java.util.SortedSet
 
+/**
+ * Для всех задач этого класса нет тестов,
+ * но их тоже можно решать и писать тесты к ним
+ */
 class PositiveSortedSet(private val delegate: SortedSet<Int>) : AbstractMutableSet<Int>(), SortedSet<Int> {
     override fun comparator(): Comparator<in Int>? = delegate.comparator()
 
-    /** Простая */
+    /** Сложная */
     override fun subSet(fromElement: Int?, toElement: Int?): SortedSet<Int> {
         TODO()
     }
 
-    /** Простая */
+    /** Средняя */
     override fun headSet(toElement: Int?): SortedSet<Int> {
         TODO()
     }
 
-    /** Простая */
+    /** Средняя */
     override fun tailSet(fromElement: Int?): SortedSet<Int> {
         TODO()
     }

@@ -50,7 +50,10 @@ class KtBinaryTree<T : Comparable<T>> : AbstractMutableSet<T>(), CheckableSorted
         return right == null || right.value > node.value && checkInvariant(right)
     }
 
-    /** Средняя */
+    /**
+     * Удаление элемента в дереве
+     * Средняя
+     */
     override fun remove(element: T): Boolean {
         TODO()
     }
@@ -76,7 +79,10 @@ class KtBinaryTree<T : Comparable<T>> : AbstractMutableSet<T>(), CheckableSorted
 
         private var current: Node<T>? = null
 
-        /** Средняя */
+        /**
+         * Поиск следующего элемента
+         * Средняя
+         */
         private fun findNext(): Node<T>? {
             TODO()
         }
@@ -88,7 +94,10 @@ class KtBinaryTree<T : Comparable<T>> : AbstractMutableSet<T>(), CheckableSorted
             return (current ?: throw NoSuchElementException()).value
         }
 
-        /** Сложная */
+        /**
+         * Удаление следующего элемента
+         * Сложная
+         */
         override fun remove() {
             TODO()
         }
@@ -98,17 +107,26 @@ class KtBinaryTree<T : Comparable<T>> : AbstractMutableSet<T>(), CheckableSorted
 
     override fun comparator(): Comparator<in T>? = null
 
-    /** Сложная */
+    /**
+     * Для этой задачи нет тестов, но её тоже можно решить и их написать
+     * Очень сложная
+     */
     override fun subSet(fromElement: T, toElement: T): SortedSet<T> {
         TODO()
     }
 
-    /** Сложная */
+    /**
+     * Найти множество всех элементов меньше заданного
+     * Сложная
+     */
     override fun headSet(toElement: T): SortedSet<T> {
         TODO()
     }
 
-    /** Сложная */
+    /**
+     * Найти множество всех элементов больше или равных заданного
+     * Сложная
+     */
     override fun tailSet(fromElement: T): SortedSet<T> {
         TODO()
     }
