@@ -1,9 +1,11 @@
 package lesson6.fibonacci
 
+import org.junit.jupiter.api.Tag
 import kotlin.test.*
 
 class FibTest {
     @Test
+    @Tag("Example")
     fun fib() {
         assertEquals(1L, fib(1))
         assertEquals(1L, fib(2))

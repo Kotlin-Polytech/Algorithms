@@ -1,5 +1,6 @@
 package lesson6.knapsack
 
+import org.junit.jupiter.api.Tag
 import kotlin.test.*
 import java.util.*
 
@@ -13,6 +14,7 @@ class KnapsackTest {
     )
 
     @Test
+    @Tag("Example")
     fun fillKnapsackDynamic() {
         assertEquals(Fill(22,
                 Item(cost = 8, weight = 10),
@@ -22,6 +24,7 @@ class KnapsackTest {
     }
 
     @Test
+    @Tag("Example")
     fun fillKnapsackGreedy() {
         assertEquals(Fill(18,
                 Item(cost = 6, weight = 8),
@@ -39,6 +42,7 @@ class KnapsackTest {
     )
 
     @Test
+    @Tag("Example")
     fun fillKnapsackDynamic2() {
         assertEquals(Fill(13,
                 Item(cost = 6, weight = 4),
@@ -47,6 +51,7 @@ class KnapsackTest {
     }
 
     @Test
+    @Tag("Example")
     fun fillKnapsackGreedy2() {
         assertEquals(Fill(13,
                 Item(cost = 6, weight = 4),
@@ -62,6 +67,7 @@ class KnapsackTest {
     )
 
     @Test
+    @Tag("Example")
     fun fillKnapsackDynamic3() {
         assertEquals(Fill(20,
                 Item(cost = 5, weight = 3),
@@ -70,6 +76,7 @@ class KnapsackTest {
     }
 
     @Test
+    @Tag("Example")
     fun fillKnapsackGreedy3() {
         assertEquals(Fill(17,
                 Item(cost = 2, weight = 1),
@@ -78,6 +85,7 @@ class KnapsackTest {
     }
 
     @Test
+    @Tag("Example")
     fun fillKnapsackGreedyBigTest() {
         for (i in 0..9) {
             val items = mutableListOf<Item>()
