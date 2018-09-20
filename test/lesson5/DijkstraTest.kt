@@ -1,11 +1,13 @@
 package lesson5
 
 import lesson5.impl.GraphBuilder
+import org.junit.jupiter.api.Tag
 import kotlin.test.*
 
 class DijkstraTest {
 
     @Test
+    @Tag("Example")
     fun test1() {
         val graph = GraphBuilder().apply {
             val a = addVertex("A")

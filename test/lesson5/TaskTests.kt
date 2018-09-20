@@ -1,6 +1,7 @@
 package lesson5
 
 import lesson5.impl.GraphBuilder
+import org.junit.jupiter.api.Tag
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import kotlin.test.Test
@@ -28,6 +29,7 @@ class TaskTests {
     }
 
     @Test
+    @Tag("Normal")
     fun findEulerLoop() {
         val graph = GraphBuilder().apply {
             val a = addVertex("A")
@@ -70,6 +72,7 @@ class TaskTests {
     }
 
     @Test
+    @Tag("Normal")
     fun minimumSpanningTree() {
         val graph = GraphBuilder().apply {
             val a = addVertex("A")
@@ -114,6 +117,7 @@ class TaskTests {
     }
 
     @Test
+    @Tag("Hard")
     fun largestIndependentVertexSet() {
         val graph = GraphBuilder().apply {
             val a = addVertex("A")
@@ -142,6 +146,7 @@ class TaskTests {
     }
 
     @Test
+    @Tag("Hard")
     fun test() {
         val graph = GraphBuilder().apply {
             val a = addVertex("A")

@@ -1,10 +1,12 @@
 package lesson5
 
 import lesson5.impl.GraphBuilder
+import org.junit.jupiter.api.Tag
 import kotlin.test.*
 
 class BridgesTest {
     @Test
+    @Tag("Example")
     fun simple() {
         val graph = GraphBuilder().apply {
             val a = addVertex("A")
@@ -28,6 +30,7 @@ class BridgesTest {
     }
 
     @Test
+    @Tag("Example")
     fun none() {
         val graph = GraphBuilder().apply {
             val a = addVertex("A")
