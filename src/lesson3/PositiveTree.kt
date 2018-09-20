@@ -4,33 +4,27 @@ import java.util.Comparator
 import java.util.SortedSet
 
 /**
- * Для всех задач этого класса нет тестов,
- * но их тоже можно решать и писать тесты к ним
+ * Этот класс воспринимать только как пример (несмотря на TO DO)
  */
 class PositiveSortedSet(private val delegate: SortedSet<Int>) : AbstractMutableSet<Int>(), SortedSet<Int> {
     override fun comparator(): Comparator<in Int>? = delegate.comparator()
 
-    /** Сложная */
     override fun subSet(fromElement: Int?, toElement: Int?): SortedSet<Int> {
         TODO()
     }
 
-    /** Средняя */
     override fun headSet(toElement: Int?): SortedSet<Int> {
         TODO()
     }
 
-    /** Средняя */
     override fun tailSet(fromElement: Int?): SortedSet<Int> {
         TODO()
     }
 
-    /** Простая */
     override fun last(): Int {
         TODO()
     }
 
-    /** Простая */
     override fun first(): Int {
         TODO()
     }
