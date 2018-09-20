@@ -1,5 +1,6 @@
 package lesson7.genetic
 
+import org.junit.jupiter.api.Tag
 import kotlin.test.*
 import java.util.*
 
@@ -9,6 +10,7 @@ class ChromosomeTest {
     private val defaultSize = 1000
 
     @Test
+    @Tag("Example")
     fun mutate() {
         for (i in 1..5000) {
             val chromosome = Chromosome(defaultSize, random)
@@ -22,6 +24,7 @@ class ChromosomeTest {
     }
 
     @Test
+    @Tag("Example")
     fun crossBreed() {
         for (i in 1..2000) {
             val first = Chromosome(defaultSize, random)

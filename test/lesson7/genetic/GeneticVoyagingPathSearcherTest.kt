@@ -2,11 +2,13 @@ package lesson7.genetic
 
 import lesson5.Graph
 import lesson5.impl.GraphBuilder
+import org.junit.jupiter.api.Tag
 import kotlin.test.*
 import java.util.*
 
 class GeneticVoyagingPathSearcherTest {
     @Test
+    @Tag("Example")
     fun findVoyagingPath() {
         val graph = GraphBuilder().apply {
             val a = addVertex("A")
@@ -39,6 +41,7 @@ class GeneticVoyagingPathSearcherTest {
 
     @Ignore
     @Test
+    @Tag("Example")
     // This test is too long to run in continuous build
     fun findRandomVoyagingPath() {
         val random = Random()
@@ -61,6 +64,7 @@ class GeneticVoyagingPathSearcherTest {
 
     @Ignore
     @Test
+    @Tag("Example")
     // This test is too long to run in continuous build
     fun findRandomVoyagingPathWithSmallChromosomeNumber() {
         val random = Random()

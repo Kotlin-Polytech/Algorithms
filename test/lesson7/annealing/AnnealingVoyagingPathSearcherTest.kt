@@ -2,6 +2,7 @@ package lesson7.annealing
 
 import lesson5.Graph
 import lesson5.impl.GraphBuilder
+import org.junit.jupiter.api.Tag
 import kotlin.test.*
 import java.util.*
 
@@ -10,6 +11,7 @@ class AnnealingVoyagingPathSearcherTest {
     // TODO: this test is very unstable. Do something about it
     @Ignore
     @Test
+    @Tag("Example")
     fun findVoyagingPath() {
         val graph = GraphBuilder().apply {
             val a = addVertex("A")
@@ -42,6 +44,7 @@ class AnnealingVoyagingPathSearcherTest {
 
     @Ignore
     @Test
+    @Tag("Example")
     // This test is too long to run in continuous build
     fun findRandomVoyagingPath() {
         val random = Random()

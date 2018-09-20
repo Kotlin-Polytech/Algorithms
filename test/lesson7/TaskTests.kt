@@ -3,6 +3,7 @@ package lesson7
 import lesson5.impl.GraphBuilder
 import lesson6.knapsack.Item
 import lesson6.knapsack.fillKnapsackGreedy
+import org.junit.jupiter.api.Tag
 import java.util.*
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -11,6 +12,7 @@ import kotlin.test.assertTrue
 class TaskTests {
 
     @Test
+    @Tag("Impossible")
     fun fillKnapsackCompareWithGreedyTest() {
         for (i in 0..9) {
             val items = mutableListOf<Item>()
@@ -32,7 +34,8 @@ class TaskTests {
 
 
     @Test
-    fun findVoyagingPath() {
+    @Tag("Impossible")
+    fun findVoyagingPathHeuristics() {
         val graph = GraphBuilder().apply {
             val a = addVertex("A")
             val b = addVertex("B")
