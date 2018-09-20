@@ -1,12 +1,10 @@
 package lesson5
 
 import lesson5.impl.GraphBuilder
-import org.junit.jupiter.api.Tag
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
-import kotlin.test.Test
 
-class TaskTests {
+abstract class AbstractGraphTests {
 
     private fun Graph.Edge.isNeighbour(other: Graph.Edge): Boolean {
         return begin == other.begin || end == other.end || begin == other.end || end == other.begin
@@ -28,9 +26,7 @@ class TaskTests {
         assertTrue(this[0].isNeighbour(this[size - 1]), "Edges ${this[0]} & ${this[size - 1]} are not incident")
     }
 
-    @Test
-    @Tag("Normal")
-    fun findEulerLoop() {
+    fun findEulerLoop(findEulerLoop: Graph.() -> List<Graph.Edge>) {
         val graph = GraphBuilder().apply {
             val a = addVertex("A")
             val b = addVertex("B")
@@ -71,9 +67,7 @@ class TaskTests {
         loop2.assert(true, graph2)
     }
 
-    @Test
-    @Tag("Normal")
-    fun minimumSpanningTree() {
+    fun minimumSpanningTree(minimumSpanningTree: Graph.() -> Graph) {
         val graph = GraphBuilder().apply {
             val a = addVertex("A")
             val b = addVertex("B")
@@ -116,9 +110,7 @@ class TaskTests {
         assertEquals(10, tree2.findBridges().size)
     }
 
-    @Test
-    @Tag("Hard")
-    fun largestIndependentVertexSet() {
+    fun largestIndependentVertexSet(largestIndependentVertexSet: Graph.() -> Set<Graph.Vertex>) {
         val graph = GraphBuilder().apply {
             val a = addVertex("A")
             val b = addVertex("B")
@@ -145,9 +137,7 @@ class TaskTests {
                 independent)
     }
 
-    @Test
-    @Tag("Hard")
-    fun test() {
+    fun longestSimplePath(longestSimplePath: Graph.() -> Path) {
         val graph = GraphBuilder().apply {
             val a = addVertex("A")
             val b = addVertex("B")
@@ -188,4 +178,5 @@ class TaskTests {
         val longestPath2 = graph2.longestSimplePath()
         assertEquals(10, longestPath2.length)
     }
+
 }
