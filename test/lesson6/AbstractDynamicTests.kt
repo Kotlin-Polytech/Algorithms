@@ -1,22 +1,15 @@
 package lesson6
 
-import org.junit.jupiter.api.Tag
-import kotlin.test.Test
 import kotlin.test.assertEquals
 
-class TaskTests {
-
-    @Test
-    @Tag("Normal")
-    fun longestCommonSubSequence() {
+abstract class AbstractDynamicTests {
+    fun longestCommonSubSequence(longestCommonSubSequence: (String, String) -> String) {
         assertEquals("", longestCommonSubSequence("мой мир", "я"))
         assertEquals("здс", longestCommonSubSequence("здравствуй мир", "мы здесь"))
         assertEquals("emt ole", longestCommonSubSequence("nematode knowledge", "empty bottle"))
     }
 
-    @Test
-    @Tag("Normal")
-    fun longestIncreasingSubSequence() {
+    fun longestIncreasingSubSequence(longestIncreasingSubSequence: (List<Int>) -> List<Int>) {
         assertEquals(listOf(), longestIncreasingSubSequence(listOf()))
         assertEquals(listOf(1), longestIncreasingSubSequence(listOf(1)))
         assertEquals(listOf(1, 2), longestIncreasingSubSequence(listOf(1, 2)))
@@ -27,9 +20,7 @@ class TaskTests {
         assertEquals(listOf(2, 8, 9, 12), longestIncreasingSubSequence(listOf(2, 8, 5, 9, 12, 6)))
     }
 
-    @Test
-    @Tag("Hard")
-    fun shortestPathOnField() {
+    fun shortestPathOnField(shortestPathOnField: (String) -> Int) {
         assertEquals(1, shortestPathOnField("input/field_in2.txt"))
         assertEquals(12, shortestPathOnField("input/field_in1.txt"))
     }
