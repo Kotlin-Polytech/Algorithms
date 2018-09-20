@@ -1,5 +1,6 @@
 package lesson1;
 
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import java.util.Calendar;
@@ -27,6 +28,7 @@ public class SortsTest {
     }
 
     @Test
+    @Tag("Example")
     public void insertionSort() {
         int[] arr = new int[] { 3, 7, 5, 9, 1, 6, 19, 13 };
         Sorts.insertionSort(arr);
@@ -34,6 +36,7 @@ public class SortsTest {
     }
 
     @Test
+    @Tag("Example")
     public void insertionSortStrings() {
         String[] arr = new String[] { "beta", "omega", "alpha", "", "!!!", "teta", "O" };
         Sorts.insertionSort(arr);
@@ -41,6 +44,7 @@ public class SortsTest {
     }
 
     @Test
+    @Tag("Example")
     public void mergeSort() {
         int[] arr = new int[] { 3, 7, 5, 9, 1, 6, 19, 13 };
         Sorts.mergeSort(arr);
@@ -48,6 +52,7 @@ public class SortsTest {
     }
 
     @Test
+    @Tag("Example")
     public void longInsertionSort() {
         int LENGTH = 65536;
         int[] arr = new int[LENGTH];
@@ -59,6 +64,7 @@ public class SortsTest {
     }
 
     @Test
+    @Tag("Example")
     public void longMergeSort() {
         int LENGTH = 65536;
         int[] arr = new int[LENGTH];
@@ -70,6 +76,7 @@ public class SortsTest {
     }
 
     @Test
+    @Tag("Example")
     public void longHeapSort() {
         int LENGTH = 65536;
         int[] arr = new int[LENGTH];
@@ -81,6 +88,7 @@ public class SortsTest {
     }
 
     @Test
+    @Tag("Example")
     public void quickSort() {
         int[] arr = new int[] { 3, 7, 5, 9, 1, 6, 19, 13 };
         Sorts.quickSort(arr);
@@ -88,6 +96,7 @@ public class SortsTest {
     }
 
     @Test
+    @Tag("Example")
     public void longQuickSort() {
         int LENGTH = 65536;
         int[] arr = new int[LENGTH];
@@ -99,6 +108,7 @@ public class SortsTest {
     }
 
     @Test
+    @Tag("Example")
     public void longCountingSort() {
         int LENGTH = 65536;
         int LIMIT = 262144;

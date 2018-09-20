@@ -1,6 +1,7 @@
 package lesson1
 
 import org.junit.jupiter.api.Assertions.assertArrayEquals
+import org.junit.jupiter.api.Tag
 import kotlin.test.Test
 import java.util.*
 import kotlin.test.assertTrue
@@ -23,6 +24,7 @@ class SortsTestKt {
     }
 
     @Test
+    @Tag("Example")
     fun insertionSort() {
         val arr = intArrayOf(3, 7, 5, 9, 1, 6, 19, 13)
         insertionSort(arr)
@@ -30,6 +32,7 @@ class SortsTestKt {
     }
 
     @Test
+    @Tag("Example")
     fun insertionSortStrings() {
         val arr = arrayOf("beta", "omega", "alpha", "", "!!!", "teta", "O")
         insertionSort(arr)
@@ -37,6 +40,7 @@ class SortsTestKt {
     }
 
     @Test
+    @Tag("Example")
     fun mergeSort() {
         val arr = intArrayOf(3, 7, 5, 9, 1, 6, 19, 13)
         mergeSort(arr)
@@ -44,6 +48,7 @@ class SortsTestKt {
     }
 
     @Test
+    @Tag("Example")
     fun longInsertionSort() {
         val length = 65536
         val arr = IntArray(length)
@@ -55,6 +60,7 @@ class SortsTestKt {
     }
 
     @Test
+    @Tag("Example")
     fun longMergeSort() {
         val length = 65536
         val arr = IntArray(length)
@@ -66,6 +72,7 @@ class SortsTestKt {
     }
 
     @Test
+    @Tag("Example")
     fun longHeapSort() {
         val length = 65536
         val arr = IntArray(length)
@@ -77,6 +84,7 @@ class SortsTestKt {
     }
 
     @Test
+    @Tag("Example")
     fun quickSort() {
         val arr = intArrayOf(3, 7, 5, 9, 1, 6, 19, 13)
         quickSort(arr)
@@ -84,6 +92,7 @@ class SortsTestKt {
     }
 
     @Test
+    @Tag("Example")
     fun longQuickSort() {
         val length = 65536
         val arr = IntArray(length)
@@ -95,6 +104,7 @@ class SortsTestKt {
     }
 
     @Test
+    @Tag("Example")
     fun longCountingSort() {
         val length = 65536
         val limit = 262144

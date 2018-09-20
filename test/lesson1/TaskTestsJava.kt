@@ -1,31 +1,37 @@
 package lesson1
 
 import org.junit.jupiter.api.Assertions.assertArrayEquals
+import org.junit.jupiter.api.Tag
 import kotlin.test.Test
 
 class TaskTestsJava : AbstractTaskTests() {
 
     @Test
+    @Tag("Easy")
     fun testSortTimes() {
         sortTimes { inputName, outputName -> JavaTasks.sortTimes(inputName, outputName) }
     }
 
     @Test
+    @Tag("Normal")
     fun testSortAddresses() {
         sortAddresses { inputName, outputName -> JavaTasks.sortAddresses(inputName, outputName) }
     }
 
     @Test
+    @Tag("Normal")
     fun testSortTemperatures() {
         sortTemperatures { inputName, outputName -> JavaTasks.sortTemperatures(inputName, outputName) }
     }
 
     @Test
+    @Tag("Normal")
     fun testSortSequence() {
         sortSequence { inputName, outputName -> JavaTasks.sortSequence(inputName, outputName) }
     }
 
     @Test
+    @Tag("Easy")
     fun testMergeArrays() {
         val result = arrayOf(null, null, null, null, null, 1, 3, 9, 13, 18, 23)
         JavaTasks.mergeArrays<Int>(arrayOf(4, 9, 15, 20, 23), result)
