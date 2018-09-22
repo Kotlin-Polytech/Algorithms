@@ -656,7 +656,20 @@ abstract class AbstractAlgorithmsTests {
         assertEquals(4, calcPrimesNumber(10))
         assertEquals(8, calcPrimesNumber(20))
         assertEquals(1000, calcPrimesNumber(7920))
-        assertEquals(79498, calcPrimesNumber(1000000))
+        assertEquals(1229, calcPrimesNumber(10000))
+        assertEquals(2262, calcPrimesNumber(20000))
+        assertEquals(5133, calcPrimesNumber(50000))
+        assertEquals(9592, calcPrimesNumber(100000))
+        assertEquals(17984, calcPrimesNumber(200000))
+        assertEquals(33860, calcPrimesNumber(400000))
+        assertEquals(49098, calcPrimesNumber(600000))
+        assertEquals(56543, calcPrimesNumber(700000))
+        assertEquals(63951, calcPrimesNumber(800000))
+        assertEquals(71274, calcPrimesNumber(900000))
+        assertEquals(78498, calcPrimesNumber(1000000))
+        assertEquals(148933, calcPrimesNumber(2000000))
+        assertEquals(348513, calcPrimesNumber(5000000))
+        assertEquals(664579, calcPrimesNumber(10000000))
     }
 
     fun baldaSearcher(baldaSearcher: (String, Set<String>) -> Set<String>) {
