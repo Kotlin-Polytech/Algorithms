@@ -66,6 +66,11 @@ abstract class AbstractAlgorithmsTests {
         assertEquals(50000000, josephTask(50000000, 1))
         assertEquals(3, josephTask(8, 5))
         assertEquals(28, josephTask(40, 3))
+        var menNumber = 2
+        for (i in 1..20) {
+            assertEquals(1, josephTask(menNumber, 2))
+            menNumber *= 2
+        }
     }
 
     fun longestCommonSubstring(longestCommonSubstring: (String, String) -> String) {
