@@ -77,7 +77,7 @@ abstract class AbstractAlgorithmsTests {
         assertEquals("", longestCommonSubstring("мой мир", "я"))
         assertEquals("зд", longestCommonSubstring("здравствуй мир", "мы здесь"))
         assertEquals("СЕРВАТОР", longestCommonSubstring("ОБСЕРВАТОРИЯ", "КОНСЕРВАТОРЫ"))
-        assertEquals("огда ", lesson2.longestCommonSubstring(
+        assertEquals("огда ", longestCommonSubstring(
                 """
 Мой дядя самых честных правил,
 Когда не в шутку занемог,
