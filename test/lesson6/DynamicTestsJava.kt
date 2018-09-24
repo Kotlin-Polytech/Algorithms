@@ -12,7 +12,7 @@ class DynamicTestsJava : AbstractDynamicTests() {
     }
 
     @Test
-    @Tag("Normal")
+    @Tag("Hard")
     fun testLongestIncreasingSubSequence() {
         longestIncreasingSubSequence { JavaDynamicTasks.longestIncreasingSubSequence(it) }
     }

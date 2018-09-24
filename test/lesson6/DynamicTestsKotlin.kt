@@ -12,7 +12,7 @@ class DynamicTestsKotlin : AbstractDynamicTests() {
     }
 
     @Test
-    @Tag("Normal")
+    @Tag("Hard")
     fun testLongestIncreasingSubSequence() {
         longestIncreasingSubSequence { longestIncreasingSubSequence(it) }
     }
