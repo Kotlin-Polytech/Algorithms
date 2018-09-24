@@ -22,4 +22,10 @@ class KotlinHeadSetTest : AbstractHeadTailTest() {
     fun tailSetTest() {
         doTailSetTest()
     }
+
+    @Test
+    @Tag("Impossible")
+    fun subSetTest() {
+        doSubSetTest()
+    }
 }

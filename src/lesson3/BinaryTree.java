@@ -154,7 +154,7 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implemen
     }
 
     /**
-     * Для этой задачи нет тестов, но её тоже можно решить и их написать
+     * Для этой задачи нет тестов (есть только заготовка subSetTest), но её тоже можно решить и их написать
      * Очень сложная
      */
     @NotNull
