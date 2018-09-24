@@ -12,15 +12,27 @@ class KotlinHeadSetTest : AbstractHeadTailTest() {
     }
 
     @Test
-    @Tag("Hard")
+    @Tag("Normal")
     fun headSetTest() {
         doHeadSetTest()
     }
 
     @Test
     @Tag("Hard")
+    fun headSetRelationTest() {
+        doHeadSetRelationTest()
+    }
+
+    @Test
+    @Tag("Normal")
     fun tailSetTest() {
         doTailSetTest()
+    }
+
+    @Test
+    @Tag("Hard")
+    fun tailSetRelationTest() {
+        doTailSetRelationTest()
     }
 
     @Test
