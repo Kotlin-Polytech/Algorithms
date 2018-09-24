@@ -1,5 +1,6 @@
 package lesson3;
 
+import kotlin.NotImplementedError;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -66,7 +67,7 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implemen
     @Override
     public boolean remove(Object o) {
         // TODO
-        throw new UnsupportedOperationException();
+        throw new NotImplementedError();
     }
 
     @Override
@@ -109,7 +110,7 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implemen
          */
         private Node<T> findNext() {
             // TODO
-            throw new UnsupportedOperationException();
+            throw new NotImplementedError();
         }
 
         @Override
@@ -131,7 +132,7 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implemen
         @Override
         public void remove() {
             // TODO
-            throw new UnsupportedOperationException();
+            throw new NotImplementedError();
         }
     }
 
@@ -161,7 +162,7 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implemen
     @Override
     public SortedSet<T> subSet(T fromElement, T toElement) {
         // TODO
-        throw new UnsupportedOperationException();
+        throw new NotImplementedError();
     }
 
     /**
@@ -172,7 +173,7 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implemen
     @Override
     public SortedSet<T> headSet(T toElement) {
         // TODO
-        throw new UnsupportedOperationException();
+        throw new NotImplementedError();
     }
 
     /**
@@ -183,7 +184,7 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implemen
     @Override
     public SortedSet<T> tailSet(T fromElement) {
         // TODO
-        throw new UnsupportedOperationException();
+        throw new NotImplementedError();
     }
 
     @Override

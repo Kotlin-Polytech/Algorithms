@@ -1,5 +1,6 @@
 package lesson7;
 
+import kotlin.NotImplementedError;
 import lesson5.Graph;
 import lesson5.Path;
 import lesson6.knapsack.Fill;
@@ -22,7 +23,7 @@ public class JavaHeuristicsTasks {
      * (не забудьте изменить тесты так, чтобы они передавали эти параметры)
      */
     public static Fill fillKnapsackHeuristics(int load, List<Item> items, Object... parameters) {
-        throw new UnsupportedOperationException();
+        throw new NotImplementedError();
     }
 
     /**
@@ -38,6 +39,6 @@ public class JavaHeuristicsTasks {
      * (не забудьте изменить тесты так, чтобы они передавали эти параметры)
      */
     public static Path findVoyagingPathHeuristics(Graph graph, Object... parameters) {
-        throw new UnsupportedOperationException();
+        throw new NotImplementedError();
     }
 }

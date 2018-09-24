@@ -1,5 +1,7 @@
 package lesson6;
 
+import kotlin.NotImplementedError;
+
 import java.util.List;
 
 @SuppressWarnings("unused")
@@ -16,7 +18,7 @@ public class JavaDynamicTasks {
      * При сравнении подстрок, регистр символов *имеет* значение.
      */
     public static String longestCommonSubSequence(String first, String second) {
-        throw new UnsupportedOperationException();
+        throw new NotImplementedError();
     }
 
     /**
@@ -32,7 +34,7 @@ public class JavaDynamicTasks {
      * В примере ответами являются 2, 8, 9, 12 или 2, 5, 9, 12 -- выбираем первую из них.
      */
     public static List<Integer> longestIncreasingSubSequence(List<Integer> list) {
-        throw new UnsupportedOperationException();
+        throw new NotImplementedError();
     }
 
     /**
@@ -56,7 +58,7 @@ public class JavaDynamicTasks {
      * Здесь ответ 2 + 3 + 4 + 1 + 2 = 12
      */
     public static int shortestPathOnField(String inputName) {
-        throw new UnsupportedOperationException();
+        throw new NotImplementedError();
     }
 
     // Задачу "Максимальное независимое множество вершин в графе без циклов"

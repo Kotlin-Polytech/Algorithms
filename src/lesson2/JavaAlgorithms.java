@@ -1,5 +1,6 @@
 package lesson2;
 
+import kotlin.NotImplementedError;
 import kotlin.Pair;
 
 import java.util.Set;
@@ -31,7 +32,7 @@ public class JavaAlgorithms {
      * В случае обнаружения неверного формата файла бросить любое исключение.
      */
     static public Pair<Integer, Integer> optimizeBuyAndSell(String inputName) {
-        throw new UnsupportedOperationException();
+        throw new NotImplementedError();
     }
 
     /**
@@ -81,7 +82,7 @@ public class JavaAlgorithms {
      * Х х Х
      */
     static public int josephTask(int menNumber, int choiceInterval) {
-        throw new UnsupportedOperationException();
+        throw new NotImplementedError();
     }
 
     /**
@@ -96,7 +97,7 @@ public class JavaAlgorithms {
      * вернуть ту из них, которая встречается раньше в строке first.
      */
     static public String longestCommonSubstring(String firs, String second) {
-        throw new UnsupportedOperationException();
+        throw new NotImplementedError();
     }
 
     /**
@@ -110,7 +111,7 @@ public class JavaAlgorithms {
      * Единица простым числом не считается.
      */
     static public int calcPrimesNumber(int limit) {
-        throw new UnsupportedOperationException();
+        throw new NotImplementedError();
     }
 
     /**
@@ -140,6 +141,6 @@ public class JavaAlgorithms {
      * Остальные символы ни в файле, ни в словах не допускаются.
      */
     static public Set<String> baldaSearcher(String inputName, Set<String> words) {
-        throw new UnsupportedOperationException();
+        throw new NotImplementedError();
     }
 }

@@ -1,5 +1,7 @@
 package lesson5;
 
+import kotlin.NotImplementedError;
+
 import java.util.List;
 import java.util.Set;
 
@@ -32,7 +34,7 @@ public class JavaGraphTasks {
      * связного графа ровно по одному разу
      */
     public static List<Graph.Edge> findEulerLoop(Graph graph) {
-        throw new UnsupportedOperationException();
+        throw new NotImplementedError();
     }
 
     /**
@@ -64,7 +66,7 @@ public class JavaGraphTasks {
      * J ------------ K
      */
     public static Graph minimumSpanningTree(Graph graph) {
-        throw new UnsupportedOperationException();
+        throw new NotImplementedError();
     }
 
     /**
@@ -92,7 +94,7 @@ public class JavaGraphTasks {
      * Эта задача может быть зачтена за пятый и шестой урок одновременно
      */
     public static Set<Graph.Vertex> largestIndependentVertexSet(Graph graph) {
-        throw new UnsupportedOperationException();
+        throw new NotImplementedError();
     }
 
     /**
@@ -116,6 +118,6 @@ public class JavaGraphTasks {
      * Ответ: A, E, J, K, D, C, H, G, B, F, I
      */
     public static Path longestSimplePath(Graph graph) {
-        throw new UnsupportedOperationException();
+        throw new NotImplementedError();
     }
 }
