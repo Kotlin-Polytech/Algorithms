@@ -18,6 +18,7 @@ fun Graph.shortestPath(from: Vertex): Map<Vertex, VertexInfo> {
     for (vertex in this.vertices) {
         info[vertex] = VertexInfo(vertex, Int.MAX_VALUE, null)
     }
+    val visited = mutableSetOf<Vertex>()
     val fromInfo = VertexInfo(from, 0, null)
     val queue = PriorityQueue<VertexInfo>()
     queue.add(fromInfo)
@@ -25,7 +26,9 @@ fun Graph.shortestPath(from: Vertex): Map<Vertex, VertexInfo> {
     while (queue.isNotEmpty()) {
         val currentInfo = queue.poll()
         val currentVertex = currentInfo.vertex
+        visited += currentVertex
         for (vertex in this.getNeighbors(currentVertex)) {
+            if (vertex in visited) continue
             val weight = this.getConnection(currentVertex, vertex)?.weight
             if (weight != null) {
                 val newDistance = info[currentVertex]!!.distance + weight
