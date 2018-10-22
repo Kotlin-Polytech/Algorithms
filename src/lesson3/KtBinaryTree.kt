@@ -77,7 +77,9 @@ class KtBinaryTree<T : Comparable<T>> : AbstractMutableSet<T>(), CheckableSorted
 
     inner class BinaryTreeIterator : MutableIterator<T> {
 
-        private var current: Node<T>? = null
+        /** Добавьте сюда другую инициализацию, если она необходима */
+
+        private var current: Node<T>? = findNext()
 
         /**
          * Поиск следующего элемента
@@ -87,11 +89,10 @@ class KtBinaryTree<T : Comparable<T>> : AbstractMutableSet<T>(), CheckableSorted
             TODO()
         }
 
-        override fun hasNext(): Boolean = findNext() != null
+        override fun hasNext(): Boolean = current != null
 
         override fun next(): T {
-            current = findNext()
-            return (current ?: throw NoSuchElementException()).value
+            return (current ?: throw NoSuchElementException()).also { current = findNext() }.value
         }
 
         /**

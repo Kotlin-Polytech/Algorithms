@@ -100,9 +100,12 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implemen
 
     public class BinaryTreeIterator implements Iterator<T> {
 
-        private Node<T> current = null;
+        private Node<T> current;
 
-        private BinaryTreeIterator() {}
+        private BinaryTreeIterator() {
+            // Добавьте сюда другую инициализацию, если она необходима
+            current = findNext();
+        }
 
         /**
          * Поиск следующего элемента
@@ -115,14 +118,15 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implemen
 
         @Override
         public boolean hasNext() {
-            return findNext() != null;
+            return current != null;
         }
 
         @Override
         public T next() {
-            current = findNext();
             if (current == null) throw new NoSuchElementException();
-            return current.value;
+            T result = current.value;
+            current = findNext();
+            return result;
         }
 
         /**
