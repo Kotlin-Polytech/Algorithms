@@ -41,7 +41,19 @@ class SampleIterableCollection<T> : AbstractMutableCollection<T>() {
         }
 
         override fun remove() {
-            TODO("not implemented")
+            current ?: throw NoSuchElementException()
+            if (current == start) {
+                start = start!!.next
+                size--
+                return
+            }
+            var previous = start
+            while (previous != null && previous.next != current) {
+                previous = previous.next
+            }
+            previous ?: throw NoSuchElementException()
+            previous.next = current!!.next
+            size--
         }
 
     }
