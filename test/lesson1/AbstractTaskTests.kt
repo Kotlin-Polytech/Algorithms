@@ -42,7 +42,6 @@ abstract class AbstractTaskTests : AbstractFileTests() {
     }
 
     protected fun sortAddresses(sortAddresses: (String, String) -> Unit) {
-        // TODO: large test
         try {
             sortAddresses("input/addr_in1.txt", "temp.txt")
             assertFileContent("temp.txt",
@@ -52,6 +51,12 @@ abstract class AbstractTaskTests : AbstractFileTests() {
                     Садовая 5 - Сидоров Петр, Сидорова Мария
                 """.trimIndent()
             )
+        } finally {
+            File("temp.txt").delete()
+        }
+        try {
+            sortAddresses("input/addr_in2.txt", "temp.txt")
+            assertFileContent("temp.txt", File("input/addr_out2.txt").readLines().joinToString(separator = "\n"))
         } finally {
             File("temp.txt").delete()
         }
