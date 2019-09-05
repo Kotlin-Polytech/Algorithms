@@ -60,6 +60,12 @@ abstract class AbstractTaskTests : AbstractFileTests() {
         } finally {
             File("temp.txt").delete()
         }
+        try {
+            sortAddresses("input/addr_in3.txt", "temp.txt")
+            assertFileContent("temp.txt", File("input/addr_out3.txt").readLines().joinToString(separator = "\n"))
+        } finally {
+            File("temp.txt").delete()
+        }
     }
 
     private fun generateTemperatures(size: Int) {
