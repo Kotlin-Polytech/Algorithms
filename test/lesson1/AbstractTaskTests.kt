@@ -1,9 +1,13 @@
 package lesson1
 
+import org.junit.jupiter.api.Assertions.assertArrayEquals
+import util.PerfResult
+import util.estimate
 import java.io.BufferedWriter
 import java.io.File
 import java.util.*
 import kotlin.math.abs
+import kotlin.system.measureNanoTime
 
 abstract class AbstractTaskTests : AbstractFileTests() {
 
@@ -68,7 +72,7 @@ abstract class AbstractTaskTests : AbstractFileTests() {
         }
     }
 
-    private fun generateTemperatures(size: Int) {
+    private fun generateTemperatures(size: Int): PerfResult<Unit> {
         val random = Random()
         val temperatures = mutableListOf<Int>()
         for (t in -2730..5000) {
@@ -90,6 +94,7 @@ abstract class AbstractTaskTests : AbstractFileTests() {
         File("temp_sorted_expected.txt").bufferedWriter().writeTemperatures()
         temperatures.shuffle(random)
         File("temp_unsorted.txt").bufferedWriter().writeTemperatures()
+        return PerfResult(size = temperatures.size, data = Unit)
     }
 
     protected fun sortTemperatures(sortTemperatures: (String, String) -> Unit) {
@@ -110,25 +115,71 @@ abstract class AbstractTaskTests : AbstractFileTests() {
             File("temp.txt").delete()
         }
 
-        fun testGeneratedTemperatures(size: Int) {
+        fun testGeneratedTemperatures(size: Int): PerfResult<Unit> {
             try {
-                generateTemperatures(size)
-                sortTemperatures("temp_unsorted.txt", "temp_sorted_actual.txt")
+                val res = generateTemperatures(size)
+                val time = measureNanoTime { sortTemperatures("temp_unsorted.txt", "temp_sorted_actual.txt") }
                 assertFileContent("temp_sorted_actual.txt",
                         File("temp_sorted_expected.txt").readLines().joinToString(separator = "\n")
                 )
+                return res.copy(time = time)
             } finally {
                 File("temp_unsorted.txt").delete()
                 File("temp_sorted_expected.txt").delete()
                 File("temp_sorted_actual.txt").delete()
             }
         }
-        testGeneratedTemperatures(10)
-        testGeneratedTemperatures(1000)
+
+        val perf = estimate(listOf(10, 100, 1000)) {
+            testGeneratedTemperatures(it)
+        }
+
+        println("sortTemperatures: $perf")
+    }
+
+    private fun generateSequence(totalSize: Int, answerSize: Int): PerfResult<Unit> {
+        val random = Random()
+        val numbers = mutableListOf<Int>()
+
+        val answer = 100000 + random.nextInt(100000)
+        val count = mutableMapOf<Int, Int>()
+        for (i in 1..totalSize - answerSize) {
+            var next: Int
+            var nextCount: Int
+            do {
+                next = random.nextInt(answer - 1) + 1
+                nextCount = count[next] ?: 0
+            } while (nextCount >= answerSize - 1)
+            numbers += next
+            count[next] = nextCount + 1
+        }
+        for (i in totalSize - answerSize + 1..totalSize) {
+            numbers += answer
+        }
+
+        fun BufferedWriter.writeNumbers(numbers: List<Int>) {
+            for (n in numbers) {
+                write("$n")
+                newLine()
+            }
+            close()
+        }
+
+        File("temp_sequence_expected.txt").bufferedWriter().writeNumbers(numbers)
+        for (i in totalSize - answerSize until totalSize) {
+            numbers.removeAt(totalSize - answerSize)
+        }
+        for (i in totalSize - answerSize until totalSize) {
+            val toInsert = random.nextInt(totalSize - answerSize)
+            numbers.add(toInsert, answer)
+
+        }
+        File("temp_sequence.txt").bufferedWriter().writeNumbers(numbers)
+
+        return PerfResult(size = numbers.size, data = Unit)
     }
 
     protected fun sortSequence(sortSequence: (String, String) -> Unit) {
-        // TODO: large test
         try {
             sortSequence("input/seq_in1.txt", "temp.txt")
             assertFileContent("temp.txt",
@@ -162,57 +213,27 @@ abstract class AbstractTaskTests : AbstractFileTests() {
             File("temp.txt").delete()
         }
 
-        fun BufferedWriter.writeNumbers(numbers: List<Int>) {
-            for (n in numbers) {
-                write("$n")
-                newLine()
+        fun testGeneratedSequence(totalSize: Int, answerSize: Int): PerfResult<Unit> {
+            try {
+                val res = generateSequence(totalSize, answerSize)
+                val time = measureNanoTime { sortSequence("temp_sequence.txt", "temp.txt") }
+                assertFileContent("temp.txt", File("temp_sequence_expected.txt").readLines().joinToString("\n"))
+                return res.copy(time = time)
+            } finally {
+                File("temp_sequence_expected.txt").delete()
+                File("temp_sequence.txt").delete()
+                File("temp.txt").delete()
             }
-            close()
         }
 
-        fun generateSequence(totalSize: Int, answerSize: Int) {
-            val random = Random()
-            val numbers = mutableListOf<Int>()
-
-            val answer = 100000 + random.nextInt(100000)
-            val count = mutableMapOf<Int, Int>()
-            for (i in 1..totalSize - answerSize) {
-                var next: Int
-                var nextCount: Int
-                do {
-                    next = random.nextInt(answer - 1) + 1
-                    nextCount = count[next] ?: 0
-                } while (nextCount >= answerSize - 1)
-                numbers += next
-                count[next] = nextCount + 1
-            }
-            for (i in totalSize - answerSize + 1..totalSize) {
-                numbers += answer
-            }
-            File("temp_sequence_expected.txt").bufferedWriter().writeNumbers(numbers)
-            for (i in totalSize - answerSize until totalSize) {
-                numbers.removeAt(totalSize - answerSize)
-            }
-            for (i in totalSize - answerSize until totalSize) {
-                val toInsert = random.nextInt(totalSize - answerSize)
-                numbers.add(toInsert, answer)
-
-            }
-            File("temp_sequence.txt").bufferedWriter().writeNumbers(numbers)
+        val perf = estimate(listOf(1_000, 10_000, 100_000, 1_000_000)) {
+            testGeneratedSequence(it, it / 20)
         }
 
-        try {
-            generateSequence(500000, 200)
-            sortSequence("temp_sequence.txt", "temp.txt")
-            assertFileContent("temp.txt", File("temp_sequence_expected.txt").readLines().joinToString("\n"))
-        } finally {
-            File("temp_sequence_expected.txt").delete()
-            File("temp_sequence.txt").delete()
-            File("temp.txt").delete()
-        }
+        println("sortSequence: $perf")
     }
 
-    protected fun generateArrays(firstSize: Int, secondSize: Int): Triple<Array<Int>, Array<Int?>, Array<Int?>> {
+    private fun generateArrays(firstSize: Int, secondSize: Int): PerfResult<Triple<Array<Int>, Array<Int?>, Array<Int?>>> {
         val random = Random()
         val expectedResult = Array<Int?>(firstSize + secondSize) {
             it * 10 + random.nextInt(10)
@@ -227,6 +248,29 @@ abstract class AbstractTaskTests : AbstractFileTests() {
                 second += element
             }
         }
-        return Triple(first.toTypedArray(), second.toTypedArray(), expectedResult)
+        return PerfResult(
+                size = expectedResult.size,
+                data = Triple(first.toTypedArray(), second.toTypedArray(), expectedResult)
+        )
+    }
+
+    protected fun mergeArrays(mergeArrays: (Array<Int>, Array<Int?>) -> Unit) {
+        val result = arrayOf(null, null, null, null, null, 1, 3, 9, 13, 18, 23)
+        mergeArrays(arrayOf(4, 9, 15, 20, 23), result)
+        assertArrayEquals(arrayOf(1, 3, 4, 9, 9, 13, 15, 18, 20, 23, 23), result)
+
+        fun testGeneratedArrays(firstSize: Int, secondSize: Int): PerfResult<Triple<Array<Int>, Array<Int?>, Array<Int?>>> {
+            val res = generateArrays(firstSize, secondSize)
+            val (first, second, expectedResult) = res.data
+            val time = measureNanoTime { mergeArrays(first, second) }
+            assertArrayEquals(expectedResult, second)
+            return res.copy(time = time)
+        }
+
+        val perf = estimate(listOf(1_000, 10_000, 100_000, 1_000_000)) {
+            testGeneratedArrays(it, it)
+        }
+
+        println("mergeArrays: $perf")
     }
 }

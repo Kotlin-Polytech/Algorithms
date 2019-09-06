@@ -3,9 +3,7 @@ import java.util.stream.Collectors
 
 buildscript {
     repositories {
-        maven {
-            url 'http://dl.bintray.com/vorpal-research/kotlin-maven'
-        }
+        maven { url 'http://dl.bintray.com/vorpal-research/kotlin-maven' }
     }
     dependencies {
         classpath 'org.jetbrains.research:kfirst-runner-gradle-plugin:19.0.2'
@@ -24,15 +22,18 @@ sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
+    jcenter()
+    maven { url 'http://dl.bintray.com/vorpal-research/kotlin-maven' }
+    mavenLocal()
 }
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib"
+    testCompile "org.jetbrains.research:kfirst-runner:19.0.2"
     testCompile "org.jetbrains.kotlin:kotlin-test"
     testCompile "org.jetbrains.kotlin:kotlin-test-junit5"
     testCompile "org.junit.jupiter:junit-jupiter-api:5.5.1"
     testRuntime "org.junit.jupiter:junit-jupiter-engine:5.5.1"
-    testRuntime "org.junit.vintage:junit-vintage-engine:4.12.3"
     testRuntime "org.junit.platform:junit-platform-launcher:1.5.1"
 }
 
