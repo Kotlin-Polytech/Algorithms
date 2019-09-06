@@ -67,14 +67,13 @@ abstract class AbstractHeadTailTest {
         assertEquals(10, tree.size)
         tree.add(0)
         assertTrue(set.contains(0))
-        set.remove(4)
-        assertFalse(tree.contains(4))
-        tree.remove(6)
-        assertFalse(set.contains(6))
+        set.add(-2)
+        assertTrue(tree.contains(-2))
         tree.add(12)
         assertFalse(set.contains(12))
-        assertEquals(5, set.size)
-        assertEquals(10, tree.size)
+        assertFailsWith<IllegalArgumentException> { set.add(8) }
+        assertEquals(8, set.size)
+        assertEquals(13, tree.size)
     }
 
     protected fun doTailSetRelationTest() {
@@ -83,14 +82,13 @@ abstract class AbstractHeadTailTest {
         assertEquals(10, tree.size)
         tree.add(12)
         assertTrue(set.contains(12))
-        set.remove(4)
-        assertFalse(tree.contains(4))
-        tree.remove(6)
-        assertFalse(set.contains(6))
+        set.add(42)
+        assertTrue(tree.contains(42))
         tree.add(0)
         assertFalse(set.contains(0))
-        assertEquals(6, set.size)
-        assertEquals(10, tree.size)
+        assertFailsWith<IllegalArgumentException> { set.add(-2) }
+        assertEquals(9, set.size)
+        assertEquals(13, tree.size)
     }
 
     protected fun doSubSetTest() {
