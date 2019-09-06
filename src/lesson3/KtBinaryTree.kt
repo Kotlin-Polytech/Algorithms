@@ -109,7 +109,7 @@ class KtBinaryTree<T : Comparable<T>> : AbstractMutableSet<T>(), CheckableSorted
     override fun comparator(): Comparator<in T>? = null
 
     /**
-     * Для этой задачи нет тестов (есть только заготовка subSetTest), но её тоже можно решить и их написать
+     * Найти множество всех элементов в диапазоне [fromElement, toElement)
      * Очень сложная
      */
     override fun subSet(fromElement: T, toElement: T): SortedSet<T> {

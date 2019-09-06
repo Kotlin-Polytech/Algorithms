@@ -8,7 +8,7 @@ class JavaHeadSetTest : AbstractHeadTailTest() {
 
     @BeforeEach
     fun fillTree() {
-        fillTree(BinaryTree<Int>())
+        fillTree { BinaryTree<Int>() }
     }
 
     @Test
@@ -39,5 +39,6 @@ class JavaHeadSetTest : AbstractHeadTailTest() {
     @Tag("Impossible")
     fun subSetTest() {
         doSubSetTest()
+        doSubSetRelationTest()
     }
 }

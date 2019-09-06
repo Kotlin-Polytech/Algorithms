@@ -1,13 +1,16 @@
 package lesson3
 
-import java.util.SortedSet
+import java.util.*
 import kotlin.test.*
 
 abstract class AbstractHeadTailTest {
     private lateinit var tree: SortedSet<Int>
+    private lateinit var randomTree: SortedSet<Int>
+    private val randomTreeSize = 1000
+    private val randomValues = mutableListOf<Int>()
 
-    protected fun fillTree(empty: SortedSet<Int>) {
-        this.tree = empty
+    protected fun fillTree(create: () -> SortedSet<Int>) {
+        this.tree = create()
         //В произвольном порядке добавим числа от 1 до 10
         tree.add(5)
         tree.add(1)
@@ -19,6 +22,15 @@ abstract class AbstractHeadTailTest {
         tree.add(4)
         tree.add(3)
         tree.add(6)
+
+        this.randomTree = create()
+        val random = Random()
+        for (i in 0 until randomTreeSize) {
+            val randomValue = random.nextInt(randomTreeSize) + 1
+            if (randomTree.add(randomValue)) {
+                randomValues.add(randomValue)
+            }
+        }
     }
 
 
@@ -92,7 +104,51 @@ abstract class AbstractHeadTailTest {
     }
 
     protected fun doSubSetTest() {
-        TODO()
+        val smallSet: SortedSet<Int> = tree.subSet(3, 8)
+        assertEquals(false, smallSet.contains(1))
+        assertEquals(false, smallSet.contains(2))
+        assertEquals(true, smallSet.contains(3))
+        assertEquals(true, smallSet.contains(4))
+        assertEquals(true, smallSet.contains(5))
+        assertEquals(true, smallSet.contains(6))
+        assertEquals(true, smallSet.contains(7))
+        assertEquals(false, smallSet.contains(8))
+        assertEquals(false, smallSet.contains(9))
+        assertEquals(false, smallSet.contains(10))
+
+        assertFailsWith<IllegalArgumentException> { smallSet.add(2) }
+        assertFailsWith<IllegalArgumentException> { smallSet.add(9) }
+
+        val allSet = tree.subSet(-128, 128)
+        for (i in 1..10)
+            assertEquals(true, allSet.contains(i))
+
+        val random = Random()
+        val toElement = random.nextInt(randomTreeSize) + 1
+        val fromElement = random.nextInt(toElement - 1) + 1
+
+        val randomSubset = randomTree.subSet(fromElement, toElement)
+        randomValues.forEach { element ->
+            assertEquals(element in fromElement until toElement, randomSubset.contains(element))
+        }
+    }
+
+    protected fun doSubSetRelationTest() {
+        val set: SortedSet<Int> = tree.subSet(2, 15)
+        assertEquals(9, set.size)
+        assertEquals(10, tree.size)
+        tree.add(11)
+        assertTrue(set.contains(11))
+        set.add(14)
+        assertTrue(tree.contains(14))
+        tree.add(0)
+        assertFalse(set.contains(0))
+        tree.add(15)
+        assertFalse(set.contains(15))
+        assertFailsWith<IllegalArgumentException> { set.add(1) }
+        assertFailsWith<IllegalArgumentException> { set.add(20) }
+        assertEquals(11, set.size)
+        assertEquals(14, tree.size)
     }
 
 }

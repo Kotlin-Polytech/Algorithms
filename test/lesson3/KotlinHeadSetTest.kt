@@ -8,7 +8,7 @@ class KotlinHeadSetTest : AbstractHeadTailTest() {
 
     @BeforeEach
     fun fillTree() {
-        fillTree(KtBinaryTree())
+        fillTree { KtBinaryTree() }
     }
 
     @Test
@@ -39,5 +39,6 @@ class KotlinHeadSetTest : AbstractHeadTailTest() {
     @Tag("Impossible")
     fun subSetTest() {
         doSubSetTest()
+        doSubSetRelationTest()
     }
 }
