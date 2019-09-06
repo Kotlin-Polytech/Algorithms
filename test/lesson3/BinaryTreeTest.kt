@@ -56,17 +56,15 @@ class BinaryTreeTest {
             for (i in 1..20) {
                 list.add(random.nextInt(100))
             }
-            val treeSet = TreeSet<Int>()
             val binarySet = create()
             for (element in list) {
-                treeSet += element
                 binarySet += element
             }
             val toRemove = list[random.nextInt(list.size)]
-            treeSet.remove(toRemove)
+            val oldSize = binarySet.size
             assertTrue(binarySet.remove(toRemove))
+            assertEquals(oldSize - 1, binarySet.size)
             println("Removing $toRemove from $list")
-            assertEquals(treeSet.size, binarySet.size)
             for (element in list) {
                 val inn = element != toRemove
                 assertEquals(inn, element in binarySet,
