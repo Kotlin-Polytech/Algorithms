@@ -39,7 +39,7 @@ abstract class AbstractTaskTests : AbstractFileTests() {
         }
         try {
             sortTimes("input/time_in3.txt", "temp.txt")
-            assertFileContent("temp.txt", File("input/time_out3.txt").readLines().joinToString(separator = "\n"))
+            assertFileContent("temp.txt", File("input/time_out3.txt").readLines())
         } finally {
             File("temp.txt").delete()
         }
@@ -60,13 +60,13 @@ abstract class AbstractTaskTests : AbstractFileTests() {
         }
         try {
             sortAddresses("input/addr_in2.txt", "temp.txt")
-            assertFileContent("temp.txt", File("input/addr_out2.txt").readLines().joinToString(separator = "\n"))
+            assertFileContent("temp.txt", File("input/addr_out2.txt").readLines())
         } finally {
             File("temp.txt").delete()
         }
         try {
             sortAddresses("input/addr_in3.txt", "temp.txt")
-            assertFileContent("temp.txt", File("input/addr_out3.txt").readLines().joinToString(separator = "\n"))
+            assertFileContent("temp.txt", File("input/addr_out3.txt").readLines())
         } finally {
             File("temp.txt").delete()
         }
@@ -119,9 +119,7 @@ abstract class AbstractTaskTests : AbstractFileTests() {
             try {
                 val res = generateTemperatures(size)
                 val time = measureNanoTime { sortTemperatures("temp_unsorted.txt", "temp_sorted_actual.txt") }
-                assertFileContent("temp_sorted_actual.txt",
-                        File("temp_sorted_expected.txt").readLines().joinToString(separator = "\n")
-                )
+                assertFileContent("temp_sorted_actual.txt", File("temp_sorted_expected.txt").readLines())
                 return res.copy(time = time)
             } finally {
                 File("temp_unsorted.txt").delete()
@@ -217,7 +215,7 @@ abstract class AbstractTaskTests : AbstractFileTests() {
             try {
                 val res = generateSequence(totalSize, answerSize)
                 val time = measureNanoTime { sortSequence("temp_sequence.txt", "temp.txt") }
-                assertFileContent("temp.txt", File("temp_sequence_expected.txt").readLines().joinToString("\n"))
+                assertFileContent("temp.txt", File("temp_sequence_expected.txt").readLines())
                 return res.copy(time = time)
             } finally {
                 File("temp_sequence_expected.txt").delete()
