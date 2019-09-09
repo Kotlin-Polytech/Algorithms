@@ -144,13 +144,19 @@ class BinaryTreeTest {
             treeSet.remove(toRemove)
             println("Removing $toRemove from $list")
             val iterator = binarySet.iterator()
+            var counter = binarySet.size
             while (iterator.hasNext()) {
                 val element = iterator.next()
+                counter--
                 print("$element ")
                 if (element == toRemove) {
                     iterator.remove()
                 }
             }
+            assertEquals(0, counter,
+                    "During removal of $toRemove from $list " +
+                            "we've traversed ${binarySet.size - counter} elements instead of ${binarySet.size}"
+            )
             println()
             assertEquals<SortedSet<*>>(treeSet, binarySet, "After removal of $toRemove from $list")
             assertEquals(treeSet.size, binarySet.size)
