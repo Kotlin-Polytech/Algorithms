@@ -105,6 +105,13 @@ class BinaryTreeTest {
             while (treeIt.hasNext()) {
                 assertEquals(treeIt.next(), binaryIt.next())
             }
+            val iterator1 = binarySet.iterator()
+            val iterator2 = binarySet.iterator()
+            println("Consistency check for hasNext $list")
+            // hasNext call should not affect iterator position
+            while (iterator1.hasNext()) {
+                assertEquals(iterator2.next(), iterator1.next())
+            }
         }
     }
 
