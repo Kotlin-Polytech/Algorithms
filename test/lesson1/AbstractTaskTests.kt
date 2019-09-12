@@ -227,6 +227,42 @@ abstract class AbstractTaskTests : AbstractFileTests() {
         } finally {
             File("temp.txt").delete()
         }
+        try {
+            sortSequence("input/seq_in4.txt", "temp.txt")
+            assertFileContent("temp.txt",
+                    """
+                        78
+                        32
+                        13
+                        49
+                        32
+                        85
+                        91
+                        41
+                        25
+                        25
+                    """.trimIndent())
+        } finally {
+            File("temp.txt").delete()
+        }
+        try {
+            sortSequence("input/seq_in5.txt", "temp.txt")
+            assertFileContent("temp.txt",
+                    """
+                        78
+                        13
+                        45
+                        49
+                        85
+                        45
+                        91
+                        41
+                        32
+                        32
+                    """.trimIndent())
+        } finally {
+            File("temp.txt").delete()
+        }
 
         fun testGeneratedSequence(totalSize: Int, answerSize: Int): PerfResult<Unit> {
             try {
