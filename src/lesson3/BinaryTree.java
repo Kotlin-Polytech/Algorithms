@@ -7,7 +7,6 @@ import org.jetbrains.annotations.Nullable;
 import java.util.*;
 
 // Attention: comparable supported but comparator is not
-@SuppressWarnings("WeakerAccess")
 public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implements CheckableSortedSet<T> {
 
     private static class Node<T> {
@@ -100,33 +99,28 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implemen
 
     public class BinaryTreeIterator implements Iterator<T> {
 
-        private Node<T> current;
-
         private BinaryTreeIterator() {
-            // Добавьте сюда другую инициализацию, если она необходима
-            current = findNext();
+            // Добавьте сюда инициализацию, если она необходима
+        }
+
+        /**
+         * Проверка наличия следующего элемента
+         * Средняя
+         */
+        @Override
+        public boolean hasNext() {
+            // TODO
+            throw new NotImplementedError();
         }
 
         /**
          * Поиск следующего элемента
          * Средняя
          */
-        private Node<T> findNext() {
-            // TODO
-            throw new NotImplementedError();
-        }
-
-        @Override
-        public boolean hasNext() {
-            return current != null;
-        }
-
         @Override
         public T next() {
-            if (current == null) throw new NoSuchElementException();
-            T result = current.value;
-            current = findNext();
-            return result;
+            // TODO
+            throw new NotImplementedError();
         }
 
         /**
