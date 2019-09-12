@@ -20,13 +20,13 @@ abstract class AbstractHeuristicsTests {
                 items += Item(1 + random.nextInt(10000), 300 + random.nextInt(600))
             }
             try {
-                val fillGreedy = fillKnapsackGreedy(1000, items)
-                System.out.println("Жадный набрал = " + fillGreedy.cost)
                 val fillHeuristics = fillKnapsackHeuristics(1000, items)
-                System.out.println("Эвристический набрал = " + fillHeuristics.cost)
+                System.out.println("Heuristics score = " + fillHeuristics.cost)
+                val fillGreedy = fillKnapsackGreedy(1000, items)
+                System.out.println("Greedy score = " + fillGreedy.cost)
                 assertTrue(fillHeuristics.cost >= fillGreedy.cost)
             } catch (e: StackOverflowError) {
-                println("Жадный выбыл")
+                println("Greedy failed with Stack Overflow")
             }
         }
     }
