@@ -4,22 +4,7 @@ import java.util.*
 
 private val random = Random(Calendar.getInstance().timeInMillis)
 
-fun <T : Comparable<T>> insertionSort(elements: Array<T>) {
-    for (i in 1 until elements.size) {
-        val current = elements[i]
-        var j = i - 1
-        while (j >= 0) {
-            if (elements[j] > current)
-                elements[j + 1] = elements[j]
-            else
-                break
-            j--
-        }
-        elements[j + 1] = current
-    }
-}
-
-fun insertionSort(elements: IntArray) {
+fun <T : Comparable<T>> insertionSort(elements: MutableList<T>) {
     for (i in 1 until elements.size) {
         val current = elements[i]
         var j = i - 1
@@ -35,8 +20,8 @@ fun insertionSort(elements: IntArray) {
 }
 
 private fun merge(elements: IntArray, begin: Int, middle: Int, end: Int) {
-    val left = Arrays.copyOfRange(elements, begin, middle)
-    val right = Arrays.copyOfRange(elements, middle, end)
+    val left = elements.copyOfRange(begin, middle)
+    val right = elements.copyOfRange(middle, end)
     var li = 0
     var ri = 0
     for (i in begin until end) {

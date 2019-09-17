@@ -16,7 +16,7 @@ class SortsTestKt {
         }
     }
 
-    private fun <T : Comparable<T>> assertSorted(arr: Array<T>, prefix: String) {
+    private fun <T : Comparable<T>> assertSorted(arr: MutableList<T>, prefix: String) {
         for (i in 0 until arr.size - 1) {
             assertTrue(arr[i] <= arr[i + 1],
                     prefix + " ERROR: i = " + i + " a[i] = " + arr[i] + " a[i+1] = " + arr[i + 1])
@@ -26,7 +26,7 @@ class SortsTestKt {
     @Test
     @Tag("Example")
     fun insertionSort() {
-        val arr = intArrayOf(3, 7, 5, 9, 1, 6, 19, 13)
+        val arr = mutableListOf(3, 7, 5, 9, 1, 6, 19, 13)
         insertionSort(arr)
         assertSorted(arr, "INSERTION SORT")
     }
@@ -34,7 +34,7 @@ class SortsTestKt {
     @Test
     @Tag("Example")
     fun insertionSortStrings() {
-        val arr = arrayOf("beta", "omega", "alpha", "", "!!!", "teta", "O")
+        val arr = mutableListOf("beta", "omega", "alpha", "", "!!!", "teta", "O")
         insertionSort(arr)
         assertSorted(arr, "INSERTION SORT")
     }
@@ -51,10 +51,7 @@ class SortsTestKt {
     @Tag("Example")
     fun longInsertionSort() {
         val length = 65536
-        val arr = IntArray(length)
-        for (i in 0 until length) {
-            arr[i] = r.nextInt()
-        }
+        val arr = MutableList(length) { r.nextInt() }
         insertionSort(arr)
         assertSorted(arr, "INSERTION SORT LONG")
     }
