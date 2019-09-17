@@ -10,6 +10,8 @@ import kotlin.test.assertTrue
 class BinaryTreeTest {
     private fun testAdd(create: () -> CheckableSortedSet<Int>) {
         val tree = create()
+        assertEquals(0, tree.size)
+        assertFalse(tree.contains(5))
         tree.add(10)
         tree.add(5)
         tree.add(7)
@@ -57,6 +59,7 @@ class BinaryTreeTest {
                 list.add(random.nextInt(100))
             }
             val binarySet = create()
+            assertFalse(binarySet.remove(42))
             for (element in list) {
                 binarySet += element
             }
@@ -97,6 +100,7 @@ class BinaryTreeTest {
             }
             val treeSet = TreeSet<Int>()
             val binarySet = create()
+            assertFalse(binarySet.iterator().hasNext())
             for (element in list) {
                 treeSet += element
                 binarySet += element

@@ -9,6 +9,8 @@ class TrieTest {
     @Tag("Example")
     fun generalTest() {
         val trie = Trie()
+        assertEquals(0, trie.size)
+        assertFalse("Some" in trie)
         trie.add("abcdefg")
         assertTrue("abcdefg" in trie)
         assertFalse("abcdef" in trie)
@@ -44,6 +46,7 @@ class TrieTest {
     @Tag("Hard")
     fun rudeIteratorTest() {
         val trie = Trie()
+        assertEquals(setOf<String>(), trie)
         trie.add("abcdefg")
         trie.add("zyx")
         trie.add("zwv")
