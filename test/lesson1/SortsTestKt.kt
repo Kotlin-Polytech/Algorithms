@@ -11,15 +11,19 @@ class SortsTestKt {
 
     private fun assertSorted(arr: IntArray, prefix: String) {
         for (i in 0 until arr.size - 1) {
-            assertTrue(arr[i] <= arr[i + 1],
-                    prefix + " ERROR: i = " + i + " a[i] = " + arr[i] + " a[i+1] = " + arr[i + 1])
+            assertTrue(
+                arr[i] <= arr[i + 1],
+                prefix + " ERROR: i = " + i + " a[i] = " + arr[i] + " a[i+1] = " + arr[i + 1]
+            )
         }
     }
 
     private fun <T : Comparable<T>> assertSorted(arr: MutableList<T>, prefix: String) {
         for (i in 0 until arr.size - 1) {
-            assertTrue(arr[i] <= arr[i + 1],
-                    prefix + " ERROR: i = " + i + " a[i] = " + arr[i] + " a[i+1] = " + arr[i + 1])
+            assertTrue(
+                arr[i] <= arr[i + 1],
+                prefix + " ERROR: i = " + i + " a[i] = " + arr[i] + " a[i+1] = " + arr[i + 1]
+            )
         }
     }
 

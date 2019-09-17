@@ -1,7 +1,7 @@
 package lesson5
 
 fun Graph.findBridges(): Set<Graph.Edge> =
-        BridgeTraverser(this).findBridges()
+    BridgeTraverser(this).findBridges()
 
 private class BridgeTraverser(val graph: Graph) {
     val visitedVertices = mutableSetOf<Graph.Vertex>()

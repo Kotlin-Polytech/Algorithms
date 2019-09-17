@@ -12,9 +12,11 @@ class GraphBuilder {
         override fun toString() = name
     }
 
-    data class EdgeImpl(private val weightField: Int,
-                        private val _begin: Vertex,
-                        private val _end: Vertex) : Edge {
+    data class EdgeImpl(
+        private val weightField: Int,
+        private val _begin: Vertex,
+        private val _end: Vertex
+    ) : Edge {
         override fun getBegin() = _begin
 
         override fun getEnd() = _end

@@ -28,7 +28,9 @@ class VoyagerTest {
         }.build()
         val path = findVoyagingPath(graph)!!
         assertEquals(105, path.length)
-        assertEquals(listOf(graph["A"], graph["D"], graph["B"], graph["C"], graph["E"], graph["F"], graph["A"]),
-                path.vertices)
+        assertEquals(
+            listOf(graph["A"], graph["D"], graph["B"], graph["C"], graph["E"], graph["F"], graph["A"]),
+            path.vertices
+        )
     }
 }

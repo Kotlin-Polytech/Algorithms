@@ -4,9 +4,9 @@ import lesson5.Graph.Vertex
 import java.util.*
 
 class VertexInfo(
-        val vertex: Vertex,
-        val distance: Int,
-        val prev: Vertex?
+    val vertex: Vertex,
+    val distance: Int,
+    val prev: Vertex?
 ) : Comparable<VertexInfo> {
     override fun compareTo(other: VertexInfo): Int {
         return distance.compareTo(other.distance)

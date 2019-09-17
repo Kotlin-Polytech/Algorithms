@@ -41,7 +41,7 @@ class KtBinaryTree<T : Comparable<T>> : AbstractMutableSet<T>(), CheckableSorted
     }
 
     override fun checkInvariant(): Boolean =
-            root?.let { checkInvariant(it) } ?: true
+        root?.let { checkInvariant(it) } ?: true
 
     private fun checkInvariant(node: Node<T>): Boolean {
         val left = node.left
@@ -64,7 +64,7 @@ class KtBinaryTree<T : Comparable<T>> : AbstractMutableSet<T>(), CheckableSorted
     }
 
     private fun find(value: T): Node<T>? =
-            root?.let { find(it, value) }
+        root?.let { find(it, value) }
 
     private fun find(start: Node<T>, value: T): Node<T> {
         val comparison = value.compareTo(start.value)

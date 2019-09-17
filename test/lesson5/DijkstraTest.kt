@@ -45,7 +45,9 @@ class DijkstraTest {
         assertEquals(10, pathMap[graph["C"]!!]?.distance)
         assertEquals(30, pathMap[graph["D"]!!]?.distance)
         assertEquals(15, pathMap[graph["E"]!!]?.distance)
-        assertEquals(listOf(graph["A"], graph["C"], graph["E"], graph["D"], graph["F"]),
-                pathMap.unrollPath(graph["F"]!!))
+        assertEquals(
+            listOf(graph["A"], graph["C"], graph["E"], graph["D"], graph["F"]),
+            pathMap.unrollPath(graph["F"]!!)
+        )
     }
 }

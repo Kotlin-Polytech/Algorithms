@@ -14,8 +14,10 @@ data class LoadCount(val load: Int, val count: Int)
 
 data class Item(val cost: Int, val weight: Int)
 
-fun fillKnapsackDynamic(load: Int, items: List<Item>,
-                        storage: HashMap<LoadCount, Fill> = hashMapOf()): Fill {
+fun fillKnapsackDynamic(
+    load: Int, items: List<Item>,
+    storage: HashMap<LoadCount, Fill> = hashMapOf()
+): Fill {
     if (load <= 0 || items.isEmpty()) return Fill(0, emptySet())
     val loadCount = LoadCount(load, items.size)
     return storage.getOrPut(loadCount) {
@@ -35,8 +37,10 @@ private tailrec fun fillKnapsackGreedySorted(load: Int, items: List<Item>, baseF
     if (load <= 0 || items.isEmpty()) return baseFill
     val itemsWithoutLast = items.subList(0, items.size - 1)
     val last = items.last()
-    return fillKnapsackGreedySorted(if (last.weight > load) load else load - last.weight, itemsWithoutLast,
-            if (last.weight > load) baseFill else baseFill + Fill(last))
+    return fillKnapsackGreedySorted(
+        if (last.weight > load) load else load - last.weight, itemsWithoutLast,
+        if (last.weight > load) baseFill else baseFill + Fill(last)
+    )
 }
 
 fun fillKnapsackGreedy(load: Int, items: List<Item>): Fill {
@@ -46,7 +50,7 @@ fun fillKnapsackGreedy(load: Int, items: List<Item>): Fill {
     return fillKnapsackGreedySorted(load, sorted)
 }
 
-fun main(args: Array<String>) {
+fun main() {
     val items = listOf(Item(8, 10), Item(5, 12), Item(6, 8), Item(10, 15), Item(4, 2))
     println(fillKnapsackDynamic(30, items))
     println(fillKnapsackGreedy(30, items))

@@ -4,9 +4,9 @@ import org.jetbrains.research.runner.perf.PerfEstimation
 import org.jetbrains.research.runner.perf.estimate
 
 data class PerfResult<T>(
-        val size: Int = 0,
-        val time: Long = 0,
-        val data: T
+    val size: Int = 0,
+    val time: Long = 0,
+    val data: T
 )
 
 fun <T> estimate(data: List<PerfResult<T>>) = estimate(data.map { it.size to it.time })

@@ -3,11 +3,12 @@ package lesson7.annealing
 import lesson5.Graph
 import lesson5.Path
 import lesson7.AbstractVoyagingPathSearcher
+import kotlin.math.exp
 
 class AnnealingVoyagingPathSearcher(
-        g: Graph,
-        val startTemperature: Int,
-        val iterationNumber: Int
+    g: Graph,
+    private val startTemperature: Int,
+    private val iterationNumber: Int
 ) : AbstractVoyagingPathSearcher(g) {
 
     private fun List<Int>.generateNewState(): List<Int> {
@@ -30,7 +31,7 @@ class AnnealingVoyagingPathSearcher(
     }
 
     private fun transitionProbability(evaluationIncrease: Int, temperature: Double): Double {
-        return Math.exp(-evaluationIncrease / temperature)
+        return exp(-evaluationIncrease / temperature)
     }
 
     override fun findVoyagingPath(): Path {
@@ -44,8 +45,11 @@ class AnnealingVoyagingPathSearcher(
             if (newEvaluation < evaluation) {
                 state = newState
             } else if (random.nextDouble() <
-                    transitionProbability(newEvaluation - evaluation,
-                            startTemperature.toDouble() / i)) {
+                transitionProbability(
+                    newEvaluation - evaluation,
+                    startTemperature.toDouble() / i
+                )
+            ) {
                 state = newState
             }
         }
@@ -54,7 +58,7 @@ class AnnealingVoyagingPathSearcher(
 }
 
 fun Graph.findVoyagingPathAnnealing(
-        startTemperature: Int,
-        iterationNumber: Int,
-        @Suppress("UNUSED_PARAMETER") vararg otherParams: Any
+    startTemperature: Int,
+    iterationNumber: Int,
+    @Suppress("UNUSED_PARAMETER") vararg otherParams: Any
 ): Path = AnnealingVoyagingPathSearcher(this, startTemperature, iterationNumber).findVoyagingPath()

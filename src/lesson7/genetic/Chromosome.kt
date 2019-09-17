@@ -3,18 +3,21 @@ package lesson7.genetic
 import java.util.*
 
 internal class Chromosome(val visitingOrder: List<Int>) {
-    constructor(size: Int, random: Random) :
-            this((0 until size).toMutableList().apply { shuffle(random) })
+    constructor(size: Int, random: Random) : this(
+        (0 until size).toMutableList().apply { shuffle(random) }
+    )
 
     fun mutate(random: Random): Chromosome =
-            Chromosome(visitingOrder.toMutableList().apply {
+        Chromosome(
+            visitingOrder.toMutableList().apply {
                 val first = random.nextInt(visitingOrder.size)
                 var second: Int
                 do {
                     second = random.nextInt(visitingOrder.size)
                 } while (first == second)
                 Collections.swap(this, first, second)
-            })
+            }
+        )
 
     fun crossBreed(other: Chromosome, random: Random): Chromosome {
         assert(visitingOrder.size == other.visitingOrder.size)
@@ -36,7 +39,8 @@ internal class Chromosome(val visitingOrder: List<Int>) {
                             do {
                                 randomNumber = random.nextInt(visitingOrder.size)
                             } while (randomNumber in result ||
-                                    visitingOrder.indexOf(randomNumber) == other.visitingOrder.indexOf(randomNumber))
+                                visitingOrder.indexOf(randomNumber) == other.visitingOrder.indexOf(randomNumber)
+                            )
                             randomNumber
                         }
                     }

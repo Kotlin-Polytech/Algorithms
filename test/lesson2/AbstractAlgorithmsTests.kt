@@ -26,7 +26,7 @@ abstract class AbstractAlgorithmsTests {
             }
         }
         val (minIndex, maxIndex) =
-                if (firstIndex < secondIndex) firstIndex to secondIndex else secondIndex to firstIndex
+            if (firstIndex < secondIndex) firstIndex to secondIndex else secondIndex to firstIndex
         prices[minIndex] = minPrice
         prices[maxIndex] = maxPrice
 
@@ -77,7 +77,8 @@ abstract class AbstractAlgorithmsTests {
         assertEquals("", longestCommonSubstring("мой мир", "я"))
         assertEquals("зд", longestCommonSubstring("здравствуй мир", "мы здесь"))
         assertEquals("СЕРВАТОР", longestCommonSubstring("ОБСЕРВАТОРИЯ", "КОНСЕРВАТОРЫ"))
-        assertEquals("огда ", longestCommonSubstring(
+        assertEquals(
+            "огда ", longestCommonSubstring(
                 """
 Мой дядя самых честных правил,
 Когда не в шутку занемог,
@@ -110,12 +111,14 @@ abstract class AbstractAlgorithmsTests {
 Там некогда гулял и я:
 Но вреден север для меня
                 """.trimIndent()
-        ))
-        assertEquals("\n(с) Этот весь длинный-длинный текст является цитатой из Пушкина, поэма \"Руслан и Людмила\"\n",
-                longestCommonSubstring(
-                        File("input/ruslan_ludmila_1.txt").readText(),
-                        File("input/ruslan_ludmila_2.txt").readText()
-                )
+            )
+        )
+        assertEquals(
+            "\n(с) Этот весь длинный-длинный текст является цитатой из Пушкина, поэма \"Руслан и Людмила\"\n",
+            longestCommonSubstring(
+                File("input/ruslan_ludmila_1.txt").readText(),
+                File("input/ruslan_ludmila_2.txt").readText()
+            )
         )
     }
 
@@ -144,16 +147,28 @@ abstract class AbstractAlgorithmsTests {
     }
 
     fun baldaSearcher(baldaSearcher: (String, Set<String>) -> Set<String>) {
-        assertEquals(setOf("ТРАВА", "КРАН", "АКВА", "НАРТЫ"),
-                baldaSearcher("input/balda_in1.txt", setOf("ТРАВА", "КРАН", "АКВА", "НАРТЫ", "РАК")))
-        assertEquals(setOf("БАЛДА"),
-                baldaSearcher("input/balda_in2.txt", setOf("БАЛАБОЛ", "БАЛДА", "БАЛДАЗАВР")))
-        assertEquals(setOf("АПЕЛЬСИН", "МАРОККО", "ПЕРЕМЕНЫ", "ГРАВИТАЦИЯ",
+        assertEquals(
+            setOf("ТРАВА", "КРАН", "АКВА", "НАРТЫ"),
+            baldaSearcher("input/balda_in1.txt", setOf("ТРАВА", "КРАН", "АКВА", "НАРТЫ", "РАК"))
+        )
+        assertEquals(
+            setOf("БАЛДА"),
+            baldaSearcher("input/balda_in2.txt", setOf("БАЛАБОЛ", "БАЛДА", "БАЛДАЗАВР"))
+        )
+        assertEquals(
+            setOf(
+                "АПЕЛЬСИН", "МАРОККО", "ПЕРЕМЕНЫ", "ГРАВИТАЦИЯ",
                 "РАССУДИТЕЛЬНОСТЬ", "КОНСТАНТИНОПОЛЬ", "ПРОГРАММИРОВАНИЕ", "ПОМЕХОУСТОЙЧИВОСТЬ", "АППРОКСИМАЦИЯ",
-                "ЭЙНШТЕЙН"),
-                baldaSearcher("input/balda_in3.txt", setOf("АПЕЛЬСИН", "МАРОККО", "ЭФИОПИЯ", "ПЕРЕМЕНЫ", "ГРАВИТАЦИЯ",
-                        "РАССУДИТЕЛЬНОСТЬ", "БЕЗРАССУДНОСТЬ", "КОНСТАНТИНОПОЛЬ", "СТАМБУЛ", "ПРОГРАММИРОВАНИЕ",
-                        "ПРОСТРАНСТВО", "ДИАЛЕКТИКА", "КВАЛИФИКАЦИЯ", "ПОМЕХОУСТОЙЧИВОСТЬ", "КОГЕРЕНТНОСТЬ",
-                        "АППРОКСИМАЦИЯ", "ИНТЕРПОЛЯЦИЯ", "МАЙЕВТИКА", "ШРЕДИНГЕР", "ЭЙНШТЕЙН")))
+                "ЭЙНШТЕЙН"
+            ),
+            baldaSearcher(
+                "input/balda_in3.txt", setOf(
+                    "АПЕЛЬСИН", "МАРОККО", "ЭФИОПИЯ", "ПЕРЕМЕНЫ", "ГРАВИТАЦИЯ",
+                    "РАССУДИТЕЛЬНОСТЬ", "БЕЗРАССУДНОСТЬ", "КОНСТАНТИНОПОЛЬ", "СТАМБУЛ", "ПРОГРАММИРОВАНИЕ",
+                    "ПРОСТРАНСТВО", "ДИАЛЕКТИКА", "КВАЛИФИКАЦИЯ", "ПОМЕХОУСТОЙЧИВОСТЬ", "КОГЕРЕНТНОСТЬ",
+                    "АППРОКСИМАЦИЯ", "ИНТЕРПОЛЯЦИЯ", "МАЙЕВТИКА", "ШРЕДИНГЕР", "ЭЙНШТЕЙН"
+                )
+            )
+        )
     }
 }

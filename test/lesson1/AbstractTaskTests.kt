@@ -14,8 +14,9 @@ abstract class AbstractTaskTests : AbstractFileTests() {
     protected fun sortTimes(sortTimes: (String, String) -> Unit) {
         try {
             sortTimes("input/time_in1.txt", "temp.txt")
-            assertFileContent("temp.txt",
-                    """
+            assertFileContent(
+                "temp.txt",
+                """
                      00:40:31
                      07:26:57
                      10:00:03
@@ -29,8 +30,9 @@ abstract class AbstractTaskTests : AbstractFileTests() {
         }
         try {
             sortTimes("input/time_in2.txt", "temp.txt")
-            assertFileContent("temp.txt",
-                    """
+            assertFileContent(
+                "temp.txt",
+                """
                      00:00:00
                 """.trimIndent()
             )
@@ -48,8 +50,9 @@ abstract class AbstractTaskTests : AbstractFileTests() {
     protected fun sortAddresses(sortAddresses: (String, String) -> Unit) {
         try {
             sortAddresses("input/addr_in1.txt", "temp.txt")
-            assertFileContent("temp.txt",
-                    """
+            assertFileContent(
+                "temp.txt",
+                """
                     Железнодорожная 3 - Петров Иван
                     Железнодорожная 7 - Иванов Алексей, Иванов Михаил
                     Садовая 5 - Сидоров Петр, Сидорова Мария
@@ -100,8 +103,9 @@ abstract class AbstractTaskTests : AbstractFileTests() {
     protected fun sortTemperatures(sortTemperatures: (String, String) -> Unit) {
         try {
             sortTemperatures("input/temp_in1.txt", "temp.txt")
-            assertFileContent("temp.txt",
-                    """
+            assertFileContent(
+                "temp.txt",
+                """
                     -98.4
                     -12.6
                     -12.6
@@ -180,8 +184,9 @@ abstract class AbstractTaskTests : AbstractFileTests() {
     protected fun sortSequence(sortSequence: (String, String) -> Unit) {
         try {
             sortSequence("input/seq_in1.txt", "temp.txt")
-            assertFileContent("temp.txt",
-                    """
+            assertFileContent(
+                "temp.txt",
+                """
                         1
                         3
                         3
@@ -189,14 +194,16 @@ abstract class AbstractTaskTests : AbstractFileTests() {
                         2
                         2
                         2
-                    """.trimIndent())
+                    """.trimIndent()
+            )
         } finally {
             File("temp.txt").delete()
         }
         try {
             sortSequence("input/seq_in2.txt", "temp.txt")
-            assertFileContent("temp.txt",
-                    """
+            assertFileContent(
+                "temp.txt",
+                """
                         25
                         39
                         25
@@ -206,14 +213,16 @@ abstract class AbstractTaskTests : AbstractFileTests() {
                         12
                         12
                         12
-                    """.trimIndent())
+                    """.trimIndent()
+            )
         } finally {
             File("temp.txt").delete()
         }
         try {
             sortSequence("input/seq_in3.txt", "temp.txt")
-            assertFileContent("temp.txt",
-                    """
+            assertFileContent(
+                "temp.txt",
+                """
                         25986000
                         39234000
                         25986000
@@ -223,14 +232,16 @@ abstract class AbstractTaskTests : AbstractFileTests() {
                         12345000
                         12345000
                         12345000
-                    """.trimIndent())
+                    """.trimIndent()
+            )
         } finally {
             File("temp.txt").delete()
         }
         try {
             sortSequence("input/seq_in4.txt", "temp.txt")
-            assertFileContent("temp.txt",
-                    """
+            assertFileContent(
+                "temp.txt",
+                """
                         78
                         32
                         13
@@ -241,14 +252,16 @@ abstract class AbstractTaskTests : AbstractFileTests() {
                         41
                         25
                         25
-                    """.trimIndent())
+                    """.trimIndent()
+            )
         } finally {
             File("temp.txt").delete()
         }
         try {
             sortSequence("input/seq_in5.txt", "temp.txt")
-            assertFileContent("temp.txt",
-                    """
+            assertFileContent(
+                "temp.txt",
+                """
                         78
                         13
                         45
@@ -259,7 +272,8 @@ abstract class AbstractTaskTests : AbstractFileTests() {
                         41
                         32
                         32
-                    """.trimIndent())
+                    """.trimIndent()
+            )
         } finally {
             File("temp.txt").delete()
         }
@@ -284,7 +298,10 @@ abstract class AbstractTaskTests : AbstractFileTests() {
         println("sortSequence: $perf")
     }
 
-    private fun generateArrays(firstSize: Int, secondSize: Int): PerfResult<Triple<Array<Int>, Array<Int?>, Array<Int?>>> {
+    private fun generateArrays(
+        firstSize: Int,
+        secondSize: Int
+    ): PerfResult<Triple<Array<Int>, Array<Int?>, Array<Int?>>> {
         val random = Random()
         val expectedResult = Array<Int?>(firstSize + secondSize) {
             it * 10 + random.nextInt(10)
@@ -300,8 +317,8 @@ abstract class AbstractTaskTests : AbstractFileTests() {
             }
         }
         return PerfResult(
-                size = expectedResult.size,
-                data = Triple(first.toTypedArray(), second.toTypedArray(), expectedResult)
+            size = expectedResult.size,
+            data = Triple(first.toTypedArray(), second.toTypedArray(), expectedResult)
         )
     }
 
@@ -310,7 +327,10 @@ abstract class AbstractTaskTests : AbstractFileTests() {
         mergeArrays(arrayOf(4, 9, 15, 20, 23), result)
         assertArrayEquals(arrayOf(1, 3, 4, 9, 9, 13, 15, 18, 20, 23, 23), result)
 
-        fun testGeneratedArrays(firstSize: Int, secondSize: Int): PerfResult<Triple<Array<Int>, Array<Int?>, Array<Int?>>> {
+        fun testGeneratedArrays(
+            firstSize: Int,
+            secondSize: Int
+        ): PerfResult<Triple<Array<Int>, Array<Int?>, Array<Int?>>> {
             val res = generateArrays(firstSize, secondSize)
             val (first, second, expectedResult) = res.data
             val time = measureNanoTime { mergeArrays(first, second) }

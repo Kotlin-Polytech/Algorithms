@@ -1,7 +1,7 @@
 package lesson3
 
 /**
- * Этот класс воспринимать только как пример (несмотря на TO DO)
+ * Этот класс воспринимать только как пример
  */
 class SampleIterableCollection<T> : AbstractMutableCollection<T>() {
 

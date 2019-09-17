@@ -5,9 +5,9 @@ import lesson5.Path
 import lesson7.AbstractVoyagingPathSearcher
 
 class GeneticVoyagingPathSearcher(
-        g: Graph,
-        val chromosomeNumber: Int,
-        val generationNumber: Int
+    g: Graph,
+    private val chromosomeNumber: Int,
+    private val generationNumber: Int
 ) : AbstractVoyagingPathSearcher(g) {
     private fun generateChromosomes(number: Int): List<Chromosome> {
         val result = mutableListOf<Chromosome>()
@@ -37,7 +37,7 @@ class GeneticVoyagingPathSearcher(
                 if (random.nextDouble() < 0.1) it.mutate(random) else it
             }
             val evaluatedChromosomes = (chromosomes + crossBreedsAfterMutation)
-                    .sortedBy { it.evaluation() }
+                .sortedBy { it.evaluation() }
             chromosomes = evaluatedChromosomes.subList(0, chromosomeNumber)
         }
         val visitingOrder = chromosomes.first().visitingOrder
@@ -46,7 +46,7 @@ class GeneticVoyagingPathSearcher(
 }
 
 fun Graph.findVoyagingPathGenetically(
-        chromosomeNumber: Int,
-        generationNumber: Int,
-        @Suppress("UNUSED_PARAMETER") vararg otherParams: Any
+    chromosomeNumber: Int,
+    generationNumber: Int,
+    @Suppress("UNUSED_PARAMETER") vararg otherParams: Any
 ): Path = GeneticVoyagingPathSearcher(this, chromosomeNumber, generationNumber).findVoyagingPath()

@@ -3,30 +3,30 @@ package lesson5
 import lesson5.Graph.Vertex
 
 class Path private constructor(
-        val vertices: List<Vertex>,
-        val length: Int
+    val vertices: List<Vertex>,
+    val length: Int
 ) : Comparable<Path> {
     override fun compareTo(other: Path) = length.compareTo(other.length)
 
     fun isLoop(graph: Graph): Boolean =
-            vertices.size == graph.vertices.size + 1 &&
-                    vertices.first() == vertices.last()
+        vertices.size == graph.vertices.size + 1 && vertices.first() == vertices.last()
 
     operator fun contains(v: Vertex) = v in vertices
 
     constructor(first: Vertex) : this(listOf(first), 0)
 
-    constructor(previous: Path, g: Graph, next: Vertex) :
-            this(previous.vertices + next,
-                    previous.length + g.getConnection(previous.vertices.last(), next)!!.weight)
+    constructor(previous: Path, g: Graph, next: Vertex) : this(
+        previous.vertices + next,
+        previous.length + g.getConnection(previous.vertices.last(), next)!!.weight
+    )
 
     override fun toString() = "<$vertices of length $length>"
 }
 
 fun findVoyagingPath(
-        g: Graph,
-        currentPath: Path = Path(g.vertices.first()),
-        bestPath: Path? = null
+    g: Graph,
+    currentPath: Path = Path(g.vertices.first()),
+    bestPath: Path? = null
 ): Path? {
     var best = bestPath
     for (next in g.getNeighbors(currentPath.vertices.last())) {

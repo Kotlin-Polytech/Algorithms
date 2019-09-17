@@ -23,6 +23,7 @@ class SampleIterableCollectionTest {
             sizeByIterator++
         }
         assertEquals(3, collection.size)
+        assertEquals(3, sizeByIterator)
     }
 
     @Test
