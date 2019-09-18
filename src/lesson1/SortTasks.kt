@@ -2,36 +2,53 @@
 
 package lesson1
 
+import java.io.File
+
 /**
  * Сортировка времён
  *
  * Простая
  * (Модифицированная задача с сайта acmp.ru)
  *
- * Во входном файле с именем inputName содержатся моменты времени в формате ЧЧ:ММ:СС,
+ * Во входном файле с именем inputName содержатся моменты времени в формате ЧЧ:ММ:СС AM/PM,
  * каждый на отдельной строке. Пример:
  *
- * 13:15:19
- * 07:26:57
- * 10:00:03
- * 19:56:14
- * 13:15:19
- * 00:40:31
+ * 01:15:19 PM
+ * 07:26:57 AM
+ * 10:00:03 AM
+ * 07:56:14 PM
+ * 01:15:19 PM
+ * 12:40:31 AM
  *
  * Отсортировать моменты времени по возрастанию и вывести их в выходной файл с именем outputName,
- * сохраняя формат ЧЧ:ММ:СС. Одинаковые моменты времени выводить друг за другом. Пример:
+ * сохраняя формат ЧЧ:ММ:СС AM/PM. Одинаковые моменты времени выводить друг за другом. Пример:
  *
- * 00:40:31
- * 07:26:57
- * 10:00:03
- * 13:15:19
- * 13:15:19
- * 19:56:14
+ * 12:40:31 AM
+ * 07:26:57 AM
+ * 10:00:03 AM
+ * 01:15:19 PM
+ * 01:15:19 PM
+ * 07:56:14 PM
  *
  * В случае обнаружения неверного формата файла бросить любое исключение.
  */
 fun sortTimes(inputName: String, outputName: String) {
     TODO()
+}
+
+fun main() {
+    fun Int.toTwelve(): Int = if (this == 0) 12 else this
+
+    val writer = File("input/n_time_out3.txt").bufferedWriter()
+    File("input/time_out3.txt").forEachLine { line ->
+        val hms = line.split(":").map { it.toInt() }
+        val result =
+            if (hms[0] < 12) String.format("%02d:%02d:%02d AM", hms[0].toTwelve(), hms[1], hms[2])
+            else String.format("%02d:%02d:%02d PM", (hms[0] - 12).toTwelve(), hms[1], hms[2])
+        writer.write(result)
+        writer.newLine()
+    }
+    writer.close()
 }
 
 /**

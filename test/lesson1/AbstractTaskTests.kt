@@ -17,12 +17,12 @@ abstract class AbstractTaskTests : AbstractFileTests() {
             assertFileContent(
                 "temp.txt",
                 """
-                     00:40:31
-                     07:26:57
-                     10:00:03
-                     13:15:19
-                     13:15:19
-                     19:56:14
+                     12:40:31 AM
+                     07:26:57 AM
+                     10:00:03 AM
+                     01:15:19 PM
+                     01:15:19 PM
+                     07:56:14 PM
                 """.trimIndent()
             )
         } finally {
@@ -33,7 +33,7 @@ abstract class AbstractTaskTests : AbstractFileTests() {
             assertFileContent(
                 "temp.txt",
                 """
-                     00:00:00
+                     12:00:00 AM
                 """.trimIndent()
             )
         } finally {
