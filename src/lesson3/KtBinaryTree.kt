@@ -2,6 +2,7 @@ package lesson3
 
 import java.util.*
 import kotlin.NoSuchElementException
+import kotlin.math.max
 
 // Attention: comparable supported but comparator is not
 class KtBinaryTree<T : Comparable<T>> : AbstractMutableSet<T>(), CheckableSortedSet<T> {
@@ -43,11 +44,18 @@ class KtBinaryTree<T : Comparable<T>> : AbstractMutableSet<T>(), CheckableSorted
     override fun checkInvariant(): Boolean =
         root?.let { checkInvariant(it) } ?: true
 
+    override fun height(): Int = height(root)
+
     private fun checkInvariant(node: Node<T>): Boolean {
         val left = node.left
         if (left != null && (left.value >= node.value || !checkInvariant(left))) return false
         val right = node.right
         return right == null || right.value > node.value && checkInvariant(right)
+    }
+
+    private fun height(node: Node<T>?): Int {
+        if (node == null) return 0
+        return 1 + max(height(node.left), height(node.right))
     }
 
     /**

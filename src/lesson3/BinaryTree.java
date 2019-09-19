@@ -52,11 +52,20 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implemen
         return root == null || checkInvariant(root);
     }
 
+    public int height() {
+        return height(root);
+    }
+
     private boolean checkInvariant(Node<T> node) {
         Node<T> left = node.left;
         if (left != null && (left.value.compareTo(node.value) >= 0 || !checkInvariant(left))) return false;
         Node<T> right = node.right;
         return right == null || right.value.compareTo(node.value) > 0 && checkInvariant(right);
+    }
+
+    private int height(Node<T> node) {
+        if (node == null) return 0;
+        return 1 + Math.max(height(node.left), height(node.right));
     }
 
     /**

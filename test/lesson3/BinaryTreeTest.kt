@@ -63,6 +63,7 @@ class BinaryTreeTest {
             for (element in list) {
                 binarySet += element
             }
+            val originalHeight = binarySet.height()
             val toRemove = list[random.nextInt(list.size)]
             val oldSize = binarySet.size
             assertTrue(binarySet.remove(toRemove))
@@ -76,6 +77,10 @@ class BinaryTreeTest {
                 )
             }
             assertTrue(binarySet.checkInvariant(), "Binary tree invariant is false after tree.remove()")
+            assertTrue(
+                binarySet.height() <= originalHeight,
+                "After removal of $toRemove from $list binary tree height increased"
+            )
         }
     }
 
