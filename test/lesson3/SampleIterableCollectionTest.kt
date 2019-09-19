@@ -1,5 +1,6 @@
 package lesson3
 
+import org.junit.jupiter.api.Tag
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
@@ -8,6 +9,7 @@ import kotlin.test.assertTrue
 class SampleIterableCollectionTest {
 
     @Test
+    @Tag("Example")
     fun testAdd() {
         val collection = SampleIterableCollection<String>()
         collection.add("Omega")
@@ -27,6 +29,7 @@ class SampleIterableCollectionTest {
     }
 
     @Test
+    @Tag("Example")
     fun testRemove() {
         val collection = SampleIterableCollection<String>()
         collection.add("Omega")
@@ -50,6 +53,7 @@ class SampleIterableCollectionTest {
     }
 
     @Test
+    @Tag("Example")
     fun testRemoveFirst() {
         val collection = SampleIterableCollection<String>()
         collection.add("Omega")
