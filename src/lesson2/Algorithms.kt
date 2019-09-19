@@ -75,6 +75,9 @@ fun optimizeBuyAndSell(inputName: String): Pair<Int, Int> {
  * Х Х 3
  * Х   Х
  * Х х Х
+ *
+ * Общий комментарий: решение из Википедии для этой задачи принимается,
+ * но приветствуется попытка решить её самостоятельно.
  */
 fun josephTask(menNumber: Int, choiceInterval: Int): Int {
     TODO()

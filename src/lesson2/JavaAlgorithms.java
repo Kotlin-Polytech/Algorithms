@@ -80,6 +80,9 @@ public class JavaAlgorithms {
      * Х Х 3
      * Х   Х
      * Х х Х
+     *
+     * Общий комментарий: решение из Википедии для этой задачи принимается,
+     * но приветствуется попытка решить её самостоятельно.
      */
     static public int josephTask(int menNumber, int choiceInterval) {
         throw new NotImplementedError();
