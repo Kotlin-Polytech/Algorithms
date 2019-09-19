@@ -128,3 +128,13 @@ fun countingSort(elements: IntArray, limit: Int): IntArray {
     }
     return out
 }
+
+/**
+ * Библиотечные сортировки (приведены только для примера,
+ * рекомендуется использовать list.sorted() и list.sort() напрямую)
+ */
+fun <T : Comparable<T>> librarySortForImmutable(list: List<T>): List<T> = list.sorted()
+
+fun <T : Comparable<T>> librarySortForMutable(list: MutableList<T>) {
+    list.sort()
+}

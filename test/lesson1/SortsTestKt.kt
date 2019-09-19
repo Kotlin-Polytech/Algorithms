@@ -18,7 +18,7 @@ class SortsTestKt {
         }
     }
 
-    private fun <T : Comparable<T>> assertSorted(arr: MutableList<T>, prefix: String) {
+    private fun <T : Comparable<T>> assertSorted(arr: List<T>, prefix: String) {
         for (i in 0 until arr.size - 1) {
             assertTrue(
                 arr[i] <= arr[i + 1],
@@ -117,5 +117,31 @@ class SortsTestKt {
         assertSorted(result, "COUNTING SORT LONG")
         quickSort(arr)
         assertArrayEquals(arr, result)
+    }
+
+    @Test
+    @Tag("Example")
+    fun longLibrarySortForImmutable() {
+        val length = 65536
+        val arr = IntArray(length)
+        for (i in 0 until length) {
+            arr[i] = r.nextInt()
+        }
+        val list = arr.toList()
+        val sortedList = librarySortForImmutable(list)
+        assertSorted(sortedList, "LIBRARY SORT FOR IMMUTABLE")
+    }
+
+    @Test
+    @Tag("Example")
+    fun longLibrarySortForMutable() {
+        val length = 65536
+        val arr = IntArray(length)
+        for (i in 0 until length) {
+            arr[i] = r.nextInt()
+        }
+        val list = arr.toMutableList()
+        librarySortForMutable(list)
+        assertSorted(list, "LIBRARY SORT FOR MUTABLE")
     }
 }
