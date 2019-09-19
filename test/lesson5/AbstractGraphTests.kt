@@ -36,7 +36,7 @@ abstract class AbstractGraphTests {
             addConnection(a, c)
         }.build()
         val loop = graph.findEulerLoop()
-        loop.assert(true, graph)
+        loop.assert(shouldExist = true, graph = graph)
         val graph2 = GraphBuilder().apply {
             val a = addVertex("A")
             val b = addVertex("B")
@@ -64,7 +64,34 @@ abstract class AbstractGraphTests {
             addConnection(h, c)
         }.build()
         val loop2 = graph2.findEulerLoop()
-        loop2.assert(true, graph2)
+        loop2.assert(shouldExist = true, graph = graph2)
+        // Seven bridges of Koenigsberg
+        //    A1 -- A2 ---
+        //    |      |    |
+        //    B1 -- B2 -- C
+        //    |     |     |
+        //    D1 -- D2 ---
+        val graph3 = GraphBuilder().apply {
+            val a1 = addVertex("A1")
+            val a2 = addVertex("A2")
+            val b1 = addVertex("B1")
+            val b2 = addVertex("B2")
+            val c = addVertex("C")
+            val d1 = addVertex("D1")
+            val d2 = addVertex("D2")
+            addConnection(a1, a2)
+            addConnection(b1, b2)
+            addConnection(d1, d2)
+            addConnection(a1, b1)
+            addConnection(b1, d1)
+            addConnection(a2, b2)
+            addConnection(b2, d2)
+            addConnection(a2, c)
+            addConnection(b2, c)
+            addConnection(d2, c)
+        }.build()
+        val loop3 = graph3.findEulerLoop()
+        loop3.assert(shouldExist = false, graph = graph3)
     }
 
     fun minimumSpanningTree(minimumSpanningTree: Graph.() -> Graph) {
