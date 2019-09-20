@@ -6,7 +6,7 @@ buildscript {
         maven { url 'http://dl.bintray.com/vorpal-research/kotlin-maven' }
     }
     dependencies {
-        classpath 'org.jetbrains.research:kfirst-runner-gradle-plugin:19.0.2'
+        classpath 'org.jetbrains.research:kfirst-runner-gradle-plugin:19.0.3'
     }
 }
 
