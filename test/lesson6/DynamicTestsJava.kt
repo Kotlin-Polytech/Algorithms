@@ -18,7 +18,7 @@ class DynamicTestsJava : AbstractDynamicTests() {
     }
 
     @Test
-    @Tag("Hard")
+    @Tag("Normal")
     fun testShortestPathOnField() {
         shortestPathOnField { JavaDynamicTasks.shortestPathOnField(it) }
     }

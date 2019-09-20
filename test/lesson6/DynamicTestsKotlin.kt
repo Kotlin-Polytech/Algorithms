@@ -18,7 +18,7 @@ class DynamicTestsKotlin : AbstractDynamicTests() {
     }
 
     @Test
-    @Tag("Hard")
+    @Tag("Normal")
     fun testShortestPathOnField() {
         shortestPathOnField { shortestPathOnField(it) }
     }
