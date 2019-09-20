@@ -15,6 +15,8 @@ class Path private constructor(
 
     constructor(first: Vertex) : this(listOf(first), 0)
 
+    constructor() : this(emptyList(), 0)
+
     constructor(previous: Path, g: Graph, next: Vertex) : this(
         previous.vertices + next,
         previous.length + g.getConnection(previous.vertices.last(), next)!!.weight
