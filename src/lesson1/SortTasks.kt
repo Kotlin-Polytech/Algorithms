@@ -38,21 +38,6 @@ fun sortTimes(inputName: String, outputName: String) {
     TODO()
 }
 
-fun main() {
-    fun Int.toTwelve(): Int = if (this == 0) 12 else this
-
-    val writer = File("input/n_time_out3.txt").bufferedWriter()
-    File("input/time_out3.txt").forEachLine { line ->
-        val hms = line.split(":").map { it.toInt() }
-        val result =
-            if (hms[0] < 12) String.format("%02d:%02d:%02d AM", hms[0].toTwelve(), hms[1], hms[2])
-            else String.format("%02d:%02d:%02d PM", (hms[0] - 12).toTwelve(), hms[1], hms[2])
-        writer.write(result)
-        writer.newLine()
-    }
-    writer.close()
-}
-
 /**
  * Сортировка адресов
  *
