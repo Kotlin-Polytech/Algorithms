@@ -9,16 +9,18 @@ abstract class AbstractDynamicTests {
         assertEquals("13", longestCommonSubSequence("123", "13"))
         assertEquals("здс", longestCommonSubSequence("здравствуй мир", "мы здесь"))
         assertEquals("emt ole", longestCommonSubSequence("nematode knowledge", "empty bottle"))
+        val expectedLength = "e kerwelkkd r".length
         assertEquals(
-            "e kerwelkkd r", longestCommonSubSequence(
+            expectedLength, longestCommonSubSequence(
                 "oiweijgw kejrhwejelkrw kjhdkfjs hrk",
                 "perhkhk lerkerorwetp lkjklvvd durltr"
-            )
+            ).length, "Answer must have length of $expectedLength, e.g. 'e kerwelkkd r' or 'erhlkrw kjk r'"
         )
-        assertEquals(
-            """ дд саы чтых,
+        val expectedLength2 = """ дд саы чтых,
 евшнео ваа се сви дн.
-        """.trimIndent(), longestCommonSubSequence(
+        """.trimIndent().length
+        assertEquals(
+            expectedLength2, longestCommonSubSequence(
                 """
 Мой дядя самых честных правил,
 Когда не в шутку занемог,
@@ -31,7 +33,7 @@ abstract class AbstractDynamicTests {
 Всевышней волею Зевеса
 Наследник всех своих родных.
                 """.trimIndent()
-            )
+            ).length, "Answer must have length of $expectedLength2"
         )
     }
 
