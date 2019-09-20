@@ -114,11 +114,11 @@ abstract class AbstractAlgorithmsTests {
             )
         )
         assertEquals(
-            "\n(с) Этот весь длинный-длинный текст является цитатой из Пушкина, поэма \"Руслан и Людмила\"\n",
+            "(с) Этот весь длинный-длинный текст является цитатой из Пушкина, поэма \"Руслан и Людмила\"",
             longestCommonSubstring(
                 File("input/ruslan_ludmila_1.txt").readText(),
                 File("input/ruslan_ludmila_2.txt").readText()
-            )
+            ).trim()
         )
     }
 
