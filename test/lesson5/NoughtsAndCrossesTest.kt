@@ -1,11 +1,13 @@
 package lesson5
 
+import org.junit.jupiter.api.Tag
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class NoughtsAndCrossesTest {
 
     @Test
+    @Tag("Example")
     fun gameOne() {
         val nc = NoughtsAndCrosses()
         nc.makeTurn(0, 0, true)
@@ -19,6 +21,7 @@ class NoughtsAndCrossesTest {
     }
 
     @Test
+    @Tag("Example")
     fun gameTwo() {
         val nc = NoughtsAndCrosses()
         nc.makeTurn(1, 1, true)
@@ -33,6 +36,7 @@ class NoughtsAndCrossesTest {
     }
 
     @Test
+    @Tag("Example")
     fun gameThree() {
         val nc = NoughtsAndCrosses()
         nc.makeTurn(1, 1, true)
@@ -48,6 +52,7 @@ class NoughtsAndCrossesTest {
     }
 
     @Test
+    @Tag("Example")
     fun gameFour() {
         val nc = NoughtsAndCrosses()
         nc.makeTurn(1, 1, true)
@@ -59,6 +64,7 @@ class NoughtsAndCrossesTest {
     }
 
     @Test
+    @Tag("Example")
     fun gameFive() {
         val nc = NoughtsAndCrosses()
         nc.makeTurn(1, 1, true)
