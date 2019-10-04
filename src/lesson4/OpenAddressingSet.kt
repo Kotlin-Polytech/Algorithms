@@ -45,6 +45,16 @@ class OpenAddressingSet<T : Any>(private val bits: Int) : AbstractMutableSet<T>(
         return true
     }
 
+    /**
+     * Для этой задачи пока нет тестов, но вы можете попробовать привести решение и добавить к нему тесты
+     */
+    override fun remove(element: T): Boolean {
+        TODO("not implemented")
+    }
+
+    /**
+     * Для этой задачи пока нет тестов, но вы можете попробовать привести решение и добавить к нему тесты
+     */
     override fun iterator(): MutableIterator<T> {
         TODO("not implemented")
     }
