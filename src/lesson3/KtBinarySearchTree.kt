@@ -41,7 +41,7 @@ class KtBinarySearchTree<T : Comparable<T>> : AbstractMutableSet<T>(), Checkable
      * Если элемента нет в множестве, функция добавляет его в дерево и возвращает true.
      * В ином случае функция оставляет множество нетронутым и возвращает false.
      *
-     * Спецификация: https://docs.oracle.com/javase/8/docs/api/java/util/Set.html#add-E-
+     * Спецификация: [java.util.Set.add] (Ctrl+Click по add)
      *
      * Пример
      */
@@ -74,7 +74,7 @@ class KtBinarySearchTree<T : Comparable<T>> : AbstractMutableSet<T>(), Checkable
      * В ином случае функция оставляет множество нетронутым и возвращает false.
      * Высота дерева не должна увеличиться в результате удаления.
      *
-     * Спецификация: https://docs.oracle.com/javase/8/docs/api/java/util/Set.html#remove-java.lang.Object-
+     * Спецификация: [java.util.Set.remove] (Ctrl+Click по remove)
      * (в Котлине тип параметера изменён с Object на тип хранимых в дереве данных)
      *
      * Средняя
@@ -97,7 +97,7 @@ class KtBinarySearchTree<T : Comparable<T>> : AbstractMutableSet<T>(), Checkable
          * Функция возвращает true, если итерация по множеству ещё не окончена (то есть, если вызов next() вернёт
          * следующий элемент множества, а не бросит исключение); иначе возвращает false.
          *
-         * Спецификация: https://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html#hasNext--
+         * Спецификация: [java.util.Iterator.hasNext] (Ctrl+Click по hasNext)
          *
          * Средняя
          */
@@ -109,12 +109,13 @@ class KtBinarySearchTree<T : Comparable<T>> : AbstractMutableSet<T>(), Checkable
         /**
          * Получение следующего элемента
          *
-         * Функция возвращает следующий элемент множества. Так как KtBinarySearchTree реализует интерфейс SortedSet,
-         * последовательные вызовы next() должны возвращать элементы в порядке возрастания.
+         * Функция возвращает следующий элемент множества.
+         * Так как BinarySearchTree реализует интерфейс SortedSet, последовательные
+         * вызовы next() должны возвращать элементы в порядке возрастания.
          *
          * Бросает NoSuchElementException, если все элементы уже были возвращены.
          *
-         * Спецификация: https://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html#next--
+         * Спецификация: [java.util.Iterator.next] (Ctrl+Click по next)
          *
          * Средняя
          */
@@ -128,10 +129,10 @@ class KtBinarySearchTree<T : Comparable<T>> : AbstractMutableSet<T>(), Checkable
          *
          * Функция удаляет из множества элемент, возвращённый крайним вызовом функции next().
          *
-         * Бросает IllegalStateException, если функция была вызвана до вызова функции next() или же была вызвана
+         * Бросает IllegalStateException, если функция была вызвана до первого вызова next() или же была вызвана
          * более одного раза после любого вызова next().
          *
-         * Спецификация: https://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html#remove--
+         * Спецификация: [java.util.Iterator.remove] (Ctrl+Click по remove)
          *
          * Сложная
          */
@@ -143,17 +144,18 @@ class KtBinarySearchTree<T : Comparable<T>> : AbstractMutableSet<T>(), Checkable
     }
 
     /**
-     * Вернуть подмножество всех элементов в диапазоне [fromElement, toElement).
+     * Подмножество всех элементов в диапазоне [fromElement, toElement)
      *
      * Функция возвращает множество, содержащее в себе все элементы дерева, которые
      * больше или равны fromElement и строго меньше toElement.
      * При равенстве fromElement и toElement возвращается пустое множество.
      * Изменения в дереве должны отображаться в полученном подмножестве, и наоборот.
      *
-     * При попытке добавить в подмножество или удалить из него элемент за пределами указанного диапазона
-     * должен бросаться IllegalArgumentException.
+     * При попытке добавить в подмножество элемент за пределами указанного диапазона
+     * должен быть брошен IllegalArgumentException.
      *
-     * Спецификация: https://docs.oracle.com/javase/8/docs/api/java/util/SortedSet.html#subSet-E-E-
+     * Спецификация: [java.util.SortedSet.subSet] (Ctrl+Click по subSet)
+     * (настоятельно рекомендуется прочитать и понять спецификацию перед выполнением задачи)
      *
      * Очень сложная
      */
@@ -162,11 +164,16 @@ class KtBinarySearchTree<T : Comparable<T>> : AbstractMutableSet<T>(), Checkable
     }
 
     /**
-     * Вернуть подмножество всех элементов строго меньше заданного.
+     * Подмножество всех элементов строго меньше заданного
      *
-     * Для деталей см. subSet(T, T): SortedSet<T>.
+     * Функция возвращает множество, содержащее в себе все элементы дерева строго меньше toElement.
+     * Изменения в дереве должны отображаться в полученном подмножестве, и наоборот.
      *
-     * Спецификация: https://docs.oracle.com/javase/8/docs/api/java/util/SortedSet.html#headSet-E-
+     * При попытке добавить в подмножество элемент за пределами указанного диапазона
+     * должен быть брошен IllegalArgumentException.
+     *
+     * Спецификация: [java.util.SortedSet.headSet] (Ctrl+Click по headSet)
+     * (настоятельно рекомендуется прочитать и понять спецификацию перед выполнением задачи)
      *
      * Сложная
      */
@@ -175,11 +182,16 @@ class KtBinarySearchTree<T : Comparable<T>> : AbstractMutableSet<T>(), Checkable
     }
 
     /**
-     * Вернуть подмножество всех элементов больше заданного или равных ему.
+     * Подмножество всех элементов нестрого больше заданного
      *
-     * Для деталей см. subSet(T, T): SortedSet<T>.
+     * Функция возвращает множество, содержащее в себе все элементы дерева нестрого больше toElement.
+     * Изменения в дереве должны отображаться в полученном подмножестве, и наоборот.
      *
-     * Спецификация: https://docs.oracle.com/javase/8/docs/api/java/util/SortedSet.html#tailSet-E-
+     * При попытке добавить в подмножество элемент за пределами указанного диапазона
+     * должен быть брошен IllegalArgumentException.
+     *
+     * Спецификация: [java.util.SortedSet.tailSet] (Ctrl+Click по tailSet)
+     * (настоятельно рекомендуется прочитать и понять спецификацию перед выполнением задачи)
      *
      * Сложная
      */

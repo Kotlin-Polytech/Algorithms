@@ -61,7 +61,7 @@ public class BinarySearchTree<T extends Comparable<T>> extends AbstractSet<T> im
      * Если элемента нет в множестве, функция добавляет его в дерево и возвращает true.
      * В ином случае функция оставляет множество нетронутым и возвращает false.
      *
-     * Спецификация: https://docs.oracle.com/javase/8/docs/api/java/util/Set.html#add-E-
+     * Спецификация: {@link Set#add(Object)} (Ctrl+Click по add)
      *
      * Пример
      */
@@ -95,7 +95,7 @@ public class BinarySearchTree<T extends Comparable<T>> extends AbstractSet<T> im
      * В ином случае функция оставляет множество нетронутым и возвращает false.
      * Высота дерева не должна увеличиться в результате удаления.
      *
-     * Спецификация: https://docs.oracle.com/javase/8/docs/api/java/util/Set.html#remove-java.lang.Object-
+     * Спецификация: {@link Set#remove(Object)} (Ctrl+Click по remove)
      *
      * Средняя
      */
@@ -129,7 +129,7 @@ public class BinarySearchTree<T extends Comparable<T>> extends AbstractSet<T> im
          * Функция возвращает true, если итерация по множеству ещё не окончена (то есть, если вызов next() вернёт
          * следующий элемент множества, а не бросит исключение); иначе возвращает false.
          *
-         * Спецификация: https://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html#hasNext--
+         * Спецификация: {@link Iterator#hasNext()} (Ctrl+Click по hasNext)
          *
          * Средняя
          */
@@ -142,12 +142,13 @@ public class BinarySearchTree<T extends Comparable<T>> extends AbstractSet<T> im
         /**
          * Получение следующего элемента
          *
-         * Функция возвращает следующий элемент множества. Так как BinarySearchTree реализует интерфейс SortedSet,
-         * последовательные вызовы next() должны возвращать элементы в порядке возрастания.
+         * Функция возвращает следующий элемент множества.
+         * Так как BinarySearchTree реализует интерфейс SortedSet, последовательные
+         * вызовы next() должны возвращать элементы в порядке возрастания.
          *
          * Бросает NoSuchElementException, если все элементы уже были возвращены.
          *
-         * Спецификация: https://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html#next--
+         * Спецификация: {@link Iterator#next()} (Ctrl+Click по next)
          *
          * Средняя
          */
@@ -165,7 +166,7 @@ public class BinarySearchTree<T extends Comparable<T>> extends AbstractSet<T> im
          * Бросает IllegalStateException, если функция была вызвана до первого вызова next() или же была вызвана
          * более одного раза после любого вызова next().
          *
-         * Спецификация: https://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html#remove--
+         * Спецификация: {@link Iterator#remove()} (Ctrl+Click по remove)
          *
          * Сложная
          */
@@ -177,7 +178,7 @@ public class BinarySearchTree<T extends Comparable<T>> extends AbstractSet<T> im
     }
 
     /**
-     * Вернуть подмножество всех элементов в диапазоне [fromElement, toElement).
+     * Подмножество всех элементов в диапазоне [fromElement, toElement)
      *
      * Функция возвращает множество, содержащее в себе все элементы дерева, которые
      * больше или равны fromElement и строго меньше toElement.
@@ -185,9 +186,10 @@ public class BinarySearchTree<T extends Comparable<T>> extends AbstractSet<T> im
      * Изменения в дереве должны отображаться в полученном подмножестве, и наоборот.
      *
      * При попытке добавить в подмножество элемент за пределами указанного диапазона
-     * должен бросаться IllegalArgumentException.
+     * должен быть брошен IllegalArgumentException.
      *
-     * Спецификация: https://docs.oracle.com/javase/8/docs/api/java/util/SortedSet.html#subSet-E-E-
+     * Спецификация: {@link SortedSet#subSet(Object, Object)} (Ctrl+Click по subSet)
+     * (настоятельно рекомендуется прочитать и понять спецификацию перед выполнением задачи)
      *
      * Очень сложная
      */
@@ -199,11 +201,16 @@ public class BinarySearchTree<T extends Comparable<T>> extends AbstractSet<T> im
     }
 
     /**
-     * Вернуть подмножество всех элементов строго меньше заданного.
+     * Подмножество всех элементов строго меньше заданного
      *
-     * Для деталей см. subSet(T, T): SortedSet<T>.
+     * Функция возвращает множество, содержащее в себе все элементы дерева строго меньше toElement.
+     * Изменения в дереве должны отображаться в полученном подмножестве, и наоборот.
      *
-     * Спецификация: https://docs.oracle.com/javase/8/docs/api/java/util/SortedSet.html#headSet-E-
+     * При попытке добавить в подмножество элемент за пределами указанного диапазона
+     * должен быть брошен IllegalArgumentException.
+     *
+     * Спецификация: {@link SortedSet#headSet(Object)} (Ctrl+Click по headSet)
+     * (настоятельно рекомендуется прочитать и понять спецификацию перед выполнением задачи)
      *
      * Сложная
      */
@@ -215,11 +222,16 @@ public class BinarySearchTree<T extends Comparable<T>> extends AbstractSet<T> im
     }
 
     /**
-     * Вернуть подмножество всех элементов больше заданного или равных ему.
+     * Подмножество всех элементов нестрого больше заданного
      *
-     * Для деталей см. subSet(T, T): SortedSet<T>.
+     * Функция возвращает множество, содержащее в себе все элементы дерева нестрого больше toElement.
+     * Изменения в дереве должны отображаться в полученном подмножестве, и наоборот.
      *
-     * Спецификация: https://docs.oracle.com/javase/8/docs/api/java/util/SortedSet.html#tailSet-E-
+     * При попытке добавить в подмножество элемент за пределами указанного диапазона
+     * должен быть брошен IllegalArgumentException.
+     *
+     * Спецификация: {@link SortedSet#tailSet(Object)} (Ctrl+Click по tailSet)
+     * (настоятельно рекомендуется прочитать и понять спецификацию перед выполнением задачи)
      *
      * Сложная
      */

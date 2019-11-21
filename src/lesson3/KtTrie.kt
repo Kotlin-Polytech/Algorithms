@@ -64,7 +64,7 @@ class KtTrie : AbstractMutableSet<String>(), MutableSet<String> {
     /**
      * Итератор для префиксного дерева
      *
-     * Спецификация: https://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html
+     * Спецификация: [java.util.Iterator] (Ctrl+Click по Iterator)
      *
      * Сложная
      */

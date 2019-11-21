@@ -85,7 +85,7 @@ public class Trie extends AbstractSet<String> implements Set<String> {
     /**
      * Итератор для префиксного дерева
      *
-     * Спецификация: https://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html
+     * Спецификация: {@link Iterator} (Ctrl+Click по Iterator)
      *
      * Сложная
      */
