@@ -1,7 +1,7 @@
 package lesson3
 
 /**
- * Этот класс воспринимать только как пример
+ * Этот класс воспринимать только как пример.
  */
 class SampleIterableCollection<T> : AbstractMutableCollection<T>() {
 
@@ -22,9 +22,11 @@ class SampleIterableCollection<T> : AbstractMutableCollection<T>() {
         return true
     }
 
-    override fun iterator(): MutableIterator<T> = SampleIterator()
+    override fun iterator(): MutableIterator<T> =
+        SampleIterator()
 
     inner class SampleIterator : MutableIterator<T> {
+
         private var current: Node<T>? = null
 
         private fun findNext(): Node<T>? {
@@ -57,4 +59,5 @@ class SampleIterableCollection<T> : AbstractMutableCollection<T>() {
         }
 
     }
+
 }

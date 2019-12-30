@@ -1,10 +1,7 @@
 package lesson3
 
 import org.junit.jupiter.api.Tag
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertFalse
-import kotlin.test.assertTrue
+import kotlin.test.*
 
 class SampleIterableCollectionTest {
 
@@ -69,4 +66,5 @@ class SampleIterableCollectionTest {
         assertTrue("Omega" in collection)
         assertFalse("Alpha" in collection)
     }
+
 }
