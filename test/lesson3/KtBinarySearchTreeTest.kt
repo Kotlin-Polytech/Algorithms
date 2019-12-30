@@ -3,10 +3,10 @@ package lesson3
 import org.junit.jupiter.api.Tag
 import org.junit.jupiter.api.Test
 
-class BinarySearchTreeTest : AbstractBinarySearchTreeTest() {
+class KtBinarySearchTreeTest : AbstractBinarySearchTreeTest() {
 
     override fun create(): CheckableSortedSet<Int> =
-        BinarySearchTree()
+        KtBinarySearchTree()
 
     @Test
     @Tag("Example")
