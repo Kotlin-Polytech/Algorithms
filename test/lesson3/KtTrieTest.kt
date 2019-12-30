@@ -3,10 +3,10 @@ package lesson3
 import org.junit.jupiter.api.Tag
 import org.junit.jupiter.api.Test
 
-class TrieTest : AbstractTrieTest() {
+class KtTrieTest : AbstractTrieTest() {
 
     override fun create(): MutableSet<String> =
-        Trie()
+        KtTrie()
 
     @Test
     @Tag("Example")

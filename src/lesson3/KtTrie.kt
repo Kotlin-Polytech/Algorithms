@@ -1,14 +1,18 @@
 package lesson3
 
-class Trie : AbstractMutableSet<String>(), MutableSet<String> {
-    override var size: Int = 0
-        private set
+/**
+ * Префиксное дерево для строк
+ */
+class KtTrie : AbstractMutableSet<String>(), MutableSet<String> {
 
     private class Node {
         val children: MutableMap<Char, Node> = linkedMapOf()
     }
 
     private var root = Node()
+
+    override var size: Int = 0
+        private set
 
     override fun clear() {
         root.children.clear()
@@ -59,9 +63,13 @@ class Trie : AbstractMutableSet<String>(), MutableSet<String> {
 
     /**
      * Итератор для префиксного дерева
+     *
+     * Спецификация: https://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html
+     *
      * Сложная
      */
     override fun iterator(): MutableIterator<String> {
         TODO()
     }
+
 }
