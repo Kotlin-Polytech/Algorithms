@@ -8,7 +8,7 @@ class KotlinHeadSetTest : AbstractHeadTailTest() {
 
     @BeforeEach
     fun fillTree() {
-        fillTree { KtBinaryTree() }
+        fillTree { KtBinarySearchTree() }
     }
 
     @Test

@@ -8,7 +8,7 @@ class JavaHeadSetTest : AbstractHeadTailTest() {
 
     @BeforeEach
     fun fillTree() {
-        fillTree { BinaryTree() }
+        fillTree { BinarySearchTree() }
     }
 
     @Test

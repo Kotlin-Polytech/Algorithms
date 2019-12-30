@@ -7,7 +7,7 @@ import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
-class BinaryTreeTest {
+class BinarySearchTreeTest {
     private fun testAdd(create: () -> CheckableSortedSet<Int>) {
         val tree = create()
         assertEquals(0, tree.size)
@@ -47,9 +47,10 @@ class BinaryTreeTest {
         testAdd { createJavaTree() }
     }
 
-    private fun <T : Comparable<T>> createJavaTree(): CheckableSortedSet<T> = BinaryTree()
+    private fun <T : Comparable<T>> createJavaTree(): CheckableSortedSet<T> =
+        BinarySearchTree()
 
-    private fun <T : Comparable<T>> createKotlinTree(): CheckableSortedSet<T> = KtBinaryTree()
+    private fun <T : Comparable<T>> createKotlinTree(): CheckableSortedSet<T> = KtBinarySearchTree()
 
     private fun testRemove(create: () -> CheckableSortedSet<Int>) {
         val random = Random()

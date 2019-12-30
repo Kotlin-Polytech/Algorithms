@@ -5,7 +5,7 @@ import kotlin.NoSuchElementException
 import kotlin.math.max
 
 // Attention: comparable supported but comparator is not
-class KtBinaryTree<T : Comparable<T>> : AbstractMutableSet<T>(), CheckableSortedSet<T> {
+class KtBinarySearchTree<T : Comparable<T>> : AbstractMutableSet<T>(), CheckableSortedSet<T> {
 
     private var root: Node<T>? = null
 
