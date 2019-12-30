@@ -1,45 +1,28 @@
 package lesson3
 
-import java.util.Comparator
 import java.util.SortedSet
+import java.util.Comparator
 
 /**
- * Этот класс воспринимать только как пример (несмотря на TO DO)
+ * Этот класс воспринимать только как пример (несмотря на TO DO).
  */
 class PositiveSortedSet(private val delegate: SortedSet<Int>) : AbstractMutableSet<Int>(), SortedSet<Int> {
-    override fun comparator(): Comparator<in Int>? = delegate.comparator()
 
-    override fun subSet(fromElement: Int?, toElement: Int?): SortedSet<Int> {
-        TODO()
-    }
-
-    override fun headSet(toElement: Int?): SortedSet<Int> {
-        TODO()
-    }
-
-    override fun tailSet(fromElement: Int?): SortedSet<Int> {
-        TODO()
-    }
-
-    override fun last(): Int {
-        TODO()
-    }
-
-    override fun first(): Int {
-        TODO()
-    }
+    override val size: Int
+        get() = delegate.count { it > 0 }
 
     override fun add(element: Int): Boolean {
-        if (element <= 0) return false
+        require(element > 0)
         return delegate.add(element)
     }
 
     override fun remove(element: Int): Boolean {
-        if (element <= 0) return false
+        require(element > 0)
         return delegate.remove(element)
     }
 
     override fun iterator(): MutableIterator<Int> = object : MutableIterator<Int> {
+
         private val delegate = this@PositiveSortedSet.delegate.iterator()
 
         private var next: Int? = null
@@ -70,9 +53,30 @@ class PositiveSortedSet(private val delegate: SortedSet<Int>) : AbstractMutableS
 
     }
 
-    override val size: Int
-        get() = delegate.count { it > 0 }
+    override fun comparator(): Comparator<in Int>? =
+        delegate.comparator()
+
+    override fun subSet(fromElement: Int?, toElement: Int?): SortedSet<Int> {
+        TODO()
+    }
+
+    override fun headSet(toElement: Int?): SortedSet<Int> {
+        TODO()
+    }
+
+    override fun tailSet(fromElement: Int?): SortedSet<Int> {
+        TODO()
+    }
+
+    override fun last(): Int {
+        TODO()
+    }
+
+    override fun first(): Int {
+        TODO()
+    }
 
 }
 
-fun SortedSet<Int>.positives(): SortedSet<Int> = PositiveSortedSet(this)
+fun SortedSet<Int>.positives(): SortedSet<Int> =
+    PositiveSortedSet(this)

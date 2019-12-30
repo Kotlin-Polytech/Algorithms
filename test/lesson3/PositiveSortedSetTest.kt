@@ -1,10 +1,12 @@
 package lesson3
 
-import org.junit.jupiter.api.Tag
-import kotlin.test.*
 import java.util.TreeSet
+import org.junit.jupiter.api.Tag
+import java.lang.IllegalArgumentException
+import kotlin.test.*
 
 class PositiveSortedSetTest {
+
     @Test
     @Tag("Example")
     fun basic() {
@@ -18,7 +20,7 @@ class PositiveSortedSetTest {
         subSet.add(10)
         assertEquals(6, subSet.size)
         assertEquals(10, set.size)
-        subSet.add(-10)
+        assertFailsWith<IllegalArgumentException> { subSet.add(-10) }
         assertEquals(6, subSet.size)
         assertEquals(10, set.size)
         set.remove(5)
@@ -31,4 +33,5 @@ class PositiveSortedSetTest {
         assertEquals(4, subSet.size)
         assertEquals(7, set.size)
     }
+
 }
