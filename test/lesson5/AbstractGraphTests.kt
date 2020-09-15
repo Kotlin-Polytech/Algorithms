@@ -32,6 +32,13 @@ abstract class AbstractGraphTests {
         val emptyGraph = GraphBuilder().build()
         val emptyLoop = emptyGraph.findEulerLoop()
         assertTrue(emptyLoop.isEmpty(), "Euler loop should be empty for the empty graph")
+        val noEdgeGraph = GraphBuilder().apply {
+            addVertex("A")
+            addVertex("B")
+            addVertex("C")
+        }.build()
+        val noEdgeLoop = noEdgeGraph.findEulerLoop()
+        noEdgeLoop.assert(shouldExist = false, graph = noEdgeGraph)
         val simpleGraph = GraphBuilder().apply {
             val a = addVertex("A")
             val b = addVertex("B")
@@ -188,6 +195,15 @@ abstract class AbstractGraphTests {
             setOf(simpleGraph["A"]),
             simpleGraph.largestIndependentVertexSet()
         )
+        val noEdgeGraph = GraphBuilder().apply {
+            addVertex("A")
+            addVertex("B")
+            addVertex("C")
+        }.build()
+        assertEquals(
+            setOf(noEdgeGraph["A"], noEdgeGraph["B"], noEdgeGraph["C"]),
+            noEdgeGraph.largestIndependentVertexSet()
+        )
         val unconnected = GraphBuilder().apply {
             val a = addVertex("A")
             val b = addVertex("B")
@@ -247,6 +263,14 @@ abstract class AbstractGraphTests {
     fun longestSimplePath(longestSimplePath: Graph.() -> Path) {
         val emptyGraph = GraphBuilder().build()
         assertEquals(0, emptyGraph.longestSimplePath().length)
+
+        val noEdgeGraph = GraphBuilder().apply {
+            addVertex("A")
+            addVertex("B")
+            addVertex("C")
+        }.build()
+        val longestNoEdgePath = noEdgeGraph.longestSimplePath()
+        assertEquals(0, longestNoEdgePath.length)
 
         val unconnected = GraphBuilder().apply {
             val a = addVertex("A")
