@@ -39,7 +39,7 @@ class OpenAddressingSetTest {
     }
 
     @Test
-    @Tag("Example")
+    @Tag("Normal")
     fun removeTest() {
         val random = Random()
         for (iteration in 1..100) {
@@ -80,7 +80,7 @@ class OpenAddressingSetTest {
     }
 
     @Test
-    @Tag("Example")
+    @Tag("Normal")
     fun iteratorTest() {
         val random = Random()
         for (iteration in 1..100) {
@@ -124,7 +124,7 @@ class OpenAddressingSetTest {
     }
 
     @Test
-    @Tag("Example")
+    @Tag("Hard")
     fun iteratorRemoveTest() {
         val random = Random()
         for (iteration in 1..100) {
