@@ -10,79 +10,79 @@ class BinarySearchTreeTest : AbstractBinarySearchTreeTest() {
 
     @Test
     @Tag("Example")
-    fun initTest() {
+    fun initTestJava() {
         doInitTest()
     }
 
     @Test
     @Tag("Example")
-    fun addTest() {
+    fun addTestJava() {
         doAddTest()
     }
 
     @Test
     @Tag("Example")
-    fun firstAndLastTest() {
+    fun firstAndLastTestJava() {
         doFirstAndLastTest()
     }
 
     @Test
     @Tag("Normal")
-    fun removeTest() {
+    fun removeTestJava() {
         doRemoveTest()
     }
 
     @Test
     @Tag("Normal")
-    fun iteratorTest() {
+    fun iteratorTestJava() {
         doIteratorTest()
     }
 
     @Test
     @Tag("Hard")
-    fun iteratorRemoveTest() {
+    fun iteratorRemoveTestJava() {
         doIteratorRemoveTest()
     }
 
     @Test
     @Tag("Impossible")
-    fun subSetTest() {
+    fun subSetTestJava() {
         doSubSetTest()
     }
 
     @Test
     @Tag("Impossible")
-    fun subSetRelationTest() {
+    fun subSetRelationTestJava() {
         doSubSetRelationTest()
     }
 
     @Test
     @Tag("Impossible")
-    fun subSetFirstAndLastTest() {
+    fun subSetFirstAndLastTestJava() {
         doSubSetFirstAndLastTest()
     }
 
     @Test
     @Tag("Normal")
-    fun headSetTest() {
+    fun headSetTestJava() {
         doHeadSetTest()
     }
 
     @Test
     @Tag("Hard")
-    fun headSetRelationTest() {
+    fun headSetRelationTestJava() {
         doHeadSetRelationTest()
     }
 
     @Test
     @Tag("Normal")
-    fun tailSetTest() {
+    fun tailSetTestJava() {
         doTailSetTest()
     }
 
     @Test
     @Tag("Hard")
-    fun tailSetRelationTest() {
+    fun tailSetRelationTestJava() {
         doTailSetRelationTest()
     }
 

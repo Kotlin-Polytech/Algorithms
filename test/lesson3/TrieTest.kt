@@ -10,19 +10,19 @@ class TrieTest : AbstractTrieTest() {
 
     @Test
     @Tag("Example")
-    fun generalTest() {
+    fun generalTestJava() {
         doGeneralTest()
     }
 
     @Test
     @Tag("Hard")
-    fun iteratorTest() {
+    fun iteratorTestJava() {
         doIteratorTest()
     }
 
     @Test
     @Tag("Hard")
-    fun iteratorRemoveTest() {
+    fun iteratorRemoveTestJava() {
         doIteratorRemoveTest()
     }
 

@@ -7,31 +7,31 @@ class TaskTestsJava : AbstractTaskTests() {
 
     @Test
     @Tag("Easy")
-    fun testSortTimes() {
+    fun testSortTimesJava() {
         sortTimes { inputName, outputName -> JavaTasks.sortTimes(inputName, outputName) }
     }
 
     @Test
     @Tag("Normal")
-    fun testSortAddresses() {
+    fun testSortAddressesJava() {
         sortAddresses { inputName, outputName -> JavaTasks.sortAddresses(inputName, outputName) }
     }
 
     @Test
     @Tag("Normal")
-    fun testSortTemperatures() {
+    fun testSortTemperaturesJava() {
         sortTemperatures { inputName, outputName -> JavaTasks.sortTemperatures(inputName, outputName) }
     }
 
     @Test
     @Tag("Normal")
-    fun testSortSequence() {
+    fun testSortSequenceJava() {
         sortSequence { inputName, outputName -> JavaTasks.sortSequence(inputName, outputName) }
     }
 
     @Test
     @Tag("Easy")
-    fun testMergeArrays() {
+    fun testMergeArraysJava() {
         mergeArrays { first, second -> JavaTasks.mergeArrays(first, second) }
     }
 }

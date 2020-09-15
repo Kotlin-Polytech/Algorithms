@@ -6,25 +6,25 @@ import kotlin.test.Test
 class GraphTestsJava : AbstractGraphTests() {
     @Test
     @Tag("Normal")
-    fun testFindEulerLoop() {
+    fun testFindEulerLoopJava() {
         findEulerLoop { let { JavaGraphTasks.findEulerLoop(it) } }
     }
 
     @Test
     @Tag("Normal")
-    fun testMinimumSpanningTree() {
+    fun testMinimumSpanningTreeJava() {
         minimumSpanningTree { let { JavaGraphTasks.minimumSpanningTree(it) } }
     }
 
     @Test
     @Tag("Hard")
-    fun testLargestIndependentVertexSet() {
+    fun testLargestIndependentVertexSetJava() {
         largestIndependentVertexSet { let { JavaGraphTasks.largestIndependentVertexSet(it) } }
     }
 
     @Test
     @Tag("Hard")
-    fun testLongestSimplePath() {
+    fun testLongestSimplePathJava() {
         longestSimplePath { let { JavaGraphTasks.longestSimplePath(it) } }
     }
 

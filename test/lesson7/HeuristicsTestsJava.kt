@@ -6,13 +6,13 @@ import org.junit.jupiter.api.Tag
 class HeuristicsTestsJava : AbstractHeuristicsTests() {
     @Test
     @Tag("Impossible")
-    fun testFillKnapsackCompareWithGreedyTest() {
+    fun testFillKnapsackCompareWithGreedyTestJava() {
         fillKnapsackCompareWithGreedyTest { load, items -> JavaHeuristicsTasks.fillKnapsackHeuristics(load, items) }
     }
 
     @Test
     @Tag("Impossible")
-    fun testFindVoyagingPathHeuristics() {
+    fun testFindVoyagingPathHeuristicsJava() {
         findVoyagingPathHeuristics { let { JavaHeuristicsTasks.findVoyagingPathHeuristics(it) } }
     }
 
