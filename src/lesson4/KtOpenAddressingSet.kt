@@ -3,7 +3,7 @@ package lesson4
 /**
  * Множество(таблица) с открытой адресацией на 2^bits элементов без возможности роста.
  */
-class OpenAddressingSet<T : Any>(private val bits: Int) : AbstractMutableSet<T>() {
+class KtOpenAddressingSet<T : Any>(private val bits: Int) : AbstractMutableSet<T>() {
     init {
         require(bits in 2..31)
     }

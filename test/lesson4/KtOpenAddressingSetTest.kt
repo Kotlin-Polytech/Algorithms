@@ -7,7 +7,7 @@ import java.util.*
 import kotlin.math.abs
 import kotlin.test.*
 
-class OpenAddressingSetTest {
+class KtOpenAddressingSetTest {
 
     @Test
     @Tag("Example")
@@ -16,7 +16,7 @@ class OpenAddressingSetTest {
         for (iteration in 1..100) {
             val controlSet = mutableSetOf<Int>()
             val bitsNumber = random.nextInt(4) + 5
-            val openAddressingSet = OpenAddressingSet<Int>(bitsNumber)
+            val openAddressingSet = KtOpenAddressingSet<Int>(bitsNumber)
             assertTrue(openAddressingSet.size == 0, "Size of an empty set is not zero.")
             for (i in 1..50) {
                 val nextInt = random.nextInt(32)
@@ -29,7 +29,7 @@ class OpenAddressingSetTest {
                 assertTrue(nextInt in openAddressingSet, "A supposedly added element is not in the set.")
                 assertEquals(controlSet.size, openAddressingSet.size, "The size of the set is not as expected.")
             }
-            val smallSet = OpenAddressingSet<Int>(bitsNumber)
+            val smallSet = KtOpenAddressingSet<Int>(bitsNumber)
             assertFailsWith<IllegalStateException>("A table overflow is not being prevented.") {
                 for (i in 1..4000) {
                     smallSet.add(random.nextInt())
@@ -44,7 +44,7 @@ class OpenAddressingSetTest {
         val random = Random()
         for (iteration in 1..100) {
             val bitsNumber = random.nextInt(4) + 6
-            val openAddressingSet = OpenAddressingSet<Int>(bitsNumber)
+            val openAddressingSet = KtOpenAddressingSet<Int>(bitsNumber)
             for (i in 1..50) {
                 val firstInt = random.nextInt(32)
                 val secondInt = firstInt + (1 shl bitsNumber)
@@ -90,7 +90,7 @@ class OpenAddressingSetTest {
                 controlSet.add(string)
             }
             println("Control set: $controlSet")
-            val openAddressingSet = OpenAddressingSet<String>(random.nextInt(6) + 4)
+            val openAddressingSet = KtOpenAddressingSet<String>(random.nextInt(6) + 4)
             assertFalse(
                 openAddressingSet.iterator().hasNext(),
                 "Iterator of an empty set should not have any next elements."
@@ -139,7 +139,7 @@ class OpenAddressingSetTest {
                 }
             }
             println("Initial set: $controlSet")
-            val openAddressingSet = OpenAddressingSet<String>(random.nextInt(6) + 4)
+            val openAddressingSet = KtOpenAddressingSet<String>(random.nextInt(6) + 4)
             for (element in controlSet) {
                 openAddressingSet += element
             }
