@@ -6,7 +6,7 @@ buildscript {
         maven { url 'http://dl.bintray.com/vorpal-research/kotlin-maven' }
     }
     dependencies {
-        classpath 'org.jetbrains.research:kfirst-runner-gradle-plugin:19.0.3'
+        classpath 'org.jetbrains.research:kfirst-runner-gradle-plugin:20.0.0'
     }
 }
 
@@ -16,7 +16,7 @@ plugins {
 }
 
 group 'ru.spbstu'
-version '19.0.1-SNAPSHOT'
+version '20.0.0-SNAPSHOT'
 
 sourceCompatibility = 11
 
@@ -29,7 +29,7 @@ repositories {
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib"
-    testCompile "org.jetbrains.research:kfirst-runner:19.0.2"
+    testCompile "org.jetbrains.research:kfirst-runner:20.0.0"
     testCompile "org.jetbrains.kotlin:kotlin-test"
     testCompile "org.jetbrains.kotlin:kotlin-test-junit5"
     testCompile "org.junit.jupiter:junit-jupiter-api:5.5.1"
