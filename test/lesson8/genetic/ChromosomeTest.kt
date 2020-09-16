@@ -1,4 +1,4 @@
-package lesson7.genetic
+package lesson8.genetic
 
 import org.junit.jupiter.api.Tag
 import kotlin.test.*

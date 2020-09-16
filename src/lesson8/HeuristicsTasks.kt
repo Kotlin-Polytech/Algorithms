@@ -1,6 +1,6 @@
 @file:Suppress("UNUSED_PARAMETER", "unused")
 
-package lesson7
+package lesson8
 
 import lesson5.Graph
 import lesson5.Path

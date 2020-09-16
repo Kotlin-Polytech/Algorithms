@@ -1,4 +1,4 @@
-package lesson7;
+package lesson8;
 
 import kotlin.NotImplementedError;
 import lesson5.Graph;

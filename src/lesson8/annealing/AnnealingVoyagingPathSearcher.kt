@@ -1,8 +1,8 @@
-package lesson7.annealing
+package lesson8.annealing
 
 import lesson5.Graph
 import lesson5.Path
-import lesson7.AbstractVoyagingPathSearcher
+import lesson8.AbstractVoyagingPathSearcher
 import kotlin.math.exp
 
 class AnnealingVoyagingPathSearcher(
