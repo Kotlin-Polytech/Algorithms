@@ -71,7 +71,7 @@ class KtOpenAddressingSet<T : Any>(private val bits: Int) : AbstractMutableSet<T
      * В ином случае функция оставляет множество нетронутым и возвращает false.
      * Высота дерева не должна увеличиться в результате удаления.
      *
-     * Спецификация: {@link Set#remove(Object)} (Ctrl+Click по remove)
+     * Спецификация: [java.util.Set.remove] (Ctrl+Click по remove)
      *
      * Средняя
      */
@@ -84,6 +84,8 @@ class KtOpenAddressingSet<T : Any>(private val bits: Int) : AbstractMutableSet<T
      *
      * Не забываем, что итератор должен поддерживать функции next(), hasNext(),
      * и опционально функцию remove()
+     *
+     * Спецификация: [java.util.Iterator] (Ctrl+Click по Iterator)
      *
      * Средняя (сложная, если поддержан и remove тоже)
      */

@@ -104,6 +104,8 @@ public class OpenAddressingSet<T> extends AbstractSet<T> {
      * Не забываем, что итератор должен поддерживать функции next(), hasNext(),
      * и опционально функцию remove()
      *
+     * Спецификация: {@link Iterator} (Ctrl+Click по Iterator)
+     *
      * Средняя (сложная, если поддержан и remove тоже)
      */
     @NotNull
