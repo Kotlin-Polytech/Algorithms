@@ -1,4 +1,4 @@
-package lesson5;
+package lesson6;
 
 import kotlin.NotImplementedError;
 

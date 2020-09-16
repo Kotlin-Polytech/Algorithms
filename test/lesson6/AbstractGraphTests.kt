@@ -1,6 +1,6 @@
-package lesson5
+package lesson6
 
-import lesson5.impl.GraphBuilder
+import lesson6.impl.GraphBuilder
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 

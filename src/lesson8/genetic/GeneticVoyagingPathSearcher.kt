@@ -1,7 +1,7 @@
 package lesson8.genetic
 
-import lesson5.Graph
-import lesson5.Path
+import lesson6.Graph
+import lesson6.Path
 import lesson8.AbstractVoyagingPathSearcher
 
 class GeneticVoyagingPathSearcher(

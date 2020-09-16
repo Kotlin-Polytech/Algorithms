@@ -2,8 +2,8 @@
 
 package lesson8
 
-import lesson5.Graph
-import lesson5.Path
+import lesson6.Graph
+import lesson6.Path
 import lesson7.knapsack.Fill
 import lesson7.knapsack.Item
 

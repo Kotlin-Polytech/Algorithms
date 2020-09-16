@@ -1,4 +1,4 @@
-package lesson5
+package lesson6
 
 fun Graph.findBridges(): Set<Graph.Edge> =
     BridgeTraverser(this).findBridges()

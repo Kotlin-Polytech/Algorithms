@@ -1,4 +1,4 @@
-package lesson5;
+package lesson6;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

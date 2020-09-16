@@ -1,7 +1,7 @@
 package lesson8.genetic
 
-import lesson5.Graph
-import lesson5.impl.GraphBuilder
+import lesson6.Graph
+import lesson6.impl.GraphBuilder
 import org.junit.jupiter.api.Tag
 import kotlin.test.*
 import java.util.*

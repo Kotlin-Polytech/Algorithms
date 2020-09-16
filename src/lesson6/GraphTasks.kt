@@ -1,6 +1,6 @@
 @file:Suppress("UNUSED_PARAMETER", "unused")
 
-package lesson5
+package lesson6
 
 /**
  * Эйлеров цикл.

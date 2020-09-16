@@ -1,6 +1,6 @@
-package lesson5
+package lesson6
 
-import lesson5.impl.GraphBuilder
+import lesson6.impl.GraphBuilder
 import org.junit.jupiter.api.Tag
 import kotlin.test.*
 
