@@ -1,4 +1,4 @@
-package lesson4
+package lesson5
 
 import ru.spbstu.kotlin.generate.util.nextString
 import java.util.*

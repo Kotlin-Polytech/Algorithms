@@ -1,4 +1,4 @@
-package lesson4;
+package lesson5;
 
 import kotlin.NotImplementedError;
 import org.jetbrains.annotations.NotNull;
