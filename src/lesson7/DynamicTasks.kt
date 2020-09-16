@@ -1,6 +1,6 @@
 @file:Suppress("UNUSED_PARAMETER")
 
-package lesson6
+package lesson7
 
 /**
  * Наибольшая общая подпоследовательность.

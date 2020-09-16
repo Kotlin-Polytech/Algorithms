@@ -1,4 +1,4 @@
-package lesson6.knapsack
+package lesson7.knapsack
 
 import org.junit.jupiter.api.Tag
 import kotlin.test.*

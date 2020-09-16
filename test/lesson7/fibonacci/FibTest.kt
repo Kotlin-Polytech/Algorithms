@@ -1,4 +1,4 @@
-package lesson6.fibonacci
+package lesson7.fibonacci
 
 import org.junit.jupiter.api.Tag
 import kotlin.test.*

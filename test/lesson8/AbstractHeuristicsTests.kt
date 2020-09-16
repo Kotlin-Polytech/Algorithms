@@ -3,9 +3,9 @@ package lesson8
 import lesson5.Graph
 import lesson5.Path
 import lesson5.impl.GraphBuilder
-import lesson6.knapsack.Fill
-import lesson6.knapsack.Item
-import lesson6.knapsack.fillKnapsackGreedy
+import lesson7.knapsack.Fill
+import lesson7.knapsack.Item
+import lesson7.knapsack.fillKnapsackGreedy
 import java.util.*
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue

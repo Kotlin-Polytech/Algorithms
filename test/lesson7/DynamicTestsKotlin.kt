@@ -1,4 +1,4 @@
-package lesson6
+package lesson7
 
 import org.junit.jupiter.api.Tag
 import kotlin.test.Test

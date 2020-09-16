@@ -1,4 +1,4 @@
-package lesson6.rod
+package lesson7.rod
 
 import org.junit.jupiter.api.Tag
 import kotlin.test.*

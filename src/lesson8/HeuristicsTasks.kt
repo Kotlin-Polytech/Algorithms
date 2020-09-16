@@ -4,8 +4,8 @@ package lesson8
 
 import lesson5.Graph
 import lesson5.Path
-import lesson6.knapsack.Fill
-import lesson6.knapsack.Item
+import lesson7.knapsack.Fill
+import lesson7.knapsack.Item
 
 // Примечание: в этом уроке достаточно решить одну задачу
 
