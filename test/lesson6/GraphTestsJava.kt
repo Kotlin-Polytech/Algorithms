@@ -1,5 +1,6 @@
 package lesson6
 
+import lesson2.JavaAlgorithms
 import org.junit.jupiter.api.Tag
 import kotlin.test.Test
 
@@ -28,4 +29,9 @@ class GraphTestsJava : AbstractGraphTests() {
         longestSimplePath { let { JavaGraphTasks.longestSimplePath(it) } }
     }
 
+    @Test
+    @Tag("Hard")
+    fun testBaldaSearcherJava() {
+        baldaSearcher { inputName, words -> JavaGraphTasks.baldaSearcher(inputName, words) }
+    }
 }

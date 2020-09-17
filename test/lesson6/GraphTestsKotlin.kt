@@ -28,4 +28,10 @@ class GraphTestsKotlin : AbstractGraphTests() {
     fun testLongestSimplePath() {
         longestSimplePath { longestSimplePath() }
     }
+
+    @Test
+    @Tag("Hard")
+    fun testBaldaSearcher() {
+        baldaSearcher { inputName, words -> baldaSearcher(inputName, words) }
+    }
 }

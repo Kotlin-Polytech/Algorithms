@@ -27,10 +27,4 @@ class AlgorithmsTestsKotlin : AbstractAlgorithmsTests() {
     fun testCalcPrimesNumber() {
         calcPrimesNumber { calcPrimesNumber(it) }
     }
-
-    @Test
-    @Tag("Hard")
-    fun testBaldaSearcher() {
-        baldaSearcher { inputName, words -> baldaSearcher(inputName, words) }
-    }
 }

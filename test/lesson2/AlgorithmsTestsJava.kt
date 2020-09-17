@@ -27,10 +27,4 @@ class AlgorithmsTestsJava : AbstractAlgorithmsTests() {
     fun testCalcPrimesNumberJava() {
         calcPrimesNumber { JavaAlgorithms.calcPrimesNumber(it) }
     }
-
-    @Test
-    @Tag("Hard")
-    fun testBaldaSearcherJava() {
-        baldaSearcher { inputName, words -> JavaAlgorithms.baldaSearcher(inputName, words) }
-    }
 }
