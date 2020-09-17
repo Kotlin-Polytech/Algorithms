@@ -27,61 +27,61 @@ class BinarySearchTreeTest : AbstractBinarySearchTreeTest() {
     }
 
     @Test
-    @Tag("Normal")
+    @Tag("5")
     fun removeTestJava() {
         doRemoveTest()
     }
 
     @Test
-    @Tag("Normal")
+    @Tag("5")
     fun iteratorTestJava() {
         doIteratorTest()
     }
 
     @Test
-    @Tag("Hard")
+    @Tag("8")
     fun iteratorRemoveTestJava() {
         doIteratorRemoveTest()
     }
 
     @Test
-    @Tag("Impossible")
+    @Tag("5")
     fun subSetTestJava() {
         doSubSetTest()
     }
 
     @Test
-    @Tag("Impossible")
+    @Tag("8")
     fun subSetRelationTestJava() {
         doSubSetRelationTest()
     }
 
     @Test
-    @Tag("Impossible")
+    @Tag("7")
     fun subSetFirstAndLastTestJava() {
         doSubSetFirstAndLastTest()
     }
 
     @Test
-    @Tag("Normal")
+    @Tag("4")
     fun headSetTestJava() {
         doHeadSetTest()
     }
 
     @Test
-    @Tag("Hard")
+    @Tag("7")
     fun headSetRelationTestJava() {
         doHeadSetRelationTest()
     }
 
     @Test
-    @Tag("Normal")
+    @Tag("4")
     fun tailSetTestJava() {
         doTailSetTest()
     }
 
     @Test
-    @Tag("Hard")
+    @Tag("7")
     fun tailSetRelationTestJava() {
         doTailSetRelationTest()
     }

@@ -5,25 +5,25 @@ import kotlin.test.Test
 
 class AlgorithmsTestsKotlin : AbstractAlgorithmsTests() {
     @Test
-    @Tag("Easy")
+    @Tag("2")
     fun testOptimizeBuyAndSell() {
         optimizeBuyAndSell { optimizeBuyAndSell(it) }
     }
 
     @Test
-    @Tag("Easy")
+    @Tag("2")
     fun testJosephTask() {
         josephTask { menNumber, choiceInterval -> josephTask(menNumber, choiceInterval) }
     }
 
     @Test
-    @Tag("Normal")
+    @Tag("4")
     fun testLongestCommonSubstring() {
         longestCommonSubstring { first, second -> longestCommonSubstring(first, second) }
     }
 
     @Test
-    @Tag("Easy")
+    @Tag("3")
     fun testCalcPrimesNumber() {
         calcPrimesNumber { calcPrimesNumber(it) }
     }

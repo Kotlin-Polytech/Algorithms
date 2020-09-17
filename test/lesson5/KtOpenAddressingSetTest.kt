@@ -16,19 +16,19 @@ class KtOpenAddressingSetTest : AbstractOpenAddressingSetTest() {
     }
 
     @Test
-    @Tag("Normal")
+    @Tag("7")
     fun removeTest() {
         doRemoveTest()
     }
 
     @Test
-    @Tag("Normal")
+    @Tag("5")
     fun iteratorTest() {
         doIteratorTest()
     }
 
     @Test
-    @Tag("Hard")
+    @Tag("8")
     fun iteratorRemoveTest() {
         doIteratorRemoveTest()
     }

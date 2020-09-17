@@ -157,7 +157,7 @@ class KtBinarySearchTree<T : Comparable<T>> : AbstractMutableSet<T>(), Checkable
      * Спецификация: [java.util.SortedSet.subSet] (Ctrl+Click по subSet)
      * (настоятельно рекомендуется прочитать и понять спецификацию перед выполнением задачи)
      *
-     * Очень сложная
+     * Очень сложная (в том случае, если спецификация реализуется в полном объёме)
      */
     override fun subSet(fromElement: T, toElement: T): SortedSet<T> {
         TODO()

@@ -191,7 +191,7 @@ public class BinarySearchTree<T extends Comparable<T>> extends AbstractSet<T> im
      * Спецификация: {@link SortedSet#subSet(Object, Object)} (Ctrl+Click по subSet)
      * (настоятельно рекомендуется прочитать и понять спецификацию перед выполнением задачи)
      *
-     * Очень сложная
+     * Очень сложная (в том случае, если спецификация реализуется в полном объёме)
      */
     @NotNull
     @Override

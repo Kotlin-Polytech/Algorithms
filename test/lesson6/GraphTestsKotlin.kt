@@ -6,31 +6,31 @@ import kotlin.test.Test
 class GraphTestsKotlin : AbstractGraphTests() {
 
     @Test
-    @Tag("Normal")
+    @Tag("6")
     fun testFindEulerLoop() {
         findEulerLoop { findEulerLoop() }
     }
 
     @Test
-    @Tag("Normal")
+    @Tag("7")
     fun testMinimumSpanningTree() {
         minimumSpanningTree { minimumSpanningTree() }
     }
 
     @Test
-    @Tag("Hard")
+    @Tag("8")
     fun testLargestIndependentVertexSet() {
         largestIndependentVertexSet { largestIndependentVertexSet() }
     }
 
     @Test
-    @Tag("Hard")
+    @Tag("8")
     fun testLongestSimplePath() {
         longestSimplePath { longestSimplePath() }
     }
 
     @Test
-    @Tag("Hard")
+    @Tag("6")
     fun testBaldaSearcher() {
         baldaSearcher { inputName, words -> baldaSearcher(inputName, words) }
     }

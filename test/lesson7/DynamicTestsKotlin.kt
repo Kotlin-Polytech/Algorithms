@@ -6,19 +6,19 @@ import kotlin.test.Test
 class DynamicTestsKotlin : AbstractDynamicTests() {
 
     @Test
-    @Tag("Normal")
+    @Tag("6")
     fun testLongestCommonSubSequence() {
         longestCommonSubSequence { first, second -> longestCommonSubSequence(first, second) }
     }
 
     @Test
-    @Tag("Hard")
+    @Tag("7")
     fun testLongestIncreasingSubSequence() {
         longestIncreasingSubSequence { longestIncreasingSubSequence(it) }
     }
 
     @Test
-    @Tag("Normal")
+    @Tag("5")
     fun testShortestPathOnField() {
         shortestPathOnField { shortestPathOnField(it) }
     }

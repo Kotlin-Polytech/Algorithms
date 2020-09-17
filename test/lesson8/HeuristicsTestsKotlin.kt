@@ -6,13 +6,13 @@ import kotlin.test.Test
 class HeuristicsTestsKotlin : AbstractHeuristicsTests() {
 
     @Test
-    @Tag("Impossible")
+    @Tag("12")
     fun testFillKnapsackCompareWithGreedyTest() {
         fillKnapsackCompareWithGreedyTest { load, items -> fillKnapsackHeuristics(load, items) }
     }
 
     @Test
-    @Tag("Impossible")
+    @Tag("12")
     fun testFindVoyagingPathHeuristics() {
         findVoyagingPathHeuristics { findVoyagingPathHeuristics() }
     }

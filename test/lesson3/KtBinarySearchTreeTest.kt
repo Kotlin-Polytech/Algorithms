@@ -27,61 +27,61 @@ class KtBinarySearchTreeTest : AbstractBinarySearchTreeTest() {
     }
 
     @Test
-    @Tag("Normal")
+    @Tag("5")
     fun removeTest() {
         doRemoveTest()
     }
 
     @Test
-    @Tag("Normal")
+    @Tag("5")
     fun iteratorTest() {
         doIteratorTest()
     }
 
     @Test
-    @Tag("Hard")
+    @Tag("8")
     fun iteratorRemoveTest() {
         doIteratorRemoveTest()
     }
 
     @Test
-    @Tag("Impossible")
+    @Tag("5")
     fun subSetTest() {
         doSubSetTest()
     }
 
     @Test
-    @Tag("Impossible")
+    @Tag("8")
     fun subSetRelationTest() {
         doSubSetRelationTest()
     }
 
     @Test
-    @Tag("Impossible")
+    @Tag("7")
     fun subSetFirstAndLastTest() {
         doSubSetFirstAndLastTest()
     }
 
     @Test
-    @Tag("Normal")
+    @Tag("4")
     fun headSetTest() {
         doHeadSetTest()
     }
 
     @Test
-    @Tag("Hard")
+    @Tag("7")
     fun headSetRelationTest() {
         doHeadSetRelationTest()
     }
 
     @Test
-    @Tag("Normal")
+    @Tag("4")
     fun tailSetTest() {
         doTailSetTest()
     }
 
     @Test
-    @Tag("Hard")
+    @Tag("7")
     fun tailSetRelationTest() {
         doTailSetRelationTest()
     }
