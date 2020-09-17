@@ -1,28 +1,28 @@
-package lesson3
+package lesson4
 
 import org.junit.jupiter.api.Tag
 import org.junit.jupiter.api.Test
 
-class KtTrieTest : AbstractTrieTest() {
+class TrieTest : AbstractTrieTest() {
 
     override fun create(): MutableSet<String> =
-        KtTrie()
+        Trie()
 
     @Test
     @Tag("Example")
-    fun generalTest() {
+    fun generalTestJava() {
         doGeneralTest()
     }
 
     @Test
     @Tag("Hard")
-    fun iteratorTest() {
+    fun iteratorTestJava() {
         doIteratorTest()
     }
 
     @Test
     @Tag("Hard")
-    fun iteratorRemoveTest() {
+    fun iteratorRemoveTestJava() {
         doIteratorRemoveTest()
     }
 
