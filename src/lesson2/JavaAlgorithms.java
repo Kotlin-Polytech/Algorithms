@@ -3,8 +3,6 @@ package lesson2;
 import kotlin.NotImplementedError;
 import kotlin.Pair;
 
-import java.util.Set;
-
 @SuppressWarnings("unused")
 public class JavaAlgorithms {
     /**
