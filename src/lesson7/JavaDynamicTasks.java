@@ -61,7 +61,4 @@ public class JavaDynamicTasks {
     public static int shortestPathOnField(String inputName) {
         throw new NotImplementedError();
     }
-
-    // Задачу "Максимальное независимое множество вершин в графе без циклов"
-    // смотрите в уроке 5
 }
