@@ -57,6 +57,3 @@ fun longestIncreasingSubSequence(list: List<Int>): List<Int> {
 fun shortestPathOnField(inputName: String): Int {
     TODO()
 }
-
-// Задачу "Максимальное независимое множество вершин в графе без циклов"
-// смотрите в уроке 5
