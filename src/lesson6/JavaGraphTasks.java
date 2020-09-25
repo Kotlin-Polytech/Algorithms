@@ -92,8 +92,6 @@ public class JavaGraphTasks {
      * В данном случае ответ (A, E, F, D, G, J)
      *
      * Если на входе граф с циклами, бросить IllegalArgumentException
-     *
-     * Эта задача может быть зачтена за пятый и шестой урок одновременно
      */
     public static Set<Graph.Vertex> largestIndependentVertexSet(Graph graph) {
         throw new NotImplementedError();
