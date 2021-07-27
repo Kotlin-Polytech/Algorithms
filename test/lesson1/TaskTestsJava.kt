@@ -32,6 +32,6 @@ class TaskTestsJava : AbstractTaskTests() {
     @Test
     @Tag("2")
     fun testMergeArraysJava() {
-        mergeArrays { first, second -> JavaTasks.mergeArrays(first, second) }
+        mergeArrays { first, second -> JavaTasks.mergeArrays<Int?>(first, second) }
     }
 }

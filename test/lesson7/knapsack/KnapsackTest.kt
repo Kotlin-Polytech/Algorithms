@@ -114,7 +114,7 @@ class KnapsackTest {
             try {
                 val fillGreedy = fillKnapsackGreedy(1000, items)
                 println("Жадный набрал = " + fillGreedy.cost)
-                val weight = fillGreedy.items.sumBy { it.weight }
+                val weight = fillGreedy.items.sumOf { it.weight }
                 println("Вес: $weight")
             } catch (e: StackOverflowError) {
                 println("Жадный выбыл")

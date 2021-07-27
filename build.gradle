@@ -3,47 +3,56 @@ import java.util.stream.Collectors
 
 buildscript {
     repositories {
-        maven { url 'http://dl.bintray.com/vorpal-research/kotlin-maven' }
+        maven {
+            url = 'https://maven.polytech.vorpal-research.science'
+        }
+        maven {
+            url = 'https://maven.vorpal-research.science'
+        }
+        mavenLocal()
     }
     dependencies {
-        classpath 'org.jetbrains.research:kfirst-runner-gradle-plugin:20.0.0'
+        classpath 'org.jetbrains.research:kfirst-runner-gradle-plugin:21.0.0'
     }
 }
 
 plugins {
     id 'java'
-    id 'org.jetbrains.kotlin.jvm' version '1.4.10'
+    id 'org.jetbrains.kotlin.jvm' version '1.5.20'
 }
 
 group 'ru.spbstu'
-version '20.0.0-SNAPSHOT'
+version '21.0.0-SNAPSHOT'
 
 sourceCompatibility = 11
 
 repositories {
     mavenCentral()
     jcenter()
-    maven { url 'http://dl.bintray.com/vorpal-research/kotlin-maven' }
+    maven {
+        url = 'https://maven.polytech.vorpal-research.science'
+    }
+    maven {
+        url = 'https://maven.vorpal-research.science'
+    }
     mavenLocal()
 }
 
 dependencies {
-    compile "org.jetbrains.kotlin:kotlin-stdlib"
-    testCompile "org.jetbrains.research:kfirst-runner:20.0.0"
-    testCompile "org.jetbrains.kotlin:kotlin-test"
-    testCompile "org.jetbrains.kotlin:kotlin-test-junit5"
-    testCompile "org.junit.jupiter:junit-jupiter-api:5.5.1"
-    testRuntime "org.junit.jupiter:junit-jupiter-engine:5.5.1"
-    testRuntime "org.junit.platform:junit-platform-launcher:1.5.1"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+    testImplementation "org.jetbrains.research:kfirst-runner:21.0.0"
+    testImplementation "org.jetbrains.kotlin:kotlin-test"
+    testImplementation "org.jetbrains.kotlin:kotlin-test-junit5"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:5.5.1"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.5.1"
+    testRuntimeOnly "org.junit.platform:junit-platform-launcher:1.5.1"
 }
 
 compileKotlin {
     kotlinOptions.jvmTarget = "11"
-    kotlinOptions.freeCompilerArgs = ["-Xnew-inference"]
 }
 compileTestKotlin {
     kotlinOptions.jvmTarget = "11"
-    kotlinOptions.freeCompilerArgs = ["-Xnew-inference"]
 }
 
 compileJava.options.encoding = 'UTF-8'
