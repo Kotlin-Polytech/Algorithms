@@ -18,7 +18,7 @@ class GraphTestsKotlin : AbstractGraphTests() {
     }
 
     @Test
-    @Tag("8")
+    @Tag("10")
     fun testLargestIndependentVertexSet() {
         largestIndependentVertexSet { largestIndependentVertexSet() }
     }

@@ -17,7 +17,7 @@ class GraphTestsJava : AbstractGraphTests() {
     }
 
     @Test
-    @Tag("8")
+    @Tag("10")
     fun testLargestIndependentVertexSetJava() {
         largestIndependentVertexSet { let { JavaGraphTasks.largestIndependentVertexSet(it) } }
     }
