@@ -40,23 +40,25 @@ class NoughtsAndCrosses() {
         when (findWinnerIfAny()) {
             crossesTurn -> return null to 10 - depth
             !crossesTurn -> return null to -10 + depth
-        }
-        var bestMove: Pair<Cell?, Int> = null to -11
-        for (x in 0..2) {
-            for (y in 0..2) {
-                val move = Cell(x, y)
-                if (move in field) continue
-                val copy = NoughtsAndCrosses(this)
-                copy.makeTurn(x, y, crossesTurn)
-                val evaluation = -copy.findBestMoveAndEvaluation(!crossesTurn, depth + 1).second
-                if (evaluation > bestMove.second) {
-                    bestMove = move to evaluation
+            else -> {
+                var bestMove: Pair<Cell?, Int> = null to -11
+                for (x in 0..2) {
+                    for (y in 0..2) {
+                        val move = Cell(x, y)
+                        if (move in field) continue
+                        val copy = NoughtsAndCrosses(this)
+                        copy.makeTurn(x, y, crossesTurn)
+                        val evaluation = -copy.findBestMoveAndEvaluation(!crossesTurn, depth + 1).second
+                        if (evaluation > bestMove.second) {
+                            bestMove = move to evaluation
+                        }
+                    }
                 }
+                if (bestMove.first == null) {
+                    return null to 0
+                }
+                return bestMove
             }
         }
-        if (bestMove.first == null) {
-            return null to 0
-        }
-        return bestMove
     }
 }
