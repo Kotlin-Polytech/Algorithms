@@ -18,17 +18,16 @@ buildscript {
 
 plugins {
     id 'java'
-    id 'org.jetbrains.kotlin.jvm' version '1.5.20'
+    id 'org.jetbrains.kotlin.jvm' version '1.6.10'
 }
 
 group 'ru.spbstu'
 version '21.0.0-SNAPSHOT'
 
-sourceCompatibility = 11
+sourceCompatibility = 17
 
 repositories {
     mavenCentral()
-    jcenter()
     maven {
         url = 'https://maven.polytech.vorpal-research.science'
     }
@@ -49,10 +48,10 @@ dependencies {
 }
 
 compileKotlin {
-    kotlinOptions.jvmTarget = "11"
+    kotlinOptions.jvmTarget = "17"
 }
 compileTestKotlin {
-    kotlinOptions.jvmTarget = "11"
+    kotlinOptions.jvmTarget = "17"
 }
 
 compileJava.options.encoding = 'UTF-8'
