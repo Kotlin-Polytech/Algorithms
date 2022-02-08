@@ -6,7 +6,7 @@ import kotlin.test.Test
 class DynamicTestsJava : AbstractDynamicTests() {
 
     @Test
-    @Tag("6")
+    @Tag("5")
     fun testLongestCommonSubSequenceJava() {
         longestCommonSubSequence { first, second -> JavaDynamicTasks.longestCommonSubSequence(first, second) }
     }
@@ -18,7 +18,7 @@ class DynamicTestsJava : AbstractDynamicTests() {
     }
 
     @Test
-    @Tag("5")
+    @Tag("4")
     fun testShortestPathOnFieldJava() {
         shortestPathOnField { JavaDynamicTasks.shortestPathOnField(it) }
     }
