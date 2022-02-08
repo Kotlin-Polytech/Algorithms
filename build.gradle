@@ -18,13 +18,16 @@ buildscript {
 
 plugins {
     id 'java'
-    id 'org.jetbrains.kotlin.jvm' version '1.6.10'
+    id 'org.jetbrains.kotlin.jvm' version '1.5.32'
 }
 
 group 'ru.spbstu'
 version '21.0.0-SNAPSHOT'
 
-sourceCompatibility = 17
+java {
+    sourceCompatibility = JavaVersion.VERSION_16
+    targetCompatibility = JavaVersion.VERSION_16
+}
 
 repositories {
     mavenCentral()
@@ -48,13 +51,17 @@ dependencies {
 }
 
 compileKotlin {
-    kotlinOptions.jvmTarget = "17"
+    kotlinOptions.jvmTarget = "16"
 }
 compileTestKotlin {
-    kotlinOptions.jvmTarget = "17"
+    kotlinOptions.jvmTarget = "16"
 }
 
-compileJava.options.encoding = 'UTF-8'
+compileJava {
+    options.encoding = 'UTF-8'
+    sourceCompatibility = JavaVersion.VERSION_16
+    targetCompatibility = JavaVersion.VERSION_16
+}
 
 test {
     useJUnitPlatform()
