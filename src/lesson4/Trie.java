@@ -11,10 +11,10 @@ import org.jetbrains.annotations.Nullable;
 public class Trie extends AbstractSet<String> implements Set<String> {
 
     private static class Node {
-        Map<Character, Node> children = new LinkedHashMap<>();
+        SortedMap<Character, Node> children = new TreeMap<>();
     }
 
-    private Node root = new Node();
+    private final Node root = new Node();
 
     private int size = 0;
 

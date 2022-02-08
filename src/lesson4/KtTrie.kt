@@ -1,15 +1,17 @@
 package lesson4
 
+import java.util.*
+
 /**
  * Префиксное дерево для строк
  */
 class KtTrie : AbstractMutableSet<String>(), MutableSet<String> {
 
     private class Node {
-        val children: MutableMap<Char, Node> = linkedMapOf()
+        val children: SortedMap<Char, Node> = sortedMapOf()
     }
 
-    private var root = Node()
+    private val root = Node()
 
     override var size: Int = 0
         private set
