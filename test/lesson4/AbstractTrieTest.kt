@@ -3,6 +3,7 @@ package lesson4
 import java.util.*
 import kotlin.math.abs
 import ru.spbstu.kotlin.generate.util.nextString
+import kotlin.NoSuchElementException
 import kotlin.test.*
 
 abstract class AbstractTrieTest {
@@ -72,7 +73,7 @@ abstract class AbstractTrieTest {
         implementationTest { create().iterator().next() }
         val random = Random()
         for (iteration in 1..100) {
-            val controlSet = mutableSetOf<String>()
+            val controlSet = sortedSetOf<String>()
             for (i in 1..15) {
                 val string = random.nextString("abcdefgh", 1, 15)
                 controlSet.add(string)
@@ -104,7 +105,7 @@ abstract class AbstractTrieTest {
                 controlSet.isEmpty(),
                 "TrieIterator doesn't traverse the entire set."
             )
-            assertFailsWith<IllegalStateException>("Something was supposedly returned after the elements ended") {
+            assertFailsWith<NoSuchElementException>("Something was supposedly returned after the elements ended") {
                 trieIter.next()
             }
             println("All clear!")
