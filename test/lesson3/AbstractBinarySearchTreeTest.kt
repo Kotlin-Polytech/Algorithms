@@ -329,9 +329,12 @@ abstract class AbstractBinarySearchTreeTest {
         for (iteration in 1..100) {
             val initialSet = create()
             val fromElement = random.nextInt(50)
+            val fromFromElement = fromElement + random.nextInt(10)
             val toElement = random.nextInt(50) + 50
+            val toToElement = toElement - random.nextInt(10)
             val subSet = initialSet.subSet(fromElement, toElement)
-            println("Checking if the subset from $fromElement to $toElement is a valid view of the initial set...")
+            val subSubSet = subSet.subSet(fromFromElement, toToElement)
+            println("Checking if the subset from $fromElement to $toElement (nested $fromFromElement..$toToElement) is a valid view of the initial set...")
             var allElementCounter = 0
             var validElementCounter = 0
             for (i in 1..50) {
@@ -344,7 +347,7 @@ abstract class AbstractBinarySearchTreeTest {
                         }
                         assertTrue(
                             subSet.contains(value),
-                            "A subset doesn't contain a valid element of the initial set."
+                            "A subset doesn't contain a valid element $value of the initial set."
                         )
                     } else {
                         if (subSet.add(value)) {
@@ -353,7 +356,13 @@ abstract class AbstractBinarySearchTreeTest {
                         }
                         assertTrue(
                             initialSet.contains(value),
-                            "The initial set doesn't contain an element of the subset."
+                            "The initial set doesn't contain an element $value of the subset."
+                        )
+                    }
+                    if (value in fromFromElement until toToElement) {
+                        assertTrue(
+                            subSubSet.contains(value),
+                            "A nested subset doesn't contain a valid element $value of the initial set."
                         )
                     }
                 } else {
@@ -362,7 +371,7 @@ abstract class AbstractBinarySearchTreeTest {
                     }
                     assertFalse(
                         subSet.contains(value),
-                        "A subset contains an illegal element of the initial set."
+                        "A subset contains an illegal element $value of the initial set."
                     )
                 }
             }
@@ -492,8 +501,10 @@ abstract class AbstractBinarySearchTreeTest {
         for (iteration in 1..100) {
             val initialSet = create()
             val toElement = random.nextInt(100)
+            val lessElement = random.nextInt(100).takeIf { it < toElement } ?: toElement
             val headSet = initialSet.headSet(toElement)
-            println("Checking if the headset to $toElement is a valid view of the initial set...")
+            val headHeadSet = headSet.headSet(lessElement)
+            println("Checking if the headset to $toElement (nested to $lessElement) is a valid view of the initial set...")
             var allElementCounter = 0
             var validElementCounter = 0
             for (i in 1..50) {
@@ -506,7 +517,7 @@ abstract class AbstractBinarySearchTreeTest {
                         }
                         assertTrue(
                             headSet.contains(value),
-                            "A headset doesn't contain a valid element of the initial set."
+                            "A headset doesn't contain a valid element $value of the initial set."
                         )
                     } else {
                         if (headSet.add(value)) {
@@ -515,7 +526,13 @@ abstract class AbstractBinarySearchTreeTest {
                         }
                         assertTrue(
                             initialSet.contains(value),
-                            "The initial set doesn't contain an element of the headset."
+                            "The initial set doesn't contain an element $value of the headset."
+                        )
+                    }
+                    if (value < lessElement) {
+                        assertTrue(
+                            headHeadSet.contains(value),
+                            "A nested headset doesn't contain a valid element $value of the initial set."
                         )
                     }
                 } else {
@@ -524,7 +541,7 @@ abstract class AbstractBinarySearchTreeTest {
                     }
                     assertFalse(
                         headSet.contains(value),
-                        "A headset contains an illegal element of the initial set."
+                        "A headset contains an illegal element $value of the initial set."
                     )
                 }
             }
@@ -590,8 +607,10 @@ abstract class AbstractBinarySearchTreeTest {
         for (iteration in 1..100) {
             val initialSet = create()
             val fromElement = random.nextInt(100)
+            val greaterElement = random.nextInt(100).takeIf { it > fromElement } ?: fromElement
             val tailSet = initialSet.tailSet(fromElement)
-            println("Checking if the tailset from $fromElement is a valid view of the initial set...")
+            val tailTailSet = tailSet.tailSet(greaterElement)
+            println("Checking if the tailset from $fromElement (nested from $greaterElement) is a valid view of the initial set...")
             var allElementCounter = 0
             var validElementCounter = 0
             for (i in 1..50) {
@@ -604,7 +623,7 @@ abstract class AbstractBinarySearchTreeTest {
                         }
                         assertTrue(
                             tailSet.contains(value),
-                            "A tailset doesn't contain a valid element of the initial set."
+                            "A tailset doesn't contain a valid element $value of the initial set."
                         )
                     } else {
                         if (tailSet.add(value)) {
@@ -613,7 +632,13 @@ abstract class AbstractBinarySearchTreeTest {
                         }
                         assertTrue(
                             initialSet.contains(value),
-                            "The initial set doesn't contain an element of the tailset."
+                            "The initial set doesn't contain an element $value of the tailset."
+                        )
+                    }
+                    if (value >= greaterElement) {
+                        assertTrue(
+                            tailTailSet.contains(value),
+                            "A nested tailset doesn't contain a valid element $value of the initial set."
                         )
                     }
                 } else {
@@ -622,7 +647,7 @@ abstract class AbstractBinarySearchTreeTest {
                     }
                     assertFalse(
                         tailSet.contains(value),
-                        "A tailset contains an illegal element of the initial set."
+                        "A tailset contains an illegal element $value of the initial set."
                     )
                 }
             }
