@@ -200,7 +200,7 @@ abstract class AbstractBinarySearchTreeTest {
                     "BinarySearchTreeIterator doesn't traverse the tree correctly."
                 )
             }
-            assertFailsWith<IllegalStateException>("Something was supposedly returned after the elements ended") {
+            assertFailsWith<NoSuchElementException>("Something was supposedly returned after the elements ended") {
                 binaryIter.next()
             }
             println("All clear!")
